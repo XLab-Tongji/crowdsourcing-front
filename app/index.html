@@ -6,12 +6,13 @@
 -->
 
 <!DOCTYPE html>
-<html ng-app="inspinia">
+<html ng-app="crowdsourcing">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title set in pageTitle directive -->
     <title page-title></title>
@@ -42,7 +43,7 @@
 
 <!-- ControllerAs syntax -->
 <!-- Main controller with serveral data used in Inspinia theme on diferent view -->
-<body ng-controller="MainCtrl as main">
+<body ng-controller="MainCtrl as main" class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
 
 <!-- Main view  -->
 <div ui-view></div>
@@ -66,8 +67,11 @@
 
 <!-- Angular scripts-->
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+<script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
 
 <!-- Angular Dependiences -->
 <!--                      -->
@@ -76,15 +80,19 @@
 
 <!-- endbuild -->
 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script>
+
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <!-- Custom and plugin javascript -->
 <script src="scripts/inspinia.js"></script>
-
 <!-- Anglar App Script -->
 <script src="scripts/app.js"></script>
 <script src="scripts/config.js"></script>
+<script src="scripts/config.router.js"></script>
 <script src="scripts/directives.js"></script>
 <script src="scripts/controllers.js"></script>
+<!-- <script src="scripts/controller/main_controller.js"></script> -->
+
 <!-- endbuild -->
 
 </body>

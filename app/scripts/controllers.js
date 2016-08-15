@@ -16,5 +16,5 @@ function MainCtrl() {
 
 
 angular
-    .module('inspinia')
+    .module('crowdsourcing')
     .controller('MainCtrl', MainCtrl)

@@ -3,8 +3,10 @@
  *
  */
 (function () {
-    angular.module('inspinia', [
-        'ui.router',                    // Routing
-        'ui.bootstrap'                 // Bootstrap
+    angular.module('crowdsourcing', [
+      'ui.router',
+      'ui.bootstrap',
+      'oc.lazyLoad',
+      'ngSanitize',
     ])
 })();

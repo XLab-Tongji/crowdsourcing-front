@@ -6,30 +6,36 @@
  * Initial there are written stat for all view in theme.
  *
  */
-function config($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/index/main");
+ 'use strict';
 
-    $stateProvider
-
-        .state('index', {
-            abstract: true,
-            url: "/index",
-            templateUrl: "views/common/content.html",
-        })
-        .state('index.main', {
-            url: "/main",
-            templateUrl: "views/main.html",
-            data: { pageTitle: 'Example view' }
-        })
-        .state('index.minor', {
-            url: "/minor",
-            templateUrl: "views/minor.html",
-            data: { pageTitle: 'Example view' }
-        })
-}
-angular
-    .module('inspinia')
-    .config(config)
-    .run(function($rootScope, $state) {
-        $rootScope.$state = $state;
-    });
+ var app =
+   angular.module('crowdsourcing')
+     .config(
+     ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
+       function($controllerProvider, $compileProvider, $filterProvider, $provide) {
+         // lazy controller, directive and service
+         app.controller = $controllerProvider.register;
+         app.directive = $compileProvider.directive;
+         app.filter = $filterProvider.register;
+         app.factory = $provide.factory;
+         app.service = $provide.service;
+         app.constant = $provide.constant;
+         app.value = $provide.value;
+       }
+     ]);
+    //  .config(['$provide', function ($provide) {
+    //    $provide.decorator('taOptions', ['$delegate', function (taOptions) {
+    //      taOptions.toolbar = [
+    //        ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+    //        ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'],
+    //        ['justifyLeft','justifyCenter','justifyRight', 'justifyFull'],
+    //        ['insertImage', 'insertLink']
+    //      ];
+     //
+    //      return taOptions;
+    //    }]);
+    //  }]);
+    //  .config(function ($httpProvider){
+    //    $httpProvider.interceptors.push('loadingInterceptor');
+    //    // $httpProvider.interceptors.push('authInterceptor');
+    //  });

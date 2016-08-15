@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         // Project settings
-        inspinia: appConfig,
+        crowdsourcing: appConfig,
 
         // The grunt server settings
         connect: {
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     open: true,
-                    base: '<%= inspinia.dist %>'
+                    base: '<%= crowdsourcing.dist %>'
                 }
             }
         },
@@ -62,6 +62,10 @@ module.exports = function (grunt) {
         },
         // Watch for changes in live edit
         watch: {
+            less: {
+                files: ['<%= crowdsourcing.app %>/less/*.less'],
+                tasks: ['less']
+            },
             styles: {
                 files: ['app/less/**/*.less'],
                 tasks: ['less', 'copy:styles'],
@@ -71,7 +75,7 @@ module.exports = function (grunt) {
                 },
             },
             js: {
-                files: ['<%= inspinia.app %>/scripts/{,*/}*.js'],
+                files: ['<%= crowdsourcing.app %>/scripts/{,*/}*.js', '<%= crowdsourcing.app %>/lib/libs/*.js', '<%= crowdsourcing.app %>/scripts/**/*.js'],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 }
@@ -81,9 +85,14 @@ module.exports = function (grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%= inspinia.app %>/**/*.html',
+                    '<%= crowdsourcing.app %>/**/*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%= inspinia.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    '<%= crowdsourcing.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= crowdsourcing.app %>/lib/libs/*.js',
+                    '<%= crowdsourcing.app %>/lib/css/*.css',
+                    '<%= crowdsourcing.app %>/styles/**/*.css',
+                    '<%= crowdsourcing.app %>/styles/*.css',
+                    // '<%= crowdsourcing.app %>/scripts/**/*.js',
                 ]
             }
         },
@@ -102,8 +111,8 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= inspinia.dist %>/{,*/}*',
-                        '!<%= inspinia.dist %>/.git*'
+                        '<%= crowdsourcing.dist %>/{,*/}*',
+                        '!<%= crowdsourcing.dist %>/.git*'
                     ]
                 }]
             },
@@ -116,15 +125,18 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         dot: true,
-                        cwd: '<%= inspinia.app %>',
-                        dest: '<%= inspinia.dist %>',
+                        cwd: '<%= crowdsourcing.app %>',
+                        dest: '<%= crowdsourcing.dist %>',
                         src: [
                             '*.{ico,png,txt}',
                             '.htaccess',
                             '*.html',
                             'views/{,*/}*.html',
                             'styles/patterns/*.*',
-                            'img/{,*/}*.*'
+                            'images/{,*/}*.*',
+                            'lib/libs/*.js',
+                            'lib/css/*css',
+                            'scripts/**/*.js'
                         ]
                     },
                     {
@@ -132,20 +144,20 @@ module.exports = function (grunt) {
                         dot: true,
                         cwd: 'bower_components/fontawesome',
                         src: ['fonts/*.*'],
-                        dest: '<%= inspinia.dist %>'
+                        dest: '<%= crowdsourcing.dist %>'
                     },
                     {
                         expand: true,
                         dot: true,
                         cwd: 'bower_components/bootstrap',
                         src: ['fonts/*.*'],
-                        dest: '<%= inspinia.dist %>'
+                        dest: '<%= crowdsourcing.dist %>'
                     },
                 ]
             },
             styles: {
                 expand: true,
-                cwd: '<%= inspinia.app %>/styles',
+                cwd: '<%= crowdsourcing.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
             }
@@ -154,9 +166,9 @@ module.exports = function (grunt) {
         filerev: {
             dist: {
                 src: [
-                    '<%= inspinia.dist %>/scripts/{,*/}*.js',
-                    '<%= inspinia.dist %>/styles/{,*/}*.css',
-                    '<%= inspinia.dist %>/styles/fonts/*'
+                    '<%= crowdsourcing.dist %>/scripts/{,*/}*.js',
+                    '<%= crowdsourcing.dist %>/styles/{,*/}*.css',
+                    '<%= crowdsourcing.dist %>/styles/fonts/*',
                 ]
             }
         },
@@ -171,9 +183,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= inspinia.dist %>',
+                    cwd: '<%= crowdsourcing.dist %>',
                     src: ['*.html', 'views/{,*/}*.html'],
-                    dest: '<%= inspinia.dist %>'
+                    dest: '<%= crowdsourcing.dist %>'
                 }]
             }
         },
@@ -199,7 +211,9 @@ module.exports = function (grunt) {
     // Run build version of app
     grunt.registerTask('server', [
         'build',
-        'connect:dist:keepalive'
+        // 'connect:dist:keepalive',
+        'connect:livereload',
+        'watch',
     ]);
 
     // Build version for production
@@ -215,5 +229,12 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin'
     ]);
+
+    // grunt.registerTask('serve', 'Compile then start a connect web server', function () {
+    //     grunt.task.run([
+    //         'connect:livereload',
+    //         'watch'
+    //     ]);
+    // });
 
 };

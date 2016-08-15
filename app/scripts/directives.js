@@ -154,7 +154,7 @@ function iboxToolsFullScreen($timeout) {
  * Pass all functions into module
  */
 angular
-    .module('inspinia')
+    .module('crowdsourcing')
     .directive('pageTitle', pageTitle)
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
