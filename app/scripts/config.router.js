@@ -46,7 +46,7 @@ angular.module('crowdsourcing')
             .state('portal', {
                 url: "/portal",
                 templateUrl: "views/portal/portal.html",
-                data: { pageTitle: 'Landing page', specialClass: 'landing-page' },
+                data: { pageTitle: '首页', specialClass: 'landing-page' },
                 resolve: {
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
@@ -56,6 +56,14 @@ angular.module('crowdsourcing')
                           'lib/libs/inspinia.js',
                       ]);
                   }]
+                }
+            })
+            .state('login', {
+                url: "/login",
+                templateUrl: "views/portal/login.html",
+                data: { pageTitle: '登录'},
+                resolve: {
+                  
                 }
             })
         }
