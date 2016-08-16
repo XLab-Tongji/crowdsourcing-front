@@ -75,7 +75,7 @@ module.exports = function (grunt) {
                 },
             },
             js: {
-                files: ['<%= crowdsourcing.app %>/scripts/{,*/}*.js', '<%= crowdsourcing.app %>/lib/libs/*.js', '<%= crowdsourcing.app %>/scripts/**/*.js'],
+                files: ['<%= crowdsourcing.app %>/scripts/{,*/}*.js', '<%= crowdsourcing.app %>/lib/libs/*.js'],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 }

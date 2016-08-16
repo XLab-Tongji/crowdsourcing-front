@@ -8,5 +8,12 @@
       'ui.bootstrap',
       'oc.lazyLoad',
       'ngSanitize',
+      'ngAnimate',
+      'ngResource',
+      'ui.validate',
+      'mgcrea.ngStrap',
+      'toaster',
+      '720kb.tooltips',
+      'oitozero.ngSweetAlert'
     ])
 })();

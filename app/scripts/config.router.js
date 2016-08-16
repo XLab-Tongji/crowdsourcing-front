@@ -31,7 +31,7 @@ angular.module('crowdsourcing')
                 resolve: {
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
-                          'scripts/controller/main.controller.js',
+                          'scripts/controller/app/Main.controller.js',
                       ]);
                   }]
                 }
@@ -60,10 +60,15 @@ angular.module('crowdsourcing')
             })
             .state('login', {
                 url: "/login",
+                controller:'LoginController',
                 templateUrl: "views/portal/login.html",
-                data: { pageTitle: '登录'},
+                data: { pageTitle: '登录', specialClass: 'gray-bg'},
                 resolve: {
-                  
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/portal/Login.controller.js',
+                      ]);
+                  }]
                 }
             })
         }
