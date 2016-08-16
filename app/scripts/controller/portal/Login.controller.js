@@ -27,6 +27,7 @@ app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool
           'email':data.email
         });
         SessionService.saveToken(data.private_token);
+        ToasterTool.success('登录成功','欢迎回到众包平台!');
       }
       function loginFailed(error){
         AlertTool.error({title:'失败',text:'用户名或者密码错误'}).then(function() {

@@ -8,9 +8,9 @@ app.controller('MainController', ['$scope', '$state', 'ToasterTool', 'SessionSer
     init();
 
     function init(){
-      if (SessionService.getToken()) {
-        ToasterTool.success('登录成功','欢迎回到众包平台!');
-      }
+      // if (SessionService.getToken()) {
+      //   ToasterTool.success('登录成功','欢迎回到众包平台!');
+      // }
     }
 
 }]);
