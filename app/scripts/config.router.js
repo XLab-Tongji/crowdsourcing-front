@@ -16,18 +16,23 @@ angular.module('crowdsourcing')
                   .otherwise('/index/main');
 
           $stateProvider
-            .state('index', {
+            .state('app', {
                 abstract: true,
                 url: "/index",
+                controller:'AppController',
                 templateUrl: "views/common/content.html",
                 resolve: {
-
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/App.controller.js',
+                      ]);
+                  }]
                 }
             })
-            .state('index.main', {
+            .state('app.main', {
                 url: "/main",
                 controller:'MainController',
-                templateUrl: "views/main.html",
+                templateUrl: "views/app/main.html",
                 resolve: {
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
@@ -36,7 +41,7 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
-            .state('index.minor', {
+            .state('app.minor', {
                 url: "/minor",
                 templateUrl: "views/minor.html",
                 resolve: {
@@ -67,6 +72,21 @@ angular.module('crowdsourcing')
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
                           'scripts/controller/portal/Login.controller.js',
+                          'scripts/factory/Session.factory.js',
+                      ]);
+                  }]
+                }
+            })
+            .state('register', {
+                url: "/register",
+                controller:'RegisterController',
+                templateUrl: "views/portal/register.html",
+                data: { pageTitle: '注册', specialClass: 'gray-bg'},
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/portal/Register.controller.js',
+                          'scripts/factory/Session.factory.js',
                       ]);
                   }]
                 }

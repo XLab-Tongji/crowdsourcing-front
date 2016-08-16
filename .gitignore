@@ -11,3 +11,4 @@ bower_components
 *.md
 !README.md
 *.log
+crowdsourcing.config.js

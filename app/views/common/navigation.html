@@ -3,30 +3,35 @@
         <ul side-navigation class="nav metismenu" id="side-menu">
             <li class="nav-header">
 
-                <div class="profile-element" uib-dropdown>
-                    <a uib-dropdown-toggle href>
-                            <span class="clear">
-                                <span class="block m-t-xs">
-                                    <strong class="font-bold">{{main.userName}}</strong>
-                             </span>
-                                <span class="text-muted text-xs block">Example menu<b class="caret"></b></span>
-                            </span>
-                    </a>
-                    <ul uib-dropdown-menu class="animated flipInX m-t-xs">
-                        <li><a href="">Logout</a></li>
-                    </ul>
-                </div>
-                <div class="logo-element">
-                    IN+
-                </div>
+              <div class="profile-element" uib-dropdown>
+                  <img alt="image" class="img-circle" ng-src="{{user.avatarUrl}}"/>
+                  <div>
+                          <span class="clear">
+                              <span class="block m-t-xs">
+                                  <strong class="font-bold">{{user.name}}</strong>
+                           <!-- </span>
+                              <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                          </span> -->
+                  </div>
+                  <!-- <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                      <li><a ui-sref="app.profile">Profile</a></li>
+                      <li><a ui-sref="app.contacts">Contacts</a></li>
+                      <li><a ui-sref="mailbox.inbox">Mailbox</a></li>
+                      <li class="divider"></li>
+                      <li><a ui-sref="login">Logout</a></li>
+                  </ul> -->
+              </div>
+              <div class="logo-element">
+                  IN+
+              </div>
 
             </li>
 
             <li ui-sref-active="active">
-                <a ui-sref="index.main"><i class="fa fa-laptop"></i> <span class="nav-label">Main page</span> </a>
+                <a ui-sref="index.main"><i class="fa fa-laptop"></i> <span class="nav-label">项目</span> </a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="index.minor"><i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span></a>
+                <a ui-sref="index.minor"><i class="fa fa-desktop"></i> <span class="nav-label">任务</span></a>
             </li>
         </ul>
 

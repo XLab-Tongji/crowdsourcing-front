@@ -22,7 +22,7 @@
          app.constant = $provide.constant;
          app.value = $provide.value;
        }
-     ]);
+     ])
     //  .config(['$provide', function ($provide) {
     //    $provide.decorator('taOptions', ['$delegate', function (taOptions) {
     //      taOptions.toolbar = [
@@ -35,7 +35,7 @@
     //      return taOptions;
     //    }]);
     //  }]);
-    //  .config(function ($httpProvider){
-    //    $httpProvider.interceptors.push('loadingInterceptor');
-    //    // $httpProvider.interceptors.push('authInterceptor');
-    //  });
+     .config(function ($httpProvider){
+      //  $httpProvider.interceptors.push('loadingInterceptor');
+       $httpProvider.interceptors.push('authInterceptor');
+     });

@@ -14,6 +14,8 @@
       'mgcrea.ngStrap',
       'toaster',
       '720kb.tooltips',
-      'oitozero.ngSweetAlert'
+      'oitozero.ngSweetAlert',
+      'ngStorage',
+      'ngLocale'
     ])
 })();

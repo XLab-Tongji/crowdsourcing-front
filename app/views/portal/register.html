@@ -1,0 +1,33 @@
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">X</h1>
+
+        </div>
+        <h3>欢迎加入众包平台</h3>
+        <p>众包平台的项目管理是针对软件开发协作定制的一站式工具，包含了任务，讨论，文件等功能。支持多成员协作，并且深度集成了代码仓库的操作与状态，让软件开发管理一目了然。</p>
+        <form class="m-t" role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name" required="" ng-model="registerName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="" ng-model="registerUserName">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" required="" ng-model="registerEmail">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="" ng-model="registerPassword">
+            </div>
+            <div class="form-group">
+                <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> 同意条款和协议 </label></div>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b" ng-click="register()">注册</button>
+
+            <p class="text-muted text-center"><small>已经有了账户？</small></p>
+            <a class="btn btn-sm btn-white btn-block" ui-sref="login">马上登录</a>
+        </form>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+    </div>
+</div>

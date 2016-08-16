@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('LoginController', ['$scope', '$state', '$rootScope', 'AlertTool', 'ToasterTool', function($scope,
-    $state, $rootScope, AlertTool, ToasterTool) {
+app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool', 'SessionFactory', 'SessionService', function($scope,
+    $state, AlertTool, ToasterTool, SessionFactory, SessionService) {
 
     init();
 
@@ -13,11 +13,26 @@ app.controller('LoginController', ['$scope', '$state', '$rootScope', 'AlertTool'
       var name = $scope.loginName;
       var password = $scope.loginPassword;
 
-      // AlertTool.error({title:'失败',text:name+";"+password}).then(function() {
-      // });
+      var loginForm = {
+        'login': name,
+        'password': password
+      }
 
-      // ToasterTool.error("自动登录失败", "请重新登录");
-      ToasterTool.success('登录成功','欢迎回到众包平台!');
+      SessionFactory.login().post(loginForm, loginSuccess, loginFailed);
+
+      function loginSuccess(data){
+        SessionService.saveUser({
+          'name':data.name,
+          'avatarUrl':data.avatar_url,
+          'email':data.email
+        });
+        SessionService.saveToken(data.private_token);
+      }
+      function loginFailed(error){
+        AlertTool.error({title:'失败',text:'用户名或者密码错误'}).then(function() {
+        });
+      }
+      //ToasterTool.success('登录成功','欢迎回到众包平台!');
     }
 
 }]);
