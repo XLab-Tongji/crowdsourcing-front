@@ -54,6 +54,17 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
+            .state('app.project-detail', {
+                url: "/project/detail",
+                data: { pageTitle: '项目'},
+                templateUrl: "views/app/project/project_detail.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                      ]);
+                  }]
+                }
+            })
             .state('app.minor', {
                 url: "/minor",
                 templateUrl: "views/minor.html",
@@ -113,7 +124,7 @@ angular.module('crowdsourcing')
                 resolve: {
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
-                          
+
                       ]);
                   }]
                 }
