@@ -21,7 +21,7 @@
 <div class="wrapper wrapper-content  animated fadeInRight">
 
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>To-do</h3>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>In Progress</h3>
@@ -62,7 +62,24 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>To Test</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="toTestList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in toTestList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>Completed</h3>
@@ -99,6 +116,9 @@
 
                 <h3>Completed tasks</h3>
                 {{completedList }}
+
+                <h3>Completed tasks</h3>
+                {{toTestList }}
 
             </div>
 
