@@ -61,6 +61,19 @@ angular.module('crowdsourcing')
 
                 }
             })
+            .state('app.task', {
+                url: "/task",
+                controller:'TaskController',
+                templateUrl: "views/app/task/task.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/task/Task.controller.js',
+                          'ui.sortable',
+                      ]);
+                  }]
+                }
+            })
             .state('portal', {
                 url: "/portal",
                 templateUrl: "views/portal/portal.html",
