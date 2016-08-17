@@ -74,6 +74,25 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
+            .state('app.contact', {
+                abstract: true,
+                url: "/contact",
+                templateUrl: "views/app/contact/contact_container.html",
+            })
+            .state('app.contact.following', {
+                url: "/following",
+                templateUrl: "views/app/contact/following.html",
+                resolve: {
+
+                }
+            })
+            .state('app.contact.follower', {
+                url: "/follower",
+                templateUrl: "views/app/contact/follower.html",
+                resolve: {
+
+                }
+            })
             .state('portal', {
                 url: "/portal",
                 templateUrl: "views/portal/portal.html",
