@@ -1,0 +1,70 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>通知中心</h2>
+
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="tabs-container">
+
+              <uib-tabset>
+                  <uib-tab heading="所有通知">
+                      <div class="panel-body">
+                      </br></br>
+                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
+                        <tbody>
+                          <tr>
+                              <td>Project - This is example of project</td>
+                          </tr>
+                          <tr>
+                              <td>Alpha project</td>
+                          </tr>
+                          <tr>
+                              <td>Betha project</td>
+                          </tr>
+
+                          </tbody>
+
+                      </table>
+                      <footer>
+                        <div ng-if = "true" class="row clearfix" style="width: 100%;" >
+                          <div class="pull-left col-sm-4 m-t-sm">
+                            <span class="text-muted inline m-t-sm">&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;条消息</span>
+                          </div>
+                            <div class="pull-right">
+                            <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.paginator.items"
+                              ng-model="resources.paginator.page" ng-change="pageChanged()"></uib-pagination>
+                          </div>
+                        </div>
+                      </footer>
+                      </div>
+                  </uib-tab>
+                  <uib-tab heading="未读通知">
+                      <div class="panel-body">
+
+                      </div>
+                  </uib-tab>
+                  <uib-tab heading="提到我的">
+                      <div class="panel-body">
+
+                      </div>
+                  </uib-tab>
+                  <uib-tab heading="系统通知">
+                      <div class="panel-body">
+
+                      </div>
+                  </uib-tab>
+              </uib-tabset>
+
+          </div>
+        </div>
+    </div>
+</div>

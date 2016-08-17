@@ -106,6 +106,18 @@ angular.module('crowdsourcing')
 
                 }
             })
+            .state('app.notification', {
+                url: "/notification",
+                data: { pageTitle: '通知'},
+                templateUrl: "views/app/notification/notification.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          
+                      ]);
+                  }]
+                }
+            })
             .state('portal', {
                 url: "/portal",
                 templateUrl: "views/portal/portal.html",
