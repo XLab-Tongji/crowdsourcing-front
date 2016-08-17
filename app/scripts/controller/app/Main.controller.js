@@ -3,7 +3,7 @@
 app.controller('MainController', ['$scope', '$state', 'ToasterTool', 'SessionService',  function($scope,
     $state, ToasterTool, SessionService) {
 
-    $scope.data = "py sb!";
+    $scope.data = "xtd sb!";
 
     init();
 
