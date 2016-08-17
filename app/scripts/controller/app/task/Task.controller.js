@@ -147,11 +147,25 @@ app.controller('TaskController', ['$scope', '$state', 'ToasterTool', 'SessionSer
             tagName: 'Mark'
         }
     ];
+    $scope.toTestList = [
+        {
+            content: '李杰初最近越来越跳了！LJC is tiaoer and tiaoer these days.',
+            date: '16.8.2016',
+            statusClass: 'info',
+            tagName: 'Mark'
+        },
+        {
+            content: 'G T M D 潘岩！',
+            date: '17.8.2016',
+            statusClass: 'info',
+            tagName: 'Tag'
+        }
+    ];
 
     $scope.sortableOptions = {
         connectWith: ".connectList"
     };
-    
+
     init();
 
     function init(){
