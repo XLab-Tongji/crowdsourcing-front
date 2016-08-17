@@ -53,6 +53,10 @@ $(document).ready(function () {
         fix_height();
     });
 
+    $("slimScrollDiv").slimScroll({
+        height: '300px'
+    });
+
 });
 
 // Minimalize menu when screen is less than 768px
