@@ -41,6 +41,19 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
+            .state('app.project', {
+                url: "/project",
+                controller:'ProjectManagerController',
+                data: { pageTitle: '项目'},
+                templateUrl: "views/app/project/project_list.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/project/ProjectManager.controller.js',
+                      ]);
+                  }]
+                }
+            })
             .state('app.minor', {
                 url: "/minor",
                 templateUrl: "views/minor.html",

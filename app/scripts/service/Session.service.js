@@ -6,7 +6,7 @@ angular.module('crowdsourcing').service('SessionService',
 
       this.saveToken = function(token) {
   			$localStorage.token = token;
-        $state.go('app.main');
+        $state.go('app.project');
   		};
 
       this.saveUser = function(user){
