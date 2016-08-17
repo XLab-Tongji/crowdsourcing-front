@@ -48,6 +48,28 @@ angular.module('crowdsourcing')
 
                 }
             })
+            .state('app.task', {
+                url: "/task",
+                controller:'TaskController',
+                templateUrl: "views/app/task/task.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/task/Task.controller.js',
+                          'lib/libs/sortable.js',
+                          // 'ui.sortable',
+                      ]);
+                  }],
+                  // loadPlugin: function ($ocLazyLoad) {
+                  //   return $ocLazyLoad.load([
+                  //       {
+                  //           name: 'ui.sortable',
+                  //           files: ['lib/libs/sortable.js']
+                  //       }
+                  //   ]);
+                  //  }
+                }
+            })
             .state('portal', {
                 url: "/portal",
                 templateUrl: "views/portal/portal.html",
