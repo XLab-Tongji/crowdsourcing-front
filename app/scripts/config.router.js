@@ -64,12 +64,26 @@ angular.module('crowdsourcing')
             .state('app.task', {
                 url: "/task",
                 controller:'TaskController',
+                data: { pageTitle: '任务'},
                 templateUrl: "views/app/task/task.html",
                 resolve: {
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
                           'scripts/controller/app/task/Task.controller.js',
                           'ui.sortable',
+                      ]);
+                  }]
+                }
+            })
+            .state('app.group', {
+                url: "/group",
+                controller:'GroupManagerController',
+                data: { pageTitle: '团队', specialClass: 'fixed-sidebar'},
+                templateUrl: "views/app/group/group_list.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/group/GroupManager.controller.js',
                       ]);
                   }]
                 }
