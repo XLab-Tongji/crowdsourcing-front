@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-lg-12">
           <div class="tabs-container">
-
+              
+              <!-- py sb! -->
               <!-- <uib-tabset>
                   <uib-tab heading="代码">
                       <div class="panel-body">
@@ -57,7 +58,34 @@
                     3
                   </div>
                   <div id="tab-4" class="tab-pane active" ng-show="tab == 4">
-                    4
+
+                      <div class="row">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>File Name</th>
+                                        <th>Last Update</th>
+                                        <th>Last Commit Message</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="content in content">
+                                        <td></td>
+                                        <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}"></i>&nbsp&nbsp{{content.name}}</td>
+                                        <td>Date...</td>
+                                        <td>Message...</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                  <!-- py sb -->
+                     {{content}}
                   </div>
                   <div id="tab-5" class="tab-pane active" ng-show="tab == 5">
                     5

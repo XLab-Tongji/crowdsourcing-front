@@ -7,6 +7,7 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool',  
 
     function init(){
       console.log($state);
+      console.log('ProjectManagerController Init');
     }
 
 

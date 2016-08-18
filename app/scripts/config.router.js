@@ -56,11 +56,14 @@ angular.module('crowdsourcing')
             })
             .state('app.project-detail', {
                 url: "/project/detail",
+                controller:'ProjectDetailController',
                 data: { pageTitle: '项目'},
                 templateUrl: "views/app/project/project_detail.html",
                 resolve: {
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
+                        'scripts/controller/app/project/ProjectDetail.controller.js',
+                        'scripts/factory/Project.factory.js',
                       ]);
                   }]
                 }

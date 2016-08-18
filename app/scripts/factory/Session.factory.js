@@ -4,7 +4,7 @@
  * 登录 api
  */
 angular.module('crowdsourcing')
-  .factory('SessionFactory', function($resource, $rootScope) {
+  .factory('SessionFactory', function($resource, $rootScope, SessionService) {
     var baseUrl = base_Url;
     return {
       login: function(){
@@ -21,7 +21,7 @@ angular.module('crowdsourcing')
             method: 'POST'
           }
         });
-      }
+      },
 
     };
 
