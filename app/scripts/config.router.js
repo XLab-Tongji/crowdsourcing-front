@@ -55,6 +55,7 @@ angular.module('crowdsourcing')
                 }
             })
             .state('app.project-detail', {
+                abstract:true,
                 url: "/project/detail",
                 controller:'ProjectDetailController',
                 data: { pageTitle: '项目'},
@@ -63,6 +64,22 @@ angular.module('crowdsourcing')
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
                         'scripts/controller/app/project/ProjectDetail.controller.js',
+                        'scripts/factory/Project.factory.js',
+                        'lib/libs/icheck.min.js',
+                        'lib/css/custom.css',
+                        'ui.checkbox',
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project-detail.commits', {
+                url: "/commits",
+                controller:'ProjectCommitsController',
+                templateUrl: "views/app/project/project_commits.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                        'scripts/controller/app/project/ProjectCommits.controller.js',
                         'scripts/factory/Project.factory.js',
                       ]);
                   }]
@@ -101,7 +118,8 @@ angular.module('crowdsourcing')
                       ]);
                   }]
                 }
-            })            .state('app.contact', {
+            })
+            .state('app.contact', {
                 abstract: true,
                 url: "/contact",
                 templateUrl: "views/app/contact/contact_container.html",

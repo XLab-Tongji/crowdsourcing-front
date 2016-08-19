@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProjectDetailController', ['$scope', '$state', 'ToasterTool',  'ProjectFactory',  function($scope,
+app.controller('ProjectCommitsController', ['$scope', '$state', 'ToasterTool',  'ProjectFactory',  function($scope,
     $state, ToasterTool, ProjectFactory) {
 
     init();
@@ -10,27 +10,18 @@ app.controller('ProjectDetailController', ['$scope', '$state', 'ToasterTool',  '
       console.log('ready to get yardstick code content!');
       $scope.content ='xtd sb!';
       $scope.getProjectContent = getProjectContent;
-      //getProjectContent('2');
+      getProjectContent('2');
     }
 
     function getProjectContent( project_id ){
-      // var id = project_id;
 
-   //    SessionFactory.getProjectContent().get({
-   //    		id:'2'
-   //    	})
-	  // 	.$promise
-	  //   .then(function(response){
-			// $scope.content.data = response.data;
-	  //   	ToasterTool.success('获取成功','666!');
-	  //   });
       ProjectFactory.getProjectContent().get({
       		id:project_id
       	}, getProjectContentSuccess, getProjectContentFailed);
 
       function getProjectContentSuccess(data){
         $scope.content = data;
-        ToasterTool.success('获取成功','666!');
+        // ToasterTool.success('获取成功','666!');
       }
       function getProjectContentFailed(error){
         AlertTool.error({title:'失败',text:'无法获取到项目目录'}).then(function() {

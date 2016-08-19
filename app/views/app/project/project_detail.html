@@ -4,40 +4,6 @@
     <div class="row">
         <div class="col-lg-12">
           <div class="tabs-container">
-              
-              <!-- py sb! -->
-              <!-- <uib-tabset>
-                  <uib-tab heading="代码">
-                      <div class="panel-body">
-
-                      </div>
-                  </uib-tab>
-                  <uib-tab heading="任务">
-                      <div class="panel-body">
-
-                      </div>
-                  </uib-tab>
-                  <uib-tab heading="问题">
-                      <div class="panel-body">
-
-                      </div>
-                  </uib-tab>
-                  <uib-tab heading="文件">
-                      <div class="panel-body">
-
-                      </div>
-                  </uib-tab>
-                  <uib-tab heading="成员">
-                      <div class="panel-body">
-
-                      </div>
-                  </uib-tab>
-                  <uib-tab heading="设置">
-                      <div class="panel-body">
-
-                      </div>
-                  </uib-tab>
-              </uib-tabset> -->
 
               <ul class="nav nav-tabs">
                   <li ng-class="{'active' : tab == 1}"><a ng-click="tab = 1" ng-init="tab = 1"><i class="fa fa-code"></i> 代码</a></li>
@@ -49,43 +15,97 @@
               </ul>
               <div class="tab-content">
                   <div id="tab-1" class="tab-pane active" ng-show="tab == 1">
-                    1
+                    <div class="wrapper wrapper-content">
+                        <div class="row">
+                            <div class="col-lg-2">
+
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-content">
+                                        <div>
+                                            <ul class="folder-list m-b-md" style="padding: 0">
+                                                <li><a ui-sref=".following"> <i class="fa fa-history "></i> 提交  </a></li>
+                                                <li><a ui-sref=".follower"> <i class="fa fa-code-fork"></i> 分支  </a></li>
+                                                <li><a ui-sref=".follower"> <i class="fa fa-share-alt"></i> 合并请求  </a></li>
+                                                <li><a ui-sref=".follower"> <i class="fa fa-line-chart"></i> 项目统计  </a></li>
+                                            </ul>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 animated fadeInRight">
+                                    <div ui-view></div>
+                            </div>
+                        </div>
+                    </div>
                   </div>
                   <div id="tab-2" class="tab-pane active" ng-show="tab == 2">
-                    2
+                    <div class="wrapper wrapper-content">
+                    <div class="row">
+
+                      <div class="col-sm-7 m-b-xs">
+                        <div class="input-group"><input type="text" placeholder="任务名称" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> 查找</button> </span></div>
+                      </div>
+
+                      <div class="col-sm-3">
+                      </div>
+
+                      <div class="col-sm-1">
+                        <div class="btn-group" uib-dropdown>
+                            <button type="button" class="btn btn-sm btn-primary" uib-dropdown-toggle>
+                                PY <span class="caret"></span>
+                            </button>
+                            <ul role="menu" uib-dropdown-menu="">
+                                <li><a href="">XTD</a></li>
+                                <li><a href="">PY</a></li>
+                                <li><a href="">LJC</a></li>
+                            </ul>
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-sm-1">
+                          <button type="button" class="btn btn-primary btn-sm">新建任务</button>
+                      </div>
+
+
+
+                    </div>
+                    <div class="ibox-content">
+                      <ul class="todo-list m-t small-list">
+                        <li>
+                            <checkbox ng-model="main.checkThree"></checkbox>
+                            <span class="m-l-xs">[添加朋友]如果系统的搜索结果和本地的结果有重复，能否排重？只显示系统的搜索结果</span>
+                        </li>
+                        <li>
+                            <checkbox ng-model="check4"></checkbox>
+                            <span class="m-l-xs">[添加朋友]每个搜索结果会重复两遍</span>
+
+                        </li>
+                        <li>
+                            <checkbox ng-model="check5"></checkbox>
+                            <span class="m-l-xs">渠道包</span>
+                        </li>
+                        <li>
+                            <checkbox ng-model="main.checkFour"></checkbox>
+                            <span class="m-l-xs">中等屏幕手机再适配一套图</span>
+                        </li>
+                        <li>
+                            <checkbox ng-model="check6"></checkbox>
+                            <span class="m-l-xs">[数据迁移] 迁移数据到新的leancloud服务</span>
+                        </li>
+                    </ul>
+                  </div>
+                  </div>
                   </div>
                   <div id="tab-3" class="tab-pane active" ng-show="tab == 3">
                     3
                   </div>
                   <div id="tab-4" class="tab-pane active" ng-show="tab == 4">
 
-                      <div class="row">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-content">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>File Name</th>
-                                        <th>Last Update</th>
-                                        <th>Last Commit Message</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="content in content">
-                                        <td></td>
-                                        <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}"></i>&nbsp&nbsp{{content.name}}</td>
-                                        <td>Date...</td>
-                                        <td>Message...</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                  <!-- py sb -->
-                     {{content}}
                   </div>
                   <div id="tab-5" class="tab-pane active" ng-show="tab == 5">
                     5

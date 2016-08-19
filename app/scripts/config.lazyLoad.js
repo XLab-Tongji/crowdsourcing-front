@@ -16,6 +16,12 @@ angular.module('crowdsourcing')
           files: [
             'lib/libs/sortable.js'
           ]
+        },
+        {
+          name: 'ui.checkbox',
+          files: [
+            'lib/libs/angular-bootstrap-checkbox.js'
+          ]
         }
       ]
     });
