@@ -5,38 +5,27 @@ app.controller('ProjectDetailController', ['$scope', '$state', 'ToasterTool',  '
 
     init();
 
+    $scope.issueBoxShow = {
+      list: true,
+      detail: false
+    }
+
     function init(){
       console.log($state);
       console.log('ready to get yardstick code content!');
       $scope.content ='xtd sb!';
-      $scope.getProjectContent = getProjectContent;
-      //getProjectContent('2');
+      $scope.selectIssue = selectIssue;
+      $scope.showIssueList = showIssueList;
     }
 
-    function getProjectContent( project_id ){
-      // var id = project_id;
+    function selectIssue(issueId){
+      $scope.issueBoxShow.list = false;
+      $scope.issueBoxShow.detail = true;
+    }
 
-   //    SessionFactory.getProjectContent().get({
-   //    		id:'2'
-   //    	})
-	  // 	.$promise
-	  //   .then(function(response){
-			// $scope.content.data = response.data;
-	  //   	ToasterTool.success('获取成功','666!');
-	  //   });
-      ProjectFactory.getProjectContent().get({
-      		id:project_id
-      	}, getProjectContentSuccess, getProjectContentFailed);
-
-      function getProjectContentSuccess(data){
-        $scope.content = data;
-        ToasterTool.success('获取成功','666!');
-      }
-      function getProjectContentFailed(error){
-        AlertTool.error({title:'失败',text:'无法获取到项目目录'}).then(function() {
-        });
-      }
-      //ToasterTool.success('登录成功','欢迎回到众包平台!');
+    function showIssueList(){
+      $scope.issueBoxShow.list = true;
+      $scope.issueBoxShow.detail = false;
     }
 
 
