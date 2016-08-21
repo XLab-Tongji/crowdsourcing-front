@@ -27,7 +27,7 @@
 
             </li>
 
-            <li ng-class="{active: $state.includes('app.project')}">
+            <li ng-class="{active: $state.includes('app.project')||$state.includes('app.project-detail')}">
                 <a ui-sref="app.project"><i class="fa fa-tasks"></i> <span class="nav-label">项目</span> </a>
             </li>
             <li ng-class="{active: $state.includes('app.task')}">
