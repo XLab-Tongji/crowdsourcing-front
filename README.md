@@ -1,4 +1,4 @@
-# crowdsourcing_front
+# crowdsourcing-front
 
 项目开发环境搭建
 
