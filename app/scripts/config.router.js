@@ -66,6 +66,8 @@ angular.module('crowdsourcing')
                       return $ocLazyLoad.load([
                         'scripts/controller/app/project/ProjectDetail.controller.js',
                         'scripts/factory/Project.factory.js',
+                        'scripts/factory/HttpResponse.factory.js',
+                        'scripts/factory/ErrorHandler.factory.js',
                         'lib/libs/icheck.min.js',
                         'lib/css/custom.css',
                         'ui.checkbox',

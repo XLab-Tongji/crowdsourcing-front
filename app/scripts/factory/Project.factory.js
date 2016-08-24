@@ -6,7 +6,7 @@
 angular.module('crowdsourcing')
   .factory('ProjectFactory', function($resource, $rootScope, SessionService) {
     var baseUrl = base_Url;
-    var XbaseUrl = xie_base_Url;
+    var XbaseUrl = xie_base_Url+'/project';
     return {
 
       getProjectList: function() {
@@ -24,6 +24,15 @@ angular.module('crowdsourcing')
             method: 'GET',
             headers: SessionService.headers(),
             isArray: true
+          }
+        });
+      },
+
+      getProjectMembers: function(){
+        return $resource(XbaseUrl+ '/:id/members', {id:'@id'}, {
+          'get': {
+            method: 'GET',
+            headers: SessionService.headers()
           }
         });
       }

@@ -6,9 +6,10 @@
 angular.module('crowdsourcing')
   .factory('SessionFactory', function($resource, $rootScope, SessionService) {
     var baseUrl = base_Url;
+    var XbaseUrl = xie_base_Url + '/account';
     return {
       login: function(){
-        return $resource(baseUrl+ '/session', {}, {
+        return $resource(XbaseUrl+ '/authentication', {}, {
           'post': {
             method: 'POST'
           }
@@ -16,7 +17,7 @@ angular.module('crowdsourcing')
       },
 
       register: function(){
-        return $resource(baseUrl+ '/sign_up', {}, {
+        return $resource(XbaseUrl, {}, {
           'post': {
             method: 'POST'
           }
