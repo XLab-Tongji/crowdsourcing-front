@@ -1,12 +1,12 @@
 'use strict';
 
-app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', 'ToasterTool',  'ProjectFactory', 'HttpResponseFactory', 'ErrorHandlerFactory', function($scope,
-    $state, $stateParams, ToasterTool, ProjectFactory, HttpResponseFactory, ErrorHandlerFactory) {
+app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', 'ToasterTool',  function($scope,
+    $state, $stateParams, ToasterTool) {
 
-    var project_id = $stateParams.id;
-	  var errorHandler = ErrorHandlerFactory.handle;
     $scope.tab = 1;
-    $scope.members = [];
+
+    $scope.projectName = $stateParams.data;
+
     init();
 
     $scope.issueBoxShow = {
@@ -40,35 +40,27 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 
     function getProjectCommits(){
       $scope.tab = 1;
+      $state.go('app.project-detail.codes.commits');
     }
 
     function getProjectTasks(){
       $scope.tab = 2;
+      $state.go('app.project-detail.tasks');
     }
 
     function getProjectIssues(){
       $scope.tab = 3;
+      $state.go('app.project-detail.issues');
     }
 
     function getProjectFiles(){
       $scope.tab = 4;
+      $state.go('app.project-detail.files');
     }
 
     function getProjectMembers(){
       $scope.tab = 5;
-      ProjectFactory.getProjectMembers().get({
-				id:project_id
-			})
-			.$promise
-			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					var data = HttpResponseFactory.getResponseData(response);
-					angular.copy(data[0]['members'], $scope.members);
-				}else{
-	        errorHandler(response);
-				}
-			})
-      .catch(errorHandler);
+      $state.go('app.project-detail.members');
     }
 
     function getProjectSettings(){

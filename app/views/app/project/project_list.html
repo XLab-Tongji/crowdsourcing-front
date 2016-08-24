@@ -44,7 +44,7 @@
         <a href="" ng-repeat="member in project.members"><img alt="image" class="img-circle small-img" ng-src="{{member.avatar_url}}">&nbsp;</a>
     </td>
     <td class="project-actions">
-        <a ui-sref="app.project-detail.commits({'id': '{{project.id}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+        <a ui-sref="app.project-detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
         <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> 删除 </a>
     </td>
 </tr>

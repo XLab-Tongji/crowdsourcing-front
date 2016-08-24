@@ -6,9 +6,9 @@
         <tr ng-repeat="member in members">
             <td class="client-avatar"><img alt="image" ng-src="{{member.avatar_url}}"> </td>
             <td><a ng-click="client = 1" class="client-link">{{member.name}}</a></td>
-            <td> Tellus Institute</td>
+            <td> {{member.role}}</td>
             <td class="contact-type"><i class="fa fa-envelope"> </i></td>
-            <td> gravida@rbisit.com</td>
+            <td> {{member.email}}</td>
             <td class="client-status"><span class="label label-primary">{{member.state}}</span></td>
         </tr>
         <!-- <tr>

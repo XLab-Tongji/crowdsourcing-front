@@ -73,9 +73,24 @@ angular.module('crowdsourcing')
                         'ui.checkbox',
                       ]);
                   }]
+                },
+                params:{
+                  data:null
                 }
             })
-            .state('app.project-detail.commits', {
+            .state('app.project-detail.codes', {
+                abstract:true,
+                url: "/codes",
+                data: { pageTitle: '项目'},
+                templateUrl: "views/app/project/project_codes.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project-detail.codes.commits', {
                 url: "/commits",
                 controller:'ProjectCommitsController',
                 templateUrl: "views/app/project/project_commits.html",
@@ -84,6 +99,68 @@ angular.module('crowdsourcing')
                       return $ocLazyLoad.load([
                         'scripts/controller/app/project/ProjectCommits.controller.js',
                         'scripts/factory/Project.factory.js',
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project-detail.tasks', {
+                url: "/tasks",
+                templateUrl: "views/app/project/project_tasks.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project-detail.issues', {
+                url: "/issues",
+                controller: "ProjectIssuesController",
+                templateUrl: "views/app/project/project_issues.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                        'scripts/controller/app/project/ProjectIssue.controller.js',
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project-detail.issues-detail', {
+                url: "/detail",
+                controller: "IssueDetailController",
+                templateUrl: "views/app/project/issue_detail.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                        'scripts/controller/app/project/IssueDetail.controller.js',
+                      ]);
+                  }]
+                },
+                params:{
+                  data:null
+                }
+            })
+            .state('app.project-detail.files', {
+                url: "/files",
+                templateUrl: "views/app/project/project_files.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project-detail.members', {
+                url: "/members",
+                controller:'ProjectMembersController',
+                templateUrl: "views/app/project/project_members.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                        'scripts/controller/app/project/ProjectMember.controller.js',
+                        'scripts/factory/Project.factory.js',
+                        'scripts/factory/HttpResponse.factory.js',
+                        'scripts/factory/ErrorHandler.factory.js',
                       ]);
                   }]
                 }

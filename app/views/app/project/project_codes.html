@@ -1,0 +1,24 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-2">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <ul class="folder-list m-b-md" style="padding: 0">
+                            <li><a ui-sref=".following"> <i class="fa fa-history "></i> 提交  </a></li>
+                            <li><a ui-sref=".follower"> <i class="fa fa-code-fork"></i> 分支  </a></li>
+                            <li><a ui-sref=".follower"> <i class="fa fa-share-alt"></i> 合并请求  </a></li>
+                            <li><a ui-sref=".follower"> <i class="fa fa-line-chart"></i> 项目统计  </a></li>
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 animated fadeInRight">
+                <div ui-view></div>
+        </div>
+    </div>
+</div>
