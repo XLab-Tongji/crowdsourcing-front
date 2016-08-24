@@ -25,81 +25,26 @@
 
 <table class="table table-hover">
 <tbody>
-<tr>
+<tr ng-repeat="project in projects">
     <td class="project-status">
-        <a href=""><img alt="image" class="mid-image" src="images/laptop.png"></a>
+        <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"></a>
     </td>
     <td class="project-title">
-        <a ui-sref="project_detail">SVG 三维系统</a>
+        <a ui-sref="project_detail">{{project.name}}</a>
         <br/>
-        <small>创建日期：2014.09.13</small>
+        <small>创建日期：{{project.created_at}}</small>
     </td>
     <td class="project-completion">
-        <small>Completion with: 48%</small>
+        <small>Completion with: 0%</small>
         <div class="progress progress-mini">
-            <div style="width: 48%;" class="progress-bar"></div>
+            <div style="width: 0%;" class="progress-bar"></div>
         </div>
     </td>
     <td class="project-people">
-        <a href=""><img alt="image" class="img-circle" src="images/avatar1.jpg"></a>
-        <a href=""><img alt="image" class="img-circle" src="images/avatar2.jpg"></a>
-        <a href=""><img alt="image" class="img-circle" src="images/avatar3.jpg"></a>
-        <a href=""><img alt="image" class="img-circle" src="images/avatar4.jpg"></a>
-        <a href=""><img alt="image" class="img-circle" src="images/avatar5.jpg"></a>
+        <a href="" ng-repeat="member in project.members"><img alt="image" class="img-circle small-img" ng-src="{{member.avatar_url}}">&nbsp;</a>
     </td>
     <td class="project-actions">
-        <a ui-sref="app.project-detail.commits" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-        <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> 删除 </a>
-    </td>
-</tr>
-
-<tr>
-    <td class="project-status">
-        <a href=""><img alt="image" class="mid-image" src="images/header_two.jpg"></a>
-    </td>
-    <td class="project-title">
-        <a ui-sref="project_detail">众包平台</a>
-        <br/>
-        <small>创建日期：2015.10.09</small>
-    </td>
-    <td class="project-completion">
-        <small>完成度: 90%</small>
-        <div class="progress progress-mini">
-            <div style="width: 90%;" class="progress-bar"></div>
-        </div>
-    </td>
-    <td class="project-people">
-        <a href=""><img alt="image" class="img-circle" src="images/avatar1.jpg"></a>
-        <a href=""><img alt="image" class="img-circle" src="images/avatar2.jpg"></a>
-        <a href=""><img alt="image" class="img-circle" src="images/avatar3.jpg"></a>
-    </td>
-    <td class="project-actions">
-        <a ui-sref="app.project-detail.commits" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-        <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> 删除 </a>
-    </td>
-</tr>
-
-
-<tr>
-    <td class="project-status">
-        <a href=""><img alt="image" class="mid-image" src="images/iphone.jpg"></a>
-    </td>
-    <td class="project-title">
-        <a ui-sref="project_detail">可靠性测试</a>
-        <br/>
-        <small>创建日期：2016.01.02</small>
-    </td>
-    <td class="project-completion">
-        <small>Completion with: 8%</small>
-        <div class="progress progress-mini">
-            <div style="width: 8%;" class="progress-bar"></div>
-        </div>
-    </td>
-    <td class="project-people">
-        <a href=""><img alt="image" class="img-circle" src="images/avatar1.jpg"></a>
-    </td>
-    <td class="project-actions">
-        <a ui-sref="app.project-detail.commits" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+        <a ui-sref="app.project-detail.commits({'id': '{{project.id}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
         <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> 删除 </a>
     </td>
 </tr>

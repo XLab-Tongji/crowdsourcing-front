@@ -1,7 +1,9 @@
 'use strict';
 
-app.controller('ProjectCommitsController', ['$scope', '$state', 'ToasterTool',  'ProjectFactory',  function($scope,
-    $state, ToasterTool, ProjectFactory) {
+app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 'ToasterTool',  'ProjectFactory',  function($scope,
+    $state, $stateParams, ToasterTool, ProjectFactory) {
+
+    var project_id = $stateParams.id;
 
     init();
 
@@ -10,13 +12,13 @@ app.controller('ProjectCommitsController', ['$scope', '$state', 'ToasterTool',  
       console.log('ready to get yardstick code content!');
       $scope.content ='xtd sb!';
       $scope.getProjectContent = getProjectContent;
-      getProjectContent('2');
+      getProjectContent(project_id);
     }
 
-    function getProjectContent( project_id ){
+    function getProjectContent( id ){
 
       ProjectFactory.getProjectContent().get({
-      		id:project_id
+      		id:id
       	}, getProjectContentSuccess, getProjectContentFailed);
 
       function getProjectContentSuccess(data){

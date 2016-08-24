@@ -1,0 +1,154 @@
+#%RAML 0.8
+
+title: 众包平台
+protocols: [ HTTP, HTTPS ]
+baseUri: http://localhost:3000/api/
+version: v1
+
+traits:
+  - secured:
+      headers:
+        X-Auth-Token:
+          description: 当前用户token，用于验证权限,从登录返回的header中获取
+          type: string
+          required: true
+          example: "IOC551fea47e4b02dd0ab568b85"
+
+  - loginSecured:
+      headers:
+        X-Username:
+          description: 用户名
+          type: string
+          required: true
+        X-Password:
+          description: 密码
+          type: string
+          required: true
+
+/account:
+  post:
+    description: 用户注册
+    body:
+      application/json:
+        schema: |
+          {
+            "name": "SB",
+            "username": "XTDSB",
+            "password": "123456",
+            "email": "john@example.com"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "code": "200",
+                "data": {
+                  "id": 1,
+                  "name": "SB",
+                  "username": "XTDSB",
+                  "state": "active",
+                  "avatar_url": null,
+                  "created_at": 1459246440000,
+                  "is_admin": true,
+                  "email": "john@example.com",
+                  "private_token": "9koXpg98eAheJpvBs5tK"
+                },
+                "message": "操作成功",
+                "success": true
+              }
+  /authentication:
+    post:
+      description: 用户登录获取token，通过headers返回
+      is: [loginSecured]
+      responses:
+        200:
+          body:
+            application/json:
+              schema: |
+                {
+                  "code": "200",
+                  "data": {
+                    "id": 1,
+                    "name": "SB",
+                    "username": "XTDSB",
+                    "state": "active",
+                    "avatar_url": null,
+                    "created_at": 1459246440000,
+                    "is_admin": true,
+                    "email": "john@example.com",
+                    "private_token": "9koXpg98eAheJpvBs5tK"
+                  },
+                  "message": "操作成功",
+                  "success": true
+                }
+
+/project:
+  /projects:
+    get:
+      is: [ secured ]
+      description: 获取项目列表
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "code": "200",
+                  "data":
+                    [
+                      {
+                        "id": 1,
+                        "name": "Dota",
+                        "created_at": 1459246440000,
+                        "member": [
+                          {
+                            "id": 1,
+                            "name": "SB",
+                            "username": "XTDSB",
+                            "state": "active",
+                            "avatar_url": null,
+                            "created_at": 1459246440000,
+                            "is_admin": true,
+                            "email": "john@example.com",
+                          },
+                          {},
+                          ...
+                        ]
+                      },
+                      {},
+                      ...
+                    ],
+                  "message": "操作成功",
+                  "success": true
+                }
+  /{id}/members:
+    get:
+      is: [ secured ]
+      description: 获取项目成员
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "code": "200",
+                  "data":
+                    [
+                      {
+                        "id": 1,
+                        "name": "SB",
+                        "username": "XTDSB",
+                        "state": "active",
+                        "avatar_url": null,
+                        "created_at": 1459246440000,
+                        "is_admin": true,
+                        "email": "john@example.com",
+                      },
+                      {},
+                      ...
+                    ],
+                  "message": "操作成功",
+                  "success": true
+                }
