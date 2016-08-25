@@ -20,8 +20,8 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
       getProjectIssues();
     }
 
-    function getDetail(){
-      $state.go('app.project-detail.issues-detail',{data:"test"});
+    function getDetail(id){
+      $state.go('app.project-detail.issues-detail',{issueId: id});
     }
 
     function getProjectIssues() {

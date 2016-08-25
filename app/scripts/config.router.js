@@ -73,9 +73,6 @@ angular.module('crowdsourcing')
                         'ui.checkbox',
                       ]);
                   }]
-                },
-                params:{
-                  data:null
                 }
             })
             .state('app.project-detail.codes', {
@@ -127,7 +124,7 @@ angular.module('crowdsourcing')
                 }
             })
             .state('app.project-detail.issues-detail', {
-                url: "/detail",
+                url: "/detail/:issueId",
                 controller: "IssueDetailController",
                 templateUrl: "views/app/project/issue_detail.html",
                 resolve: {
@@ -136,9 +133,6 @@ angular.module('crowdsourcing')
                         'scripts/controller/app/project/IssueDetail.controller.js',
                       ]);
                   }]
-                },
-                params:{
-                  data:null
                 }
             })
             .state('app.project-detail.files', {

@@ -1,11 +1,15 @@
 'use strict';
 
-app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', 'ToasterTool',  function($scope,
-    $state, $stateParams, ToasterTool) {
+app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', 'ToasterTool', 'ProjectFactory', 'HttpResponseFactory', 'ErrorHandlerFactory',  function($scope,
+    $state, $stateParams, ToasterTool, ProjectFactory, HttpResponseFactory, ErrorHandlerFactory) {
 
     $scope.tab = 1;
 
-    $scope.projectName = $stateParams.data;
+    var project_id = $stateParams.id;
+
+    $scope.projectName = "";
+
+    var errorHandler = ErrorHandlerFactory.handle;
 
     init();
 
@@ -18,24 +22,29 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
       console.log($state);
       console.log('ready to get yardstick code content!');
       $scope.content ='xtd sb!';
-      $scope.selectIssue = selectIssue;
-      $scope.showIssueList = showIssueList;
       $scope.getProjectCommits = getProjectCommits;
       $scope.getProjectTasks = getProjectTasks;
       $scope.getProjectIssues = getProjectIssues;
       $scope.getProjectFiles = getProjectFiles;
       $scope.getProjectMembers = getProjectMembers;
       $scope.getProjectSettings = getProjectSettings;
+      getProjectDetail();
     }
 
-    function selectIssue(issueId){
-      $scope.issueBoxShow.list = false;
-      $scope.issueBoxShow.detail = true;
-    }
-
-    function showIssueList(){
-      $scope.issueBoxShow.list = true;
-      $scope.issueBoxShow.detail = false;
+    function getProjectDetail() {
+      ProjectFactory.getProjectDetail().get({
+				id:project_id
+			})
+			.$promise
+			.then(function(response){
+				if(HttpResponseFactory.isResponseSuccess(response)){
+					var data = HttpResponseFactory.getResponseData(response);
+					$scope.projectName = data.name;
+				}else{
+	        errorHandler(response);
+				}
+			})
+      .catch(errorHandler);
     }
 
     function getProjectCommits(){

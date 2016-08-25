@@ -321,4 +321,43 @@
   "message": "操作成功",
   "success": true
 }
-</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#account">/account</a></li><li><a href="#project">/project</a></li></ul></div></div></div></div></body></html>
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="group" class="panel-title">/group</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_group_groups"><span class="parent">/group</span>/groups</a> <span class="methods"><a href="#group_groups_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_group_groups" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#group_groups_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>获取团队列表</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="group_groups_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/group</span>/groups</h4></div><div class="modal-body"><div class="alert alert-info"><p>获取团队列表</p></div><ul class="nav nav-tabs"><li class="active"><a href="#group_groups_get_request" data-toggle="tab">Request</a></li><li><a href="#group_groups_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="group_groups_get_request"><h3>Headers</h3><ul><li><strong>X-Auth-Token</strong>: <em>required (string)</em><p>当前用户token，用于验证权限,从登录返回的header中获取</p><p><strong>Example</strong>:</p><pre>IOC551fea47e4b02dd0ab568b85</pre></li></ul></div><div class="tab-pane" id="group_groups_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "200",
+  "data":
+    [
+      {
+        "id": 1,
+        "name": "Foobar Group",
+        "path": "foo-bar",
+        "description": "An interesting group"
+        "members": [
+          {
+            "id": 1,
+            "name": "SB",
+            "username": "XTDSB",
+            "state": "active",
+            "avatar_url": null,
+            "created_at": 1459246440000,
+            "is_admin": true,
+            "email": "john@example.com",
+          },
+          {},
+          ...
+        ],
+        "projects":[
+          {
+            "id": 1,
+            "name": "Dota",
+            "created_at": 1459246440000,
+          },
+          {},
+          ...
+        ]
+      },
+      {},
+      ...
+    ],
+  "message": "操作成功",
+  "success": true
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#account">/account</a></li><li><a href="#project">/project</a></li><li><a href="#group">/group</a></li></ul></div></div></div></div></body></html>

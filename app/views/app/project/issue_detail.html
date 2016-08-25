@@ -6,46 +6,43 @@
     </div>
     <div class="social-avatar">
         <a href="" class="pull-left">
-            <img alt="image" src="images/avatar1.jpg">
+            <img alt="image" ng-src="{{issueDetail.author.avatar_url}}">
         </a>
         <div class="media-body">
             <a href="#">
-                Andrew Williams
+                {{issueDetail.author.name}}
             </a>
-            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+            <small class="text-muted">{{issueDetail.created_at}}</small>
         </div>
     </div>
     <div class="social-body">
         <p>
-            Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-            default model text, and a search for 'lorem ipsum' will uncover many web sites still
-            in their infancy. Packages and web page editors now use Lorem Ipsum as their
-            default model text.
+            {{issueDetail.description}}
         </p>
 
         <div class="btn-group">
-            <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
-            <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
-            <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+            <button class="btn btn-white btn-xs" ng-repeat="label in issueDetail.labels"><i class="fa fa-thumbs-up"></i> {{label}}</button>
+            <!-- <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
+            <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button> -->
         </div>
     </div>
     <div class="social-footer">
-        <div class="social-comment">
+        <div class="social-comment" ng-repeat="note in issueDetail.notes">
             <a href="" class="pull-left">
-                <img alt="image" src="images/avatar1.jpg">
+                <img alt="image" ng-src="{{note.author.avatar_url}}">
             </a>
             <div class="media-body">
                 <a href="#">
-                    Andrew Williams
+                    {{note.author.name}}
                 </a>
-                Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.
+                {{note.body}}
                 <br/>
-                <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
-                <small class="text-muted">12.06.2014</small>
+                <!-- <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> - -->
+                <small class="text-muted">{{note.created_at}}</small>
             </div>
         </div>
 
-        <div class="social-comment">
+        <!-- <div class="social-comment">
             <a href="" class="pull-left">
                 <img alt="image" src="images/avatar2.jpg">
             </a>
@@ -58,15 +55,20 @@
                 <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 11 Like this!</a> -
                 <small class="text-muted">10.07.2014</small>
             </div>
-        </div>
+        </div> -->
 
         <div class="social-comment">
             <a href="" class="pull-left">
-                <img alt="image" src="images/avatar3.jpg">
+                <img alt="image" ng-src="{{currentUser.avatarUrl}}">
             </a>
             <div class="media-body">
-                <textarea class="form-control" placeholder="Write comment..."></textarea>
+                <textarea class="form-control" placeholder="写入评论..."></textarea>
             </div>
+          </br>
+            <button type="button" class="btn btn-sm btn-primary" ng-click="">
+                评论
+            </button>
+          </br>
         </div>
 
     </div>
