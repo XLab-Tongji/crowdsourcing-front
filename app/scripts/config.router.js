@@ -190,6 +190,9 @@ angular.module('crowdsourcing')
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
                           'scripts/controller/app/group/GroupManager.controller.js',
+                          'scripts/factory/Group.factory.js',
+                          'scripts/factory/HttpResponse.factory.js',
+                          'scripts/factory/ErrorHandler.factory.js',
                       ]);
                   }]
                 }
