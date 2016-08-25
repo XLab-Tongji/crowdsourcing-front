@@ -8,6 +8,7 @@
 			isServerResponse: isServerResponse,
 			getResponseMessage: getResponseMessage,
 			getResponseData: getResponseData,
+			getResponsePaginator: getResponsePaginator
 		}
 	}
 
@@ -21,6 +22,10 @@
 
 	function getResponseData(response){
 		return response.data
+	}
+
+	function getResponsePaginator(response){
+		return response.paginator
 	}
 
 	function isServerResponse(response){

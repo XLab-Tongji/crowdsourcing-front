@@ -107,11 +107,11 @@
                         <footer>
                           <div ng-if = "true" class="row clearfix" style="width: 100%;" >
                             <div class="pull-left col-sm-4 m-t-sm">
-                              <span class="text-muted inline m-t-sm">&nbsp;&nbsp;&nbsp;共&nbsp;{{resources.paginator.items}}&nbsp;个问题</span>
+                              <span class="text-muted inline m-t-sm">&nbsp;&nbsp;&nbsp;共&nbsp;{{paginator.totalItems}}&nbsp;个问题</span>
                             </div>
                               <div class="pull-right">
-                              <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="resources.paginator.items"
-                                ng-model="resources.paginator.page" ng-change="pageChanged()"></uib-pagination>
+                              <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="paginator.totalItems"
+                                ng-model="paginator.page" ng-change="pageChanged()"></uib-pagination>
                             </div>
                           </div>
                         </footer>

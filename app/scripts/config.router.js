@@ -121,6 +121,7 @@ angular.module('crowdsourcing')
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
                         'scripts/controller/app/project/ProjectIssue.controller.js',
+                        'scripts/service/General.service.js',
                       ]);
                   }]
                 }
