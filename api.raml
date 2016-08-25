@@ -156,6 +156,15 @@ traits:
     get:
       is: [ secured ]
       description: 获取项目问题列表
+      queryParameters:
+        pageSize:
+          description: "页面大小，可选，默认为10"
+          type: number
+        pageNum:
+          description: "页数，可选，默认为1"
+          type: number
+        order:
+          description: "排序方式"
       responses:
         200:
           body:
@@ -209,6 +218,13 @@ traits:
                       {},
                       ...
                     ],
+                  "paginator": {
+                     "page":1,
+                     "items": 10,
+                     "itemsPerPage":10,
+                     "totalItems":43,
+                     "totalPages": 5
+                    },
                   "message": "操作成功",
                   "success": true
                 }

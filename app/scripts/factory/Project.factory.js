@@ -35,6 +35,15 @@ angular.module('crowdsourcing')
             headers: SessionService.headers()
           }
         });
+      },
+
+      getProjectIssues: function(){
+        return $resource(XbaseUrl+ '/:id/issues', {id:'@id'}, {
+          'get': {
+            method: 'GET',
+            headers: SessionService.headers()
+          }
+        });
       }
     };
   });
