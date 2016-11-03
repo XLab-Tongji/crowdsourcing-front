@@ -54,7 +54,7 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 
     function getProjectTasks(){
       $scope.tab = 2;
-      $state.go('app.project-detail.tasks');
+      $state.go('app.task');
     }
 
     function getProjectIssues(){
