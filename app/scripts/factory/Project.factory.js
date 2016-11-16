@@ -9,8 +9,16 @@ angular.module('crowdsourcing')
     var XbaseUrl = xie_base_Url+'/project';
     return {
 
+      createProject:function(){
+        return $resource(XbaseUrl + '/',{},{
+           'post': {
+              method: 'POST'
+            }
+          });
+      },
+
       getProjectList: function() {
-        return $resource(XbaseUrl+ '/projects', {}, {
+        return $resource(XbaseUrl+ '/', {}, {
           'get': {
             method: 'GET',
             headers: SessionService.headers()

@@ -3,7 +3,7 @@
 app.controller('MainController', ['$scope', '$state', 'ToasterTool', 'SessionService',  function($scope,
     $state, ToasterTool, SessionService) {
 
-    $scope.data = "xtd sb!";
+    $scope.data = "欢迎来到托管平台!";
 
     init();
 
