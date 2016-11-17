@@ -27,9 +27,10 @@ app.controller('ProjectCreateController', ['$scope', '$state', 'ToasterTool', 'P
 
             }).$promise
                 .then(function (data) {
-                    if (data.result == 1) {
+                  console.log(data.success);
+                    if (data.success) {
                         ToasterTool.success('新建成功！');
-                        $state.go('project');
+                        $state.go('app.project');
                     } else {
                         ToasterTool.error('错误', data.message);
                     }

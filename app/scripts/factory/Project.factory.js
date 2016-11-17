@@ -12,7 +12,8 @@ angular.module('crowdsourcing')
       createProject:function(){
         return $resource(XbaseUrl + '/',{},{
            'post': {
-              method: 'POST'
+              method: 'POST',
+              headers: SessionService.headers()
             }
           });
       },
@@ -45,14 +46,14 @@ angular.module('crowdsourcing')
         });
       },
 
-      getProjectMembers: function(){
-        return $resource(XbaseUrl+ '/:id/members', {id:'@id'}, {
-          'get': {
-            method: 'GET',
-            headers: SessionService.headers()
-          }
-        });
-      },
+      // getProjectMembers: function(){
+      //   return $resource(XbaseUrl+ '/:id/members', {id:'@id'}, {
+      //     'get': {
+      //       method: 'GET',
+      //       headers: SessionService.headers()
+      //     }
+      //   });
+      // },
 
       getProjectIssues: function(){
         return $resource(XbaseUrl+ '/:id/issues', {id:'@id'}, {
@@ -70,6 +71,16 @@ angular.module('crowdsourcing')
             headers: SessionService.headers()
           }
         });
+      },
+
+      deleteProject : function(){
+        return $resource(XbaseUrl+'/:id',{id:'@id'},{
+          'delete':{
+            method:'DELETE',
+            headers:SessionService.headers()
+          }
+        });
       }
+
     };
   });

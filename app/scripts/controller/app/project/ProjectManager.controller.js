@@ -1,24 +1,39 @@
 'use strict';
 
-app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory', function($scope,
-    $state, ToasterTool, ProjectFactory) {
+app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory', '$stateParams', function($scope,
+    $state, ToasterTool, ProjectFactory,$stateParams) {
 
     $scope.projects = [];
+    $scope.deleteProject = deleteProject;
+
+    $scope.deleteProject = deleteProject;
+    var id = $stateParams.id;
+
 
     init();
 
     function init(){
       console.log($state);
       console.log('ProjectManagerController Init');
-    
+
       getProjects();
     }
 
-    function getProjects(){
-      ProjectFactory.getProjectList().get({},  getProjectListSuccess, getProjectListFailed);
+    function getProjects(data){
+      ProjectFactory.getProjectList().get({
+        // 'members':members
+      },  getProjectListSuccess, getProjectListFailed);
+
+      //  var members = data.members;
+
     }
 
+    function deleteProject(){
 
+      ProjectFactory.deleteProject().delete({
+        id:id
+      });
+    }
 
 
 

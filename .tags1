@@ -4,5 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-init	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectCreate.controller.js	/^    function init(){$/;"	function	line:9
-createproject	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectCreate.controller.js	/^    function createproject(){$/;"	function	line:18
+createProject	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      createProject:function(){$/;"	function	line:12
+getProjectList	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectList: function() {$/;"	function	line:21
+getProjectDetail	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectDetail: function() {$/;"	function	line:30
+getProjectContent	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectContent: function(){$/;"	function	line:39
+getProjectIssues	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectIssues: function(){$/;"	function	line:58
+getProjectIssueDetail	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectIssueDetail : function(){$/;"	function	line:67
+deleteProject	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      deleteProject : function(){$/;"	function	line:76
