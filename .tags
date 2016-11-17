@@ -1,7 +1,3 @@
-init	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function init(){$/;"	function	line:10
-getProjects	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function getProjects(){$/;"	function	line:17
-getProjectListSuccess	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function getProjectListSuccess(data) {$/;"	function	line:26
-getProjectListFailed	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function getProjectListFailed(error){$/;"	function	line:35
 h1, h2, h3, h4, h5, h6	/Users/xlx/crowdsourcing-front/app/styles/style.css	/^h1, h2, h3, h4, h5, h6 {$/;"	function	line:3
 h1	/Users/xlx/crowdsourcing-front/app/styles/style.css	/^h1 {$/;"	function	line:7
 h2	/Users/xlx/crowdsourcing-front/app/styles/style.css	/^h2 {$/;"	function	line:11
@@ -1821,3 +1817,48 @@ div	/Users/xlx/crowdsourcing-front/app/views/app/project/create_project.html	/^ 
 button	/Users/xlx/crowdsourcing-front/app/views/app/project/create_project.html	/^                              <button class="btn btn-primary" type="submit" ng-click="createproject()">创建<\/button>$/;"	function	line:51
 init	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectCreate.controller.js	/^    function init(){$/;"	function	line:9
 createproject	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectCreate.controller.js	/^    function createproject(){$/;"	function	line:18
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="row">$/;"	function	line:1
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="col-lg-12">$/;"	function	line:2
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="wrapper wrapper-content animated fadeInUp">$/;"	function	line:3
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="ibox">$/;"	function	line:5
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="ibox-title">$/;"	function	line:6
+h	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <h5>项目列表<\/h5>$/;"	function	line:7
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <div class="ibox-tools">$/;"	function	line:9
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <a class="btn btn-primary btn-xs" ui-sref="app.project-create">新建项目<\/a>$/;"	function	line:10
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="ibox-content">$/;"	function	line:13
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="row m-b-sm m-t-sm">$/;"	function	line:14
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <div class="col-md-1">$/;"	function	line:15
+button	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"><\/i> 刷新<\/button>$/;"	function	line:16
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <div class="col-md-11">$/;"	function	line:18
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <div class="input-group"><input type="text" placeholder="项目名搜索" class="input-sm form-control"> <span class="input-group-btn">$/;"	function	line:19
+button	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^                                        <button type="button" class="btn btn-sm btn-primary"> 查找<\/button> <\/span><\/div>$/;"	function	line:20
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<div class="project-list">$/;"	function	line:24
+table	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<table class="table table-hover">$/;"	function	line:26
+tbody	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<tbody>$/;"	function	line:27
+tr	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^<tr ng-repeat="project in projects">$/;"	function	line:28
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <td class="project-status">$/;"	function	line:29
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"><\/a>$/;"	function	line:30
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <td class="project-title">$/;"	function	line:32
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <a ui-sref="project_detail">{{project.name}}<\/a>$/;"	function	line:33
+br	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <br\/>$/;"	function	line:34
+small	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <small>创建日期：{{project.created_at}}<\/small>$/;"	function	line:35
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <td class="project-completion">$/;"	function	line:37
+small	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <small>Completion with: 0%<\/small>$/;"	function	line:38
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <div class="progress progress-mini">$/;"	function	line:39
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^            <div style="width: 0%;" class="progress-bar"><\/div>$/;"	function	line:40
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <a href="" ng-repeat="members"><img alt="image" class="img-circle small-img" ng-src="{{member.avatar_url}}">&nbsp;<\/a>$/;"	function	line:44
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^    <td class="project-actions">$/;"	function	line:46
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <a ui-sref="app.project-detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"><\/i> 查看 <\/a>$/;"	function	line:47
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_list.html	/^        <a href="" class="btn btn-white btn-sm" ng-click="deleteProject(project.id)"><i class="fa fa-trash"><\/i> 删除 <\/a>$/;"	function	line:48
+init	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function init(){$/;"	function	line:15
+getProjects	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function getProjects(data){$/;"	function	line:22
+deleteProject	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function deleteProject(){$/;"	function	line:31
+getProjectListSuccess	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function getProjectListSuccess(data) {$/;"	function	line:41
+getProjectListFailed	/Users/xlx/crowdsourcing-front/app/scripts/controller/app/project/ProjectManager.controller.js	/^    function getProjectListFailed(error){$/;"	function	line:50
+createProject	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      createProject:function(){$/;"	function	line:12
+getProjectList	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectList: function() {$/;"	function	line:21
+getProjectDetail	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectDetail: function() {$/;"	function	line:30
+getProjectContent	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectContent: function(){$/;"	function	line:39
+getProjectIssues	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectIssues: function(){$/;"	function	line:58
+getProjectIssueDetail	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectIssueDetail : function(){$/;"	function	line:67
+deleteProject	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      deleteProject : function(){$/;"	function	line:76
