@@ -263,6 +263,42 @@ traits:
                   "success": true
                 }
 
+  /add:
+    post:
+      is: [ secured ]
+      description: 创建项目
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "code": "200",
+                  "data":
+                    {
+                      "id": 1,
+                      "name": "Dota",
+                      "created_at": 1459246440000,
+                      "member": [
+                        {
+                          "id": 1,
+                          "name": "SB",
+                          "username": "XTDSB",
+                          "state": "active",
+                          "avatar_url": null,
+                          "created_at": 1459246440000,
+                          "is_admin": true,
+                          "email": "john@example.com",
+                        },
+                        {},
+                        ...
+                      ]
+                    },
+                  "message": "操作成功",
+                  "success": true
+                }
+    
+
 /group:
   /groups:
     get:
