@@ -7,8 +7,8 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
     $scope.deleteProject = deleteProject;
 
     $scope.deleteProject = deleteProject;
-    var id = $stateParams.id;
 
+    //$scope.currentUser = SessionService.getCurrentUser();
 
     init();
 
@@ -28,15 +28,25 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
 
     }
 
-    function deleteProject(){
 
+    function deleteProject(id){
       ProjectFactory.deleteProject().delete({
         id:id
-      });
+      }, deleteProjectSuccess, deleteProjectFailed);
     }
 
+    function deleteProjectSuccess (data) {
+      if(data.success) {
+        location.reload();
+        ToasterTool.message('删除项目成功');
+      } else {
+        ToasterTool.error('错误', data.message);
+      }
+    }
 
-
+    function deleteProjectFailed(error) {
+      ToasterTool.error('错误', '删除项目失败');
+    }
 
     function getProjectListSuccess(data) {
       if (data.success) {
