@@ -57,8 +57,6 @@
         <a ui-sref="app.project-detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
         <a ng-if="project.owner.username=='Wang'" href="" class="btn btn-white btn-sm" ng-click="deleteProject(project.id)"><i class="fa fa-trash"></i> 删除 </a>
 
-        <div>username:{{user.username}}</div>
-
     </td>
 </tr>
 

@@ -5,10 +5,7 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
 
     $scope.projects = [];
     $scope.deleteProject = deleteProject;
-
-    $scope.deleteProject = deleteProject;
-
-    //$scope.currentUser = SessionService.getCurrentUser();
+    
 
     init();
 
