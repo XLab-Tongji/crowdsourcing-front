@@ -8,6 +8,7 @@ app.controller('AppController', ['$scope', '$state', 'ToasterTool', 'SessionServ
     function init(){
       $scope.logout = logout;
       $scope.user = SessionService.getCurrentUser();
+      console.log('Session init');
     }
 
     function logout(){

@@ -27,7 +27,15 @@
 <tbody>
 <tr ng-repeat="project in projects">
     <td class="project-status">
-        <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"></a>
+        <!-- <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"></a> -->
+        <div class="project_avatar" style="
+            margin-right: 15px;
+            border-radius: 50%;
+            background-color: #F3E5F5;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            font-size: 13px">{{project.name.toLocaleUpperCase().charAt(0)}}</div>
     </td>
     <td class="project-title">
         <a ui-sref="project_detail">{{project.name}}</a>
@@ -47,7 +55,10 @@
     </td>
     <td class="project-actions">
         <a ui-sref="app.project-detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-        <a href="" class="btn btn-white btn-sm" ng-click="deleteProject(project.id)"><i class="fa fa-trash"></i> 删除 </a>
+        <a ng-if="project.owner.username=='Wang'" href="" class="btn btn-white btn-sm" ng-click="deleteProject(project.id)"><i class="fa fa-trash"></i> 删除 </a>
+
+        <div>username:{{user.username}}</div>
+
     </td>
 </tr>
 
