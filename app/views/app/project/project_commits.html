@@ -8,11 +8,11 @@
         <div class="ibox-content">
             <table class="table">
                 <tbody>
-                <tr ng-repeat="content in content">
+                <tr ng-repeat="content in contents">
                     <!-- <td></td> -->
                     <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}"></i>&nbsp;&nbsp;{{content.name}}</td>
-                    <td>Date...</td>
-                    <td>Message...</td>
+                    <td>{{content.commit.message}}</td>
+                    <td>{{content.commit.committed_date}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -20,5 +20,4 @@
     </div>
 </div>
 
-<!-- xtd sb -->
-{{content}}
+

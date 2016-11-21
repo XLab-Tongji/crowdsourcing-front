@@ -25,6 +25,19 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
 
     }
 
+    function getProjectListSuccess(data) {
+      if (data.success) {
+        angular.copy(data.data, $scope.projects);
+      }else{
+        ToasterTool.error('错误',data.message);
+      }
+
+    }
+
+    function getProjectListFailed(error){
+      ToasterTool.error('错误','获取项目列表失败');
+    }
+
 
     function deleteProject(id){
       ProjectFactory.deleteProject().delete({
@@ -45,16 +58,5 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
       ToasterTool.error('错误', '删除项目失败');
     }
 
-    function getProjectListSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data, $scope.projects);
-      }else{
-        ToasterTool.error('错误',data.message);
-      }
 
-    }
-
-    function getProjectListFailed(error){
-      ToasterTool.error('错误','获取项目列表失败');
-    }
 }]);
