@@ -305,6 +305,25 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
+            .state('codedetail', {
+                url: "/codedetail",
+                // controller:'ProjectFileDetailController',
+                templateUrl: "views/app/project/project_files_detail.html",
+                data: { pageTitle: '代码显示'},
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+
+                          'lib/libs/codemirror-config.js'
+
+                        //   'bower_components/codemirror/lib/codemirror.js',
+                        //   'bower_components/codemirror/mode/javascript/javascript.js'
+               
+              
+                      ]);
+                  }]
+                }
+            })
         }
     ])
   .run();

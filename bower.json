@@ -36,7 +36,8 @@
     "AngularJS-Toaster": "angularjs-toaster#~0.4.15",
     "angular-tooltips": "~0.1.25",
     "ngstorage": "~0.3.10",
-    "ngLocale": "*"
+    "ngLocale": "*",
+    "codemirror": "4.7.0"
   },
   "resolutions": {
     "jquery": "~2.1.4",
