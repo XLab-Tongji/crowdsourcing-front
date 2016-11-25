@@ -5,7 +5,7 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
 
     $scope.projects = [];
     $scope.deleteProject = deleteProject;
-    
+
 
     init();
 

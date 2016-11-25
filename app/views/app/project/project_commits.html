@@ -9,8 +9,7 @@
             <table class="table">
                 <tbody>
                 <tr ng-repeat="content in contents">
-                    <!-- <td></td> -->
-                    <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}"></i>&nbsp;&nbsp;{{content.name}}</td>
+                    <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}" ui-sref="app.project-detail.codes.commits({ 'id':'{{projectsId}}','path': '{{content.path}}'})"></i>&nbsp;&nbsp;{{content.name}}</td>
                     <td>{{content.commit.message}}</td>
                     <td>{{content.commit.committed_date}}</td>
                 </tr>
@@ -19,5 +18,3 @@
         </div>
     </div>
 </div>
-
-
