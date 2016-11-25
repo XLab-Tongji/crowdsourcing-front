@@ -1,26 +1,29 @@
 'use strict';
 
-app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 'ToasterTool',  'ProjectFactory',  function($scope,
-    $state, $stateParams, ToasterTool, ProjectFactory) {
+app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams','$location','ToasterTool',  'ProjectFactory',  function($scope,
+    $state, $stateParams, $location,ToasterTool, ProjectFactory) {
 
     var project_id = $stateParams.id;
+    $scope.projectsId = project_id;
 
     init();
 
     function init(){
       console.log($state);
       console.log('ready to get yardstick code content!');
-      $scope.contents ='xtd sb!';
       $scope.getProjectContent = getProjectContent;
-      getProjectContent(project_id);
+      var path = $stateParams.path;
+      getProjectContent(project_id,path);
     }
 
-    function getProjectContent(id){
-
+    function getProjectContent(id,path){
       ProjectFactory.getProjectContent().get({
-      		id:id
-      	}, getProjectContentSuccess, getProjectContentFailed);
+      		id:id,
+          path:path
+      	},
+        getProjectContentSuccess, getProjectContentFailed);
     }
+
 
     function getProjectContentSuccess(data){
       $scope.contents = data.data;
@@ -31,7 +34,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
       });
     }
     //ToasterTool.success('登录成功','欢迎回到众包平台!');
-    
+
 
 
 }]);

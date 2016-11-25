@@ -39,7 +39,7 @@ angular.module('crowdsourcing')
       },
 
       getProjectContent: function(){
-        return $resource(XXbaseUrl+ '/:id/tree?path=', {id:'@id'}, {
+        return $resource(XXbaseUrl+ '/:id/tree?path=:path', {id:'@id',path:'{{path}}'}, {
           'get': {
             method: 'GET',
             headers: SessionService.headers(),
@@ -48,14 +48,6 @@ angular.module('crowdsourcing')
         });
       },
 
-      // getProjectMembers: function(){
-      //   return $resource(XbaseUrl+ '/:id/members', {id:'@id'}, {
-      //     'get': {
-      //       method: 'GET',
-      //       headers: SessionService.headers()
-      //     }
-      //   });
-      // },
 
       getProjectIssues: function(){
         return $resource(XbaseUrl+ '/:id/issues', {id:'@id'}, {

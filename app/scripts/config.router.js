@@ -122,7 +122,7 @@ angular.module('crowdsourcing')
                 }
             })
             .state('app.project-detail.codes.commits', {
-                url: "/commits",
+                url: "/commits?path",
                 controller:'ProjectCommitsController',
                 templateUrl: "views/app/project/project_commits.html",
                 resolve: {
@@ -130,6 +130,7 @@ angular.module('crowdsourcing')
                       return $ocLazyLoad.load([
                         'scripts/controller/app/project/ProjectCommits.controller.js',
                         'scripts/factory/Project.factory.js',
+
                       ]);
                   }]
                 }
@@ -304,7 +305,29 @@ angular.module('crowdsourcing')
                       ]);
                   }]
                 }
-            })
+            });
+
+            // .state('app.file-submit', {
+            //     abstract:true,
+            //     url: "/project/:id/tree?path={{path}}",
+            //     controller:'ProjectCommitsController',
+            //     data: { pageTitle: '项目'},
+            //     templateUrl: "views/app/project/project_codes.html",
+            //     resolve: {
+            //       controller: ['$ocLazyLoad', function($ocLazyLoad) {
+            //           return $ocLazyLoad.load([
+            //             'scripts/controller/app/project/ProjectManager.controller.js',
+            //             'scripts/factory/Project.factory.js',
+            //             'scripts/factory/HttpResponse.factory.js',
+            //             'scripts/factory/ErrorHandler.factory.js',
+            //             'lib/libs/icheck.min.js',
+            //             'lib/css/custom.css',
+            //
+            //           ]);
+            //       }]
+            //     }
+            // })
+
         }
     ])
   .run();
