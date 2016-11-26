@@ -4,10 +4,14 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-createProject	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      createProject:function(){$/;"	function	line:12
-getProjectList	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectList: function() {$/;"	function	line:21
-getProjectDetail	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectDetail: function() {$/;"	function	line:30
-getProjectContent	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectContent: function(){$/;"	function	line:39
-getProjectIssues	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectIssues: function(){$/;"	function	line:58
-getProjectIssueDetail	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      getProjectIssueDetail : function(){$/;"	function	line:67
-deleteProject	/Users/xlx/crowdsourcing-front/app/scripts/factory/Project.factory.js	/^      deleteProject : function(){$/;"	function	line:76
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^<div class="row">$/;"	function	line:1
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^  <div class="ibox float-e-margins">$/;"	function	line:2
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^        <div class="ibox-title">$/;"	function	line:3
+a	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^            <a href=""><img alt="image" class="img-circle small-image" src="images\/avatar1.jpg"><\/a>&nbsp;&nbsp;&nbsp;<a>xietiandi<\/a> <a>增加git后台搭建<\/a>$/;"	function	line:4
+div	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^        <div class="ibox-content">$/;"	function	line:8
+table	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^            <table class="table">$/;"	function	line:9
+tbody	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^                <tbody>$/;"	function	line:10
+tr	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^                <tr ng-repeat="content in contents" ui-sref="app.project-detail.codes.commits({ 'id':'{{projectsId}}','path': '{{content.path}}'})">$/;"	function	line:11
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^                    <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}" ><\/i>&nbsp;&nbsp;{{content.name}}<\/td>$/;"	function	line:12
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^                    <td>{{content.commit.message}}<\/td>$/;"	function	line:13
+td	/Users/xlx/crowdsourcing-front/app/views/app/project/project_commits.html	/^                    <td>{{content.commit.committed_date}}<\/td>$/;"	function	line:14
