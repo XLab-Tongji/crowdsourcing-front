@@ -310,7 +310,6 @@ angular.module('crowdsourcing')
             //代码详情显示
             .state('app.project-detail.codedetail', {
                 url: "/codedetail",
-                // controller:'ProjectFileDetailController',
                 templateUrl: "views/app/project/project_files_detail.html",
                 data: { pageTitle: '代码显示'},
                 resolve: {

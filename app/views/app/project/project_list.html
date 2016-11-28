@@ -40,7 +40,7 @@
     <td class="project-title">
         <a ui-sref="project_detail">{{project.name}}</a>
         <br/>
-        <small>创建日期：{{project.created_at}}</small>
+        <small>创建日期：{{project.created_at | date:'medium' }}</small>
     </td>
     <td class="project-completion">
         <small>Completion with: 0%</small>
