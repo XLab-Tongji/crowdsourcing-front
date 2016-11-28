@@ -13,8 +13,50 @@
                     <td>{{content.commit.message}}</td>
                     <td>{{content.commit.committed_date}}</td>
                 </tr>
+                <tr>
+
+                            <div class="ibox" ng-show="contents.length==0">
+                                <div class="ibox-title">
+                                    <h5>Code Editor - Theme Example</h5>
+                                </div>
+                                <div class="ibox-content">
+
+                                    <p class="m-b-lg">
+                                        A rich programming API and a CSS theming system are available for customizing CodeMirror to fit your application, and extending
+                                        it with new functionality. For mor info go to
+                                        <a href="http://codemirror.net/" target="_blank">http://codemirror.net/</a>
+                                    </p>
+                                
+                                        <ui-codemirror ng-model="codeDetail" ui-refresh="refresh"></ui-codemirror>
+                                </div>
+                            </div>   
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<script src="lib/codeMirror/codemirror.js"></script>
+<script src="lib/codeMirror/mode/javascript/javascript.js"></script>
+<script src="bower_components/angular-ui/build/angular-ui.js"></script>
+
+<script src="lib/codeMirror/ui-codemirror.js"></script>
+
+
+<!--<script>
+
+ $(document).ready(function(){
+
+
+             var editor_two = CodeMirror.fromTextArea(document.getElementById("code2"), {
+                 lineNumbers: true,
+                 matchBrackets: true,
+                 styleActiveLine: true
+             });
+
+        });
+
+
+</script>-->
+

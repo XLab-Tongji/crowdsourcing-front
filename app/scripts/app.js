@@ -16,6 +16,7 @@
       '720kb.tooltips',
       'oitozero.ngSweetAlert',
       'ngStorage',
-      'ngLocale'
+      'ngLocale',
+      'ui.codemirror'
     ])
 })();

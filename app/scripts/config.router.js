@@ -307,7 +307,8 @@ angular.module('crowdsourcing')
                 }
 
             })
-            .state('codedetail', {
+            //代码详情显示
+            .state('app.project-detail.codedetail', {
                 url: "/codedetail",
                 // controller:'ProjectFileDetailController',
                 templateUrl: "views/app/project/project_files_detail.html",
@@ -316,18 +317,15 @@ angular.module('crowdsourcing')
                   controller: ['$ocLazyLoad', function($ocLazyLoad) {
                       return $ocLazyLoad.load([
 
-                          'lib/libs/codemirror-config.js'
+                        //   'lib/libs/codemirror-config.js'
 
                         //   'bower_components/codemirror/lib/codemirror.js',
                         //   'bower_components/codemirror/mode/javascript/javascript.js'
-               
               
                       ]);
                   }]
                 }
             })
-    
-
             // .state('app.file-submit', {
             //     abstract:true,
             //     url: "/project/:id/tree?path={{path}}",
@@ -348,7 +346,6 @@ angular.module('crowdsourcing')
             //       }]
             //     }
             // })
-
         }
     ])
   .run();

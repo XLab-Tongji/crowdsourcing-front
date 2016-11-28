@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams','$location','ToasterTool',  'ProjectFactory',  function($scope,
+app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams','$location','ToasterTool',  'ProjectFactory', function($scope,
     $state, $stateParams, $location,ToasterTool, ProjectFactory) {
 
     var project_id = $stateParams.id;
@@ -11,29 +11,68 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams','
     function init(){
       console.log($state);
       console.log('ready to get yardstick code content!');
-      $scope.getProjectContent = getProjectContent;
+      
+      //$scope.getProjectContent = getProjectContent;
+
+      $scope.getgetProjectContentTest=getProjectContentTest;
+
+      $scope.getProjectFileDetail=getProjectFileDetail;
+
       var path = $stateParams.path;
-      getProjectContent(project_id,path);
+      
+      //getProjectContent(project_id,path);
+
+      getProjectContentTest(project_id,path);
+
+      getProjectFileDetail(project_id,path);
+
+    
     }
 
-    function getProjectContent(id,path){
+    // function getProjectContent(id,path){
+    //   ProjectFactory.getProjectContent().get({
+    //   		id:id,
+    //       path:path
+    //   	},
+    //     getProjectContentSuccess, getProjectContentFailed);
+    // }
+
+
+    // function getProjectContentSuccess(data){
+    //   $scope.contents = data.data;
+    //   // ToasterTool.success('获取成功','666!');
+    // }
+    // function getProjectContentFailed(error){
+    //   AlertTool.error({title:'失败',text:'无法获取到项目目录'}).then(function() {
+    //   });
+    // }
+    //ToasterTool.success('登录成功','欢迎回到众包平台!');
+
+    //查看文件代码信息
+    function getProjectFileDetail(id,path){
+      ProjectFactory.getProjectFileDetail().get({
+        id:id,
+        path:path
+      }).$promise.then(function(data){
+        
+        $scope.codeDetail=data.data;
+        $scope.refresh=false;
+
+        
+
+
+      });
+    }
+
+
+    function getProjectContentTest(id,path){
       ProjectFactory.getProjectContent().get({
       		id:id,
           path:path
-      	},
-        getProjectContentSuccess, getProjectContentFailed);
+      	}).$promise.then(function(data){
+          $scope.contents=data.data;
+        })
     }
-
-
-    function getProjectContentSuccess(data){
-      $scope.contents = data.data;
-      // ToasterTool.success('获取成功','666!');
-    }
-    function getProjectContentFailed(error){
-      AlertTool.error({title:'失败',text:'无法获取到项目目录'}).then(function() {
-      });
-    }
-    //ToasterTool.success('登录成功','欢迎回到众包平台!');
 
 
 
