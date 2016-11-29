@@ -27,6 +27,12 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
 
     getProjectFileDetail(project_id, path);
 
+    $scope.editorOptions={
+      lineWrapping:true,
+      lineNumbers:true,
+      readOnly:'nocursor'
+    };
+
 
   }
 
