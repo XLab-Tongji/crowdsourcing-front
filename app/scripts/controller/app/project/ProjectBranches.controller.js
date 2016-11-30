@@ -14,7 +14,7 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
 
         $scope.goCreate = goCreate;
         $scope.createBranch=createBranch;
-        $scope.goList=goList;
+     
 
         getProjectBranches(project_id);
         getProjectBranchesNames(project_id);
@@ -49,20 +49,12 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
 
         });
     }
-    //跳转
+    //跳转到创建页面
     function goCreate(project_id) {
         $state.go("app.branch-create", {
             "project_id": project_id
         });
     }
-
-    function goList(){
-        $state.go("app.project-detail.codes.branches",{
-            "project_id": project_id
-        });
-    }
-
-
     //新建分支
     function createBranch() {
         var branchname=$scope.branch_name;

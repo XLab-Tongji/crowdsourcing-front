@@ -20,10 +20,10 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
 
     $scope.getProjectFileDetail = getProjectFileDetail;
 
-    $scope.goList=goList;
+    $scope.goBranchList = goBranchList;
 
     var path = $stateParams.path;
-    $scope.dispalyPath=path;
+    $scope.dispalyPath = path;
 
     //getProjectContent(project_id,path);
 
@@ -31,10 +31,10 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
 
     getProjectFileDetail(project_id, path);
 
-    $scope.editorOptions={
-      lineWrapping:true,
-      lineNumbers:true,
-      readOnly:'nocursor'
+    $scope.editorOptions = {
+      lineWrapping: true,
+      lineNumbers: true,
+      readOnly: 'nocursor'
     };
 
 
@@ -86,11 +86,11 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
     })
   }
 
-      function goList(){
-        $state.go("app.project-detail.codes.branches",{
-            "project_id": project_id
-        });
-    }
+  function goBranchList() {
+    $state.go("app.project-detail.codes.branches", {
+      "project_id": project_id
+    });
+  }
 
 
 
