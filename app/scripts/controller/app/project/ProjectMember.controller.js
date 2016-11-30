@@ -17,19 +17,15 @@ app.controller('ProjectMembersController', ['$scope', '$state', '$stateParams', 
 
     function getProjectMembers( id ){
 
-      ProjectFactory.getProjectMembers().get({
+      ProjectFactory.getProjectDetail().get({
 				id:project_id
 			})
-			.$promise
-			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					var data = HttpResponseFactory.getResponseData(response);
-					angular.copy(data, $scope.members);
-				}else{
-	        errorHandler(response);
-				}
+			.$promise.then(function(response){
+
+        var data=response.data;
+        $scope.data=data;
 			})
-      .catch(errorHandler);
+     
     }
 
 

@@ -3,33 +3,37 @@
         <ul side-navigation class="nav metismenu" id="side-menu">
             <li class="nav-header">
 
-              <div class="profile-element" uib-dropdown>
-                  <img alt="image" class="img-circle" ng-src="{{user.avatarUrl}}"/>
-                  <div>
-                          <span class="clear">
+                <div class="profile-element" uib-dropdown>
+                    <img alt="image" class="img-circle" ng-src="{{user.avatarUrl}}" />
+                    <div>
+                        <span class="clear">
                               <span class="block m-t-xs">
                                   <strong class="font-bold">{{user.name}}</strong>
                            <!-- </span>
-                              <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
-                          </span> -->
-                  </div>
-                  <!-- <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                        <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </span> -->
+                    </div>
+                    <!-- <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
                       <li><a ui-sref="app.profile">Profile</a></li>
                       <li><a ui-sref="app.contacts">Contacts</a></li>
                       <li><a ui-sref="mailbox.inbox">Mailbox</a></li>
                       <li class="divider"></li>
                       <li><a ui-sref="login">Logout</a></li>
                   </ul> -->
-              </div>
-              <div class="logo-element">
-                  X
-              </div>
+                </div>
+                <div class="logo-element">
+                    X
+                </div>
 
             </li>
 
             <li ng-class="{active: $state.includes('app.project')||$state.includes('app.project-detail')}">
                 <a ui-sref="app.project"><i class="fa fa-tasks"></i> <span class="nav-label">项目</span> </a>
             </li>
+
+            <!--<li ng-class="{active: $state.includes('app.project')||$state.includes('app.project-detail')}">
+                <a ui-sref="app.project"><i class="fa fa-tasks"></i> <span class="nav-label">项目组</span> </a>
+            </li>-->
             <!--<li ng-class="{active: $state.includes('app.task')}">
                 <a ui-sref="app.task"><i class="fa fa-comments-o"></i> <span class="nav-label">任务</span></a>
             </li>-->

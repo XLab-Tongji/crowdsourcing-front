@@ -180,6 +180,7 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
+            //项目成员信息
             .state('app.project-detail.members', {
                 url: "/members",
                 controller:'ProjectMembersController',
@@ -325,6 +326,7 @@ angular.module('crowdsourcing')
                   }]
                 }
             })
+
             // .state('app.file-submit', {
             //     abstract:true,
             //     url: "/project/:id/tree?path={{path}}",
