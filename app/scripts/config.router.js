@@ -13,7 +13,7 @@ angular.module('crowdsourcing')
         function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider
-                .otherwise('/index/main');
+                .otherwise('/portal');
 
             $stateProvider
                 .state('app', {
@@ -112,11 +112,17 @@ angular.module('crowdsourcing')
                 .state('app.project-detail.codes', {
                     abstract: true,
                     url: "/codes",
+                    controller:"ProjectCommitsController",
                     data: { pageTitle: '项目' },
                     templateUrl: "views/app/project/project_codes.html",
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
+                               
+                                'scripts/controller/app/project/ProjectCommits.controller.js',
+                                'scripts/factory/Project.factory.js',
+
+
                             ]);
                         }]
                     }
@@ -308,29 +314,10 @@ angular.module('crowdsourcing')
                     }
 
                 })
-                //代码详情显示
-                .state('app.project-detail.codedetail', {
-                    url: "/codedetail",
-                    templateUrl: "views/app/project/project_files_detail.html",
-                    data: { pageTitle: '代码显示' },
-                    resolve: {
-                        controller: ['$ocLazyLoad', function ($ocLazyLoad) {
-                            return $ocLazyLoad.load([
-
-                                //   'lib/libs/codemirror-config.js'
-
-                                //   'bower_components/codemirror/lib/codemirror.js',
-                                //   'bower_components/codemirror/mode/javascript/javascript.js'
-
-                            ]);
-                        }]
-                    }
-                })
-
                 //开发者详情页
                 .state('app.memberDetail', {
                     url: "/memberDetail/:username",
-                    controller:"UserDetailController",
+                    controller: "UserDetailController",
                     templateUrl: "views/app/contact/member_detail.html",
                     data: { pageTitle: '个人详情' },
                     resolve: {
@@ -340,35 +327,55 @@ angular.module('crowdsourcing')
                                 'scripts/controller/app/account/UserDetail.controller.js',
                                 'scripts/factory/User.factory.js',
                                 'scripts/factory/Project.factory.js',
-                                 'scripts/factory/HttpResponse.factory.js',
+                                'scripts/factory/HttpResponse.factory.js',
                                 'scripts/factory/ErrorHandler.factory.js'
 
-                      
+
                             ]);
                         }]
                     }
                 })
 
-            // .state('app.file-submit', {
-            //     abstract:true,
-            //     url: "/project/:id/tree?path={{path}}",
-            //     controller:'ProjectCommitsController',
-            //     data: { pageTitle: '项目'},
-            //     templateUrl: "views/app/project/project_codes.html",
-            //     resolve: {
-            //       controller: ['$ocLazyLoad', function($ocLazyLoad) {
-            //           return $ocLazyLoad.load([
-            //             'scripts/controller/app/project/ProjectManager.controller.js',
-            //             'scripts/factory/Project.factory.js',
-            //             'scripts/factory/HttpResponse.factory.js',
-            //             'scripts/factory/ErrorHandler.factory.js',
-            //             'lib/libs/icheck.min.js',
-            //             'lib/css/custom.css',
-            //
-            //           ]);
-            //       }]
-            //     }
-            // })
+                //分支列表
+                .state('app.project-detail.codes.branches', {
+                    url: "/:project_id/branches",
+                    controller: "ProjectBranchesController",
+                    templateUrl: "views/app/project/project_branches_list.html",
+                    data: { pageTitle: '项目分支' },
+                    resolve: {
+                        controller: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+
+
+
+                                'scripts/controller/app/project/ProjectBranches.controller.js',
+                                'scripts/factory/Project.factory.js',
+
+
+                            ]);
+                        }]
+                    }
+                })
+                //分支创建页面
+                .state('app.branch-create', {
+                    url: "/:project_id/branchcreate",
+                    controller: "ProjectBranchesController",
+                    templateUrl: "views/app/project/project_branches_create.html",
+                    data: { pageTitle: '创建分支' },
+                    resolve: {
+                        controller: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+
+
+                                'scripts/controller/app/project/ProjectBranches.controller.js',
+                                'scripts/factory/Project.factory.js',
+
+
+                            ]);
+                        }]
+                    }
+                })
+
         }
     ])
     .run();

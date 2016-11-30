@@ -18,10 +18,7 @@ app.controller('UserDetailController', ['$scope', '$state', '$stateParams', 'Toa
         getDetail(username);
     }
 
-    function goDetailPage(username){
-        $state.go("app.memberDetail");
-    }
-
+ 
 
     function getDetail(username) {
         UserFactory.getUserListbyUserName().get({

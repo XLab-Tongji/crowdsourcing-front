@@ -6,6 +6,8 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
   var project_id = $stateParams.id;
   $scope.projectsId = project_id;
 
+  console.log(project_id);
+
   init();
 
   function init() {
@@ -17,6 +19,8 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
     $scope.getgetProjectContentTest = getProjectContentTest;
 
     $scope.getProjectFileDetail = getProjectFileDetail;
+
+    $scope.goList=goList;
 
     var path = $stateParams.path;
     $scope.dispalyPath=path;
@@ -81,6 +85,12 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
       $scope.contents = data.data;
     })
   }
+
+      function goList(){
+        $state.go("app.project-detail.codes.branches",{
+            "project_id": project_id
+        });
+    }
 
 
 
