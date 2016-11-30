@@ -6,8 +6,6 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
   var project_id = $stateParams.id;
   $scope.projectsId = project_id;
 
-  console.log(project_id);
-
   init();
 
   function init() {
