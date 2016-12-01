@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', '$location', 'ToasterTool', 'ProjectFactory', function($scope,
+app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', '$location', 'ToasterTool', 'ProjectFactory', function ($scope,
     $state, $stateParams, $location, ToasterTool, ProjectFactory) {
 
     var project_id = $stateParams.id;
@@ -29,16 +29,16 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
         if (branch_name == null) {
             getProjectContentTest(project_id, path);
 
-<<<<<<< HEAD
-    $scope.editorOptions={
-      lineWrapping:true,
-      lineNumbers:true,
-      readOnly:'nocursor'
-    };
 
-=======
+            $scope.editorOptions = {
+                lineWrapping: true,
+                lineNumbers: true,
+                readOnly: 'nocursor'
+            };
+
+
             getProjectFileDetail(project_id, path);
->>>>>>> b048dc5273e35c0cbc24680bb7fdb6bdd0e90170
+
 
         } else {
             getProjectBranchDetail(project_id, path, branch_name);
@@ -63,7 +63,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
         ProjectFactory.getProjectFileDetail().get({
             id: id,
             path: path
-        }).$promise.then(function(data) {
+        }).$promise.then(function (data) {
 
             if (data.data.length == 0) {
                 return;
@@ -80,7 +80,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
         ProjectFactory.getProjectContent().get({
             id: id,
             path: path
-        }).$promise.then(function(data) {
+        }).$promise.then(function (data) {
             $scope.contents = data.data;
         })
     }
@@ -98,7 +98,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
             id: id,
             path: path,
             ref_name: branch_name
-        }).$promise.then(function(data) {
+        }).$promise.then(function (data) {
 
             if (data.data.length == 0) {
                 return;
@@ -116,7 +116,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
             id: id,
             path: path,
             ref_name: branch_name
-        }).$promise.then(function(data) {
+        }).$promise.then(function (data) {
             $scope.contents = data.data;
         })
     }

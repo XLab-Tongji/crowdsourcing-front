@@ -122,11 +122,6 @@ angular.module('crowdsourcing')
                                 'scripts/controller/app/project/ProjectCodes.controller.js',
                                 'scripts/factory/Project.factory.js',
 
-<<<<<<< HEAD
-        
-=======
->>>>>>> b048dc5273e35c0cbc24680bb7fdb6bdd0e90170
-
                             ]);
                         }]
                     }
@@ -227,6 +222,7 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+
                 .state('app.group', {
                     url: "/group",
                     controller: 'GroupManagerController',
@@ -243,40 +239,14 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-                .state('app.contact', {
-                    abstract: true,
-                    url: "/contact",
-                    templateUrl: "views/app/contact/contact_container.html",
-                })
-                .state('app.contact.following', {
-                    url: "/following",
-                    templateUrl: "views/app/contact/following.html",
-                    resolve: {
-
-                    }
-                })
                 .state('app.contact.follower', {
                     url: "/follower",
                     templateUrl: "views/app/contact/follower.html",
                     resolve: {
 
-<<<<<<< HEAD
                 }
             })
-            .state('app.task', {
-                url: "/task",
-                controller:'TaskController',
-                data: { pageTitle: '任务'},
-                templateUrl: "views/app/task/task.html",
-                resolve: {
-                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
-                      return $ocLazyLoad.load([
-                          'scripts/controller/app/task/Task.controller.js',
-                          'ui.sortable',
-                      ]);
-                  }]
-                }
-            })
+       
             .state('app.project_group', {
                 url: "/project_group",
                 controller:'ProjectGroupManagerController',
@@ -341,7 +311,7 @@ angular.module('crowdsourcing')
                 url: "/following",
                 templateUrl: "views/app/contact/following.html",
                 resolve: {
-=======
+
                     }
                 })
                 .state('app.notification', {
@@ -351,7 +321,7 @@ angular.module('crowdsourcing')
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
                             return $ocLazyLoad.load([
->>>>>>> b048dc5273e35c0cbc24680bb7fdb6bdd0e90170
+
 
                             ]);
                         }]
