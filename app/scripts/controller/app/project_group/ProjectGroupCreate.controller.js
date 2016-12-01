@@ -1,28 +1,28 @@
 'use strict';
 
-app.controller('ProjectCreateController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory','SessionService', function($scope,
-    $state, ToasterTool, ProjectFactory, SessionService) {
+app.controller('ProjectGroupCreateController', ['$scope', '$state', 'ToasterTool', 'ProjectGroupFactory','SessionService', function($scope,
+    $state, ToasterTool, ProjectGroupFactory, SessionService) {
 
 
     init();
 
     function init(){
       console.log($state);
-      console.log('ProjectCreateController Init');
-      $scope.createproject = createproject;
+      console.log('ProjectGroupCreateController Init');
+      $scope.createprojectgroup = createprojectgroup;
       $scope.user = SessionService.getCurrentUser();
     }
 
 
 
-    function createproject(){
-       var project_name = $scope.project_name;
+    function createprojectgroup(){
+       var projectgroup_name = $scope.projectgroup_name;
        var visibility_level = $scope.visibility_level;
 
 
 
-           ProjectFactory.createProject().post({
-                'name': project_name,
+           ProjectGroupFactory.createProjectGroup().post({
+                'name': projectgroup_name,
                 'visibility_level':visibility_level
 
             }).$promise

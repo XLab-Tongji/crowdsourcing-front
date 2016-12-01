@@ -122,6 +122,10 @@ angular.module('crowdsourcing')
                                 'scripts/controller/app/project/ProjectCodes.controller.js',
                                 'scripts/factory/Project.factory.js',
 
+<<<<<<< HEAD
+        
+=======
+>>>>>>> b048dc5273e35c0cbc24680bb7fdb6bdd0e90170
 
                             ]);
                         }]
@@ -256,6 +260,88 @@ angular.module('crowdsourcing')
                     templateUrl: "views/app/contact/follower.html",
                     resolve: {
 
+<<<<<<< HEAD
+                }
+            })
+            .state('app.task', {
+                url: "/task",
+                controller:'TaskController',
+                data: { pageTitle: '任务'},
+                templateUrl: "views/app/task/task.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/task/Task.controller.js',
+                          'ui.sortable',
+                      ]);
+                  }]
+                }
+            })
+            .state('app.project_group', {
+                url: "/project_group",
+                controller:'ProjectGroupManagerController',
+                data: { pageTitle: '项目组', specialClass: 'fixed-sidebar'},
+                templateUrl: "views/app/project_group/project_group_list.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/project_group/ProjectGroupManager.controller.js',
+                          'scripts/factory/ProjectGroup.factory.js',
+                          'scripts/factory/HttpResponse.factory.js',
+                          'scripts/factory/ErrorHandler.factory.js',
+                          'scripts/service/Session.service.js',
+
+                      ]);
+                  }]
+                }
+            })
+
+            .state('app.project_group-create', {
+                url: "/project_group/create",
+                controller:'ProjectGroupCreateController',
+                data: { pageTitle: '新建项目组'},
+                templateUrl: "views/app/project_group/create_projectgroup.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          'scripts/controller/app/project_group/ProjectGroupCreate.controller.js',
+                          'scripts/factory/Project.factory.js',
+                          'scripts/service/Session.service.js',
+                      ]);
+                  }]
+                }
+            })
+
+            .state('app.project_group-detail', {
+                url: "/project_group/detail/:id",
+                controller:'ProjectGroupDetailController',
+                data: { pageTitle: '项目组详情'},
+                templateUrl: "views/app/project_group/project_group_detail.html",
+                resolve: {
+                  controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                        'scripts/controller/app/project_group/ProjectGroupDetail.controller.js',
+                        'scripts/factory/ProjectGroup.factory.js',
+                        'scripts/factory/HttpResponse.factory.js',
+                        'scripts/factory/ErrorHandler.factory.js',
+                        'lib/libs/icheck.min.js',
+                        'lib/css/custom.css',
+                        'ui.checkbox',
+                      ]);
+                  }]
+                }
+            })
+
+            .state('app.contact', {
+                abstract: true,
+                url: "/contact",
+                templateUrl: "views/app/contact/contact_container.html",
+            })
+            .state('app.contact.following', {
+                url: "/following",
+                templateUrl: "views/app/contact/following.html",
+                resolve: {
+=======
                     }
                 })
                 .state('app.notification', {
@@ -265,6 +351,7 @@ angular.module('crowdsourcing')
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
                             return $ocLazyLoad.load([
+>>>>>>> b048dc5273e35c0cbc24680bb7fdb6bdd0e90170
 
                             ]);
                         }]

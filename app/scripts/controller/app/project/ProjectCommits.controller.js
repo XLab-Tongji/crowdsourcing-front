@@ -29,7 +29,16 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
         if (branch_name == null) {
             getProjectContentTest(project_id, path);
 
+<<<<<<< HEAD
+    $scope.editorOptions={
+      lineWrapping:true,
+      lineNumbers:true,
+      readOnly:'nocursor'
+    };
+
+=======
             getProjectFileDetail(project_id, path);
+>>>>>>> b048dc5273e35c0cbc24680bb7fdb6bdd0e90170
 
         } else {
             getProjectBranchDetail(project_id, path, branch_name);

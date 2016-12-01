@@ -1,0 +1,9 @@
+.project_avatar{
+	margin-right: 15px;
+    border-radius: 50%;
+    background-color: #F3E5F5;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 13px;
+}
