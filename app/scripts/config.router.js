@@ -421,6 +421,7 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+                
                 //分支文件查看页面
                 .state('app.project-detail.codes.branchescommits', {
                     url: "/:project_id/branches/:branch_name/commits?path",

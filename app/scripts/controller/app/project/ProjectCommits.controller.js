@@ -26,27 +26,11 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
         var branch_name = $stateParams.branch_name;
         $scope.branch_name = branch_name;
 
-        if (branch_name == null) {
-            getProjectContentTest(project_id, path);
+
+        getProjectContentTest(project_id, path);
 
 
-            $scope.editorOptions = {
-                lineWrapping: true,
-                lineNumbers: true,
-                readOnly: 'nocursor'
-            };
-
-
-            getProjectFileDetail(project_id, path);
-
-
-        } else {
-            getProjectBranchDetail(project_id, path, branch_name);
-
-            getProjectBranchFileDetail(project_id, path, branch_name);
-
-        }
-
+        getProjectFileDetail(project_id, path);
 
 
         $scope.editorOptions = {
@@ -90,38 +74,5 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
             "project_id": project_id
         });
     }
-
-
-    //查看分支文件代码信息
-    function getProjectBranchFileDetail(id, path, branch_name) {
-        ProjectFactory.getProjectBranchFileDetail().get({
-            id: id,
-            path: path,
-            ref_name: branch_name
-        }).$promise.then(function (data) {
-
-            if (data.data.length == 0) {
-                return;
-            } else {
-                $scope.codeDetail = data.data;
-                $scope.refresh = false;//刷新问题
-            }
-
-        });
-    }
-
-
-    function getProjectBranchDetail(id, path, branch_name) {
-        ProjectFactory.getProjectBranchDetail().get({
-            id: id,
-            path: path,
-            ref_name: branch_name
-        }).$promise.then(function (data) {
-            $scope.contents = data.data;
-        })
-    }
-
-
-
 
 }]);
