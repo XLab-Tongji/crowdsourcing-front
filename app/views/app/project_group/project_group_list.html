@@ -1,0 +1,49 @@
+<div class="row">
+<div class="col-lg-12">
+<div class="wrapper wrapper-content animated fadeInUp">
+
+<div class="ibox">
+<div class="ibox-title">
+    <h5>项目组列表</h5>
+
+    <div class="ibox-tools">
+        <a class="btn btn-primary btn-xs" ui-sref="app.project_group-create">新建项目组</a>
+    </div>
+</div>
+<div class="ibox-content">
+<div class="row m-b-sm m-t-sm">
+    <div class="col-md-1">
+        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+    </div>
+    <div class="col-md-11">
+        <div class="input-group"><input type="text" placeholder="项目组名搜索" class="input-sm form-control"> <span class="input-group-btn">
+         <button type="button" class="btn btn-sm btn-primary"> 查找</button> </span></div>
+    </div>
+</div>
+
+<div class="group-list">
+
+<table class="table table-hover">
+<tbody>
+<tr ng-repeat="group in groups">
+
+    <td class="project-title">
+        <a ui-sref="project_group_detail">{{group.name}}</a>
+        <br/>
+        <small>描述：{{group.description}}</small>
+    </td>
+    <td class="project-actions">
+        <a ui-sref="app.project_group-detail({'id': '{{group.id}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+
+    </td>
+</tr>
+
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
