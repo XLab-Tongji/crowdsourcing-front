@@ -323,14 +323,11 @@ angular.module('crowdsourcing')
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
-
                                 'scripts/controller/app/account/UserDetail.controller.js',
                                 'scripts/factory/User.factory.js',
                                 'scripts/factory/Project.factory.js',
                                 'scripts/factory/HttpResponse.factory.js',
                                 'scripts/factory/ErrorHandler.factory.js'
-
-
                             ]);
                         }]
                     }
@@ -345,13 +342,8 @@ angular.module('crowdsourcing')
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
-
-
-
                                 'scripts/controller/app/project/ProjectBranches.controller.js',
                                 'scripts/factory/Project.factory.js',
-
-
                             ]);
                         }]
                     }
@@ -366,11 +358,24 @@ angular.module('crowdsourcing')
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
 
-
                                 'scripts/controller/app/project/ProjectBranches.controller.js',
                                 'scripts/factory/Project.factory.js',
+                            ]);
+                        }]
+                    }
+                })
+                //分支文件查看页面
+                .state('app.project-detail.codes.branchescommits', {
+                    url: "/:project_id/branches/:branch_name/commits?path",
+                    controller: "ProjectBranchesCommitsController",
+                    templateUrl: "views/app/project/project_branch_commits.html",
+                    data: { pageTitle: '分支查看' },
+                    resolve: {
+                        controller: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
 
-
+                                'scripts/controller/app/project/ProjectBranchesCommits.controller.js',
+                                'scripts/factory/Project.factory.js',
                             ]);
                         }]
                     }

@@ -14,7 +14,7 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
 
         $scope.goCreate = goCreate;
         $scope.createBranch=createBranch;
-     
+        $scope.goBranchCommit=goBranchCommit;
 
         getProjectBranches(project_id);
         getProjectBranchesNames(project_id);
@@ -55,6 +55,15 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
             "project_id": project_id
         });
     }
+    //跳转分支文件查看页面
+    function goBranchCommit(project_id,branch_name){
+        $state.go("app.project-detail.codes.branchescommits",{
+            "project_id":project_id,
+            "branch_name":branch_name
+        });
+    }
+
+
     //新建分支
     function createBranch() {
         var branchname=$scope.branch_name;
@@ -69,6 +78,9 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
             var result = data;
             if(data.name=branchname){
                 ToasterTool.success("完成","创建分支成功");
+                $state.go("app.project-detail.codes.branches",{
+                    "project_id":project_id
+                });
             }else{
                 ToasterTool.error("失败","创建分支失败");
             }

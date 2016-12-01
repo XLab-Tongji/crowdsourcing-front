@@ -1,14 +1,14 @@
 <div class="row">
   <div class="ibox float-e-margins">
         <div class="ibox-title" >
-            </a><i class="fa fa-code-fork"></i><a> master  /{{dispalyPath}}</a>
+            </a><i class="fa fa-code-fork"></i><a> {{branch_name}}  /{{dispalyPath}}</a>
 
 
         </div>
         <div class="ibox-content">
             <table class="table">
                 <tbody>
-                <tr ng-repeat="content in contents" ui-sref="app.project-detail.codes.commits({ 'id':'{{projectsId}}','path': '{{content.path}}'})">
+                <tr ng-repeat="content in contents" ui-sref="app.project-detail.codes.branchescommits({ 'id':'{{projectsId}}','path': '{{content.path}}','branch_name':'{{branch_name}}'})">
                     <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}" ></i>&nbsp;&nbsp;{{content.name}}</td>
                     <td>{{content.commit.message}}</td>
                     <td>{{content.commit.committed_date}}</td>
@@ -34,4 +34,5 @@
 <script src="bower_components/angular-ui/build/angular-ui.js"></script>
 
 <script src="lib/codeMirror/ui-codemirror.js"></script>
+
 
