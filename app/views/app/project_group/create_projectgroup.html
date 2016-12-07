@@ -19,7 +19,7 @@
 														<!-- <p class="form-control-static">www.croudsourcing.com-{{user.name}}-</p> -->
 														<div class="col-md-4" style="float:left"><input type="text" placeholder="www.croudsourcing.com" class="form-control"disabled></div>
 														<div class="col-md-4" style="float:left"><input type="text" placeholder="{{user.name}}" class="form-control" disabled></div>
-                          	<div class="col-md-4" style="float:left"><input type="text" placeholder="项目名称组" class="form-control" ng-model="projectgroup_name"></div>
+                          	<div class="col-md-4" style="float:left"><input type="text" placeholder="项目组名称" class="form-control" ng-model="projectgroup_name"></div>
                       </div>
 
                       <div class="form-group"><label class="col-sm-2 control-label">开放程度<br/></label>
@@ -48,7 +48,7 @@
                       <div class="form-group">
                           <div class="col-sm-4 col-sm-offset-2">
 
-                              <button class="btn btn-primary" type="submit" ng-click="createprojectgroup()">创建</button>
+                             <a ng-show="true" ui-sref="app.project_group" class="btn btn-white btn-sm" ng-click="createprojectgroup()"> 新建</a>
                           </div>
                       </div>
                   </form>

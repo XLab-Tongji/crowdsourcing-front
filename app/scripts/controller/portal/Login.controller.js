@@ -23,6 +23,7 @@ app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool
       function loginSuccess(data){
         if (data.success) {
           SessionService.saveUser({
+            'username':data.data.username,
             'name':data.data.name,
             'avatarUrl':data.data.avatar_url,
             'email':data.data.email

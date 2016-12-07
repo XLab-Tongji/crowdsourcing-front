@@ -83,6 +83,7 @@ angular.module('crowdsourcing')
                                 'scripts/controller/app/project/ProjectCreate.controller.js',
                                 'scripts/factory/Project.factory.js',
                                 'scripts/service/Session.service.js',
+                                'scripts/factory/ProjectGroup.factory.js',
                             ]);
                         }]
                     }
