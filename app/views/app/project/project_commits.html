@@ -1,37 +1,36 @@
-<div class="row">
-  <div class="ibox float-e-margins">
-        <div class="ibox-title" >
-            <a><i class="fa fa-code-fork"></i>  master  &nbsp;&nbsp; <i class="fa fa-folder-open"></i> /{{dispalyPath}}</a>
+<div class="wrapper wrapper-content animated fadeInRight">
 
-
-        </div>
-        <div class="ibox-content">
-            <table class="table">
-                <tbody>
-                <tr ng-repeat="content in contents" ui-sref="app.project-detail.codes.commits({ 'id':'{{projectsId}}','path': '{{content.path}}'})">
-                    <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}" ></i>&nbsp;&nbsp;{{content.name}}</td>
-                    <td>{{content.commit.message}}</td>
-                    <td>{{content.commit.committed_date}}</td>
-                </tr>
-                <tr>
+    <div class="row">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <a><i class="fa fa-code-fork"></i>  master  &nbsp;&nbsp; <i class="fa fa-folder-open"></i> /{{dispalyPath}}</a>
+            </div>
+            <div class="ibox-content">
+                <table class="table">
+                    <tbody>
+                        <tr ng-repeat="content in contents" ui-sref="app.project-detail.codes.commits({ 'id':'{{projectsId}}','path': '{{content.path}}'})">
+                            <td><i class="fa" ng-class="{'fa-folder': content.type=='tree' , 'fa-file-text-o': content.type=='blob'}"></i>&nbsp;&nbsp;{{content.name}}</td>
+                            <td>{{content.commit.message}}</td>
+                            <td>{{content.commit.committed_date}}</td>
+                        </tr>
+                        <tr>
                             <div class="ibox" ng-show="contents.length==0">
                                 <div>
                                     <h5>代码预览</h5>
                                 </div>
                                 <div class="ibox-content">
-                                        <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="codeDetail" ui-refresh="refresh"></ui-codemirror>
+                                    <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="codeDetail" ui-refresh="refresh"></ui-codemirror>
                                 </div>
-                            </div>   
-                </tr>
-                </tbody>
-            </table>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-
 <script src="lib/codeMirror/codemirror.js"></script>
 <script src="lib/codeMirror/mode/javascript/javascript.js"></script>
 <script src="bower_components/angular-ui/build/angular-ui.js"></script>
 
 <script src="lib/codeMirror/ui-codemirror.js"></script>
-
