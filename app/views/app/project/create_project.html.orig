@@ -1,4 +1,6 @@
+<<<<<<< HEAD
 <div class="wrapper wrapper-content animated fadeInRight">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -17,17 +19,46 @@
                                         <div class="form-group">
                                             <div><label class="col-sm-2 control-label">项目路径</label></div>
                                             <div class="col-sm-10">
-
+                                                <!-- <p class="form-control-static">www.croudsourcing.com-{{user.name}}-</p> -->
                                                 <div class="col-md-4" style="float:left"><input type="text" placeholder="www.croudsourcing.com" class="form-control"
                                                         disabled></div>
+                                                <div class="col-md-4" style="float:left"><input type="text" placeholder="{{user.name}}" class="form-control" disabled></div>
+                                                <div class="col-md-4" style="float:left"><input type="text" placeholder="项目名称" class="form-control" ng-model="project_name"></div>
+                                            </div>
 
-                                                <div class="col-md-4" style="float:left">
-                                                    <select class="form-control" ng-model="namespace">
+                                            <div class="form-group"><label class="col-sm-2 control-label">开放程度<br/></label>
+
+                                                <div class="col-sm-10">
+
+                                                    <div class="i-checks">
+                                                        <label>
+=======
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>创建你的项目</h5>
+			</div>
+
+			<div class="ibox-content">
+
+ <div class="row">
+      <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+              <div class="ibox-content">
+                  <form  class="form-horizontal">
+											<div class="hr-line-dashed"></div>
+                      	<div class="form-group">
+                      		<div><label class="col-sm-2 control-label">项目路径</label></div>
+														<div class="col-sm-10" >
+													
+														<div class="col-md-4" style="float:left"><input type="text" placeholder="www.croudsourcing.com" class="form-control" disabled></div>
+
+                            <div class="col-md-4" style="float:left">
+                            <select class="form-control" ng-model="namespace">
                                 <ul>
                                   <li>
-                                    <div><option disabled>用户</option> 
-                                    </div>
-                                    
+                                    <div><option disabled>用户</option> </div>
                                     <ul>
                                       <li><option >{{user.username}}</option></li></ul>
                                   </li>
@@ -41,17 +72,18 @@
                                   </li>
                                 </ul>
                             </select>
-                                                </div>
+                            </div>
 
-                                                <div class="col-md-4" style="float:left"><input type="text" placeholder="项目名称" class="form-control" ng-model="project_name"></div>
-                                            </div>
+                          	<div class="col-md-4" style="float:left"><input type="text" placeholder="项目名称" class="form-control" ng-model="project_name"></div>
+                      </div>
 
-                                            <div class="form-group"><label class="col-sm-2 control-label">开放程度<br/></label>
+                      <div class="form-group"><label class="col-sm-2 control-label">开放程度<br/></label>
 
-                                                <div class="col-sm-10">
+                          <div class="col-sm-10">
 
-                                                    <div class="i-checks">
-                                                        <label>
+                              <div class="i-checks">
+                              	<label>
+>>>>>>> b9c36fc1e39a9027c948b565c9f2c28f500b789f
                               		<input type="radio" checked="" ng-model="visibility_level" value="20" name="a">公开
                               	</label>
                                                     </div>
@@ -64,6 +96,7 @@
                                                         <label>
                               		<input type="radio" ng-model="visibility_level" value="0" name="a"> 私有
                               	</label>
+<<<<<<< HEAD
                                                     </div>
 
                                                 </div>
@@ -75,7 +108,6 @@
                                                     <button class="btn btn-primary" type="submit" ng-click="createproject()">创建</button>
                                                 </div>
                                             </div>
-
                                     </form>
                                     </div>
                                 </div>
@@ -84,5 +116,25 @@
 
                     </div>
                 </div>
+=======
+                              </div>
+
+                          </div>
+                      </div>
+                      <div class="hr-line-dashed"></div>
+                      <div class="form-group">
+                          <div class="col-sm-4 col-sm-offset-2">
+
+                              <button class="btn btn-primary" type="submit" ng-click="createproject()">创建</button>
+                          </div>
+                      </div>
+
+                  </form>
+              </div>
+          </div>
+      </div>
+>>>>>>> b9c36fc1e39a9027c948b565c9f2c28f500b789f
             </div>
         </div>
+
+    </div>

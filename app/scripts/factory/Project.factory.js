@@ -8,6 +8,7 @@ angular.module('crowdsourcing')
         var baseUrl = base_Url;
         var XbaseUrl = xie_base_Url + '/projects';
         var XXbaseUrl = xie_base_Url + '/project';
+        var XXXbaseUrl = xie_base_Url + '/issues'
 
         return {
 
@@ -49,8 +50,9 @@ angular.module('crowdsourcing')
             },
 
 
+            //获取项目下的issue
             getProjectIssues: function () {
-                return $resource(XbaseUrl + '/:id/issues', { id: '@id' }, {
+                return $resource(XXXbaseUrl + '/project/:id', { id: '@id' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -127,8 +129,14 @@ angular.module('crowdsourcing')
                     }
                 });
             },
-
-
-
+            //获取项目issue标签
+            getProjectIssueLabels: function () {
+                return $resource(XXbaseUrl + '/:id/labels', { id: '@id' }, {
+                    'get': {
+                        method: 'GET',
+                        headers: SessionService.headers()
+                    }
+                });
+            }
         };
     });
