@@ -21,13 +21,18 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
 
     $scope.getDetail = getDetail;
     $scope.pageChanged = getProjectIssues;
+    $scope.goIssueCreate = goIssueCreate;
+    $scope.goLabelsCreate = goLabelsCreate;
     getProjectIssues();
-    getProjectIssuesLabels();
+    // getProjectIssuesLabels();
+
   }
 
   function getDetail(id) {
     $state.go('app.project-detail.issues-detail', { issueId: id });
   }
+
+  //获取项目issue列表
 
   function getProjectIssues() {
     ProjectFactory.getProjectIssues().get({
@@ -79,5 +84,45 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
     }
     return result;
   }
+
+  //跳转到创建issue页面
+  function goIssueCreate() {
+    $state.go('app.issue-create', {
+      "project_id": project_id
+    })
+  }
+  //跳转到label创建页面
+  function goLabelsCreate() {
+    $state.go('app.labels-create', {
+      "project_id": project_id
+    })
+  }
+
+  //创建新issue
+  function createProjectIssue() {
+
+
+    ProjectFactory.createProjectIssue().post({
+      id: project_id,
+      "title": $scope.title,
+      "description": $scope.description,
+      "assignee": $scope.assignee,
+      "milestone": $scope.milestone,
+      "labels": $scope.labels
+
+    }).$promise.then(function (response) {
+      if (HttpResponseFactory.isResponseSuccess(response)) {
+        var data = HttpResponseFactory.getResponseData(response);
+        angular.copy(data, $scope.labels);
+
+      }
+      else {
+        errorHandler(response)
+      }
+    })
+  }
+
+
+
 
 }]);

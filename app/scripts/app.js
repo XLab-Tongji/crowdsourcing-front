@@ -17,6 +17,9 @@
       'oitozero.ngSweetAlert',
       'ngStorage',
       'ngLocale',
-      'ui.codemirror'
+      'ui.codemirror',
+      'summernote',
+      'colorpicker.module',
+      'localytics.directives'
     ])
 })();

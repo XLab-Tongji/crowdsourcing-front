@@ -137,6 +137,27 @@ angular.module('crowdsourcing')
                         headers: SessionService.headers()
                     }
                 });
+            },
+            //新建issue
+            createProjectIssue: function () {
+                return $resource(XXXbaseUrl + '/project/:id', { id: '@id' }, {
+                    'post': {
+                        method: 'POST',
+                        headers: SessionService.headers()
+                    }
+                })
+            },
+            //新建label
+            createLabels: function () {
+                return $resource(XXbaseUrl + '/:id/labels', { id: '@id' }, {
+                    'post': {
+                        method: 'POST',
+                        headers: SessionService.headers()
+                    }
+                })
+
             }
+
+    
         };
     });

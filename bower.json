@@ -37,7 +37,12 @@
     "angular-tooltips": "~0.1.25",
     "ngstorage": "~0.3.10",
     "ngLocale": "*",
-    "angular-ui": "^0.4.0"
+    "angular-ui": "^0.4.0",
+    "summernote": "^0.8.2",
+    "angular-summernote": "^0.8.1",
+    "angular-bootstrap-colorpicker": "^3.0.25",
+    "chosen": "^1.6.2",
+    "angular-chosen-localytics": "^1.5.1"
   },
   "resolutions": {
     "jquery": "~2.1.4",
