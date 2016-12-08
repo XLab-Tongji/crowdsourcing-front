@@ -21,14 +21,14 @@ app.controller('RegisterController', ['$scope', '$state', '$rootScope', 'AlertTo
         'password': password,
         'email': email,
       }).$promise
-        .then(function(data){
-          if (data.success) {
-            ToasterTool.success('注册成功','欢迎使用众包平台!');
-              $state.go('login');
-          }else{
-            ToasterTool.error('错误',data.message);
-          }
-        });
+      .then(function(data){
+        if (data.success) {
+          ToasterTool.success('注册成功','欢迎使用众包平台!');
+          $state.go('login');
+        }else{
+          ToasterTool.error('错误',data.message);
+        }
+      });
 
     }
 

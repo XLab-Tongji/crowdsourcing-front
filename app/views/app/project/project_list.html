@@ -33,7 +33,7 @@
         <div class="project_avatar">{{project.name.toLocaleUpperCase().charAt(0)}}</div>
     </td>
     <td class="project-title">
-        <a>{{project.name}}</a>
+        <a>{{project.namespace.name}} / {{project.name}}</a>
         <br/>
         <small>创建日期：{{project.created_at | date:'medium' }}</small>
     </td>

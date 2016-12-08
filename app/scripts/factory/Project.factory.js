@@ -157,7 +157,7 @@ angular.module('crowdsourcing')
                 })
 
             },
-            ResetProject: function() {
+            resetProject: function() {
                 return $resource(XbaseUrl + '/:id', { id: '@id' }, {
                     'put': {
                         method: 'PUT',
