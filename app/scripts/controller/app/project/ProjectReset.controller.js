@@ -8,6 +8,7 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
 
     $scope.projectName = "";
 
+
     var errorHandler = ErrorHandlerFactory.handle;
 
     init();
@@ -19,6 +20,7 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
 
     function init(){
       console.log('ready to get yardstick code content!');
+      $scope.resetProject = resetproject;
       getProjectDetail();
     }
 
@@ -28,15 +30,10 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
 			})
 			.$promise
 			.then(function(response){
-              console.log($stateParams);
-
 				if(HttpResponseFactory.isResponseSuccess(response)){
 					var data = HttpResponseFactory.getResponseData(response);
-          console.log(data);
 					$scope.projectName = data.name;
-                    $scope.projectPath = data.namespace.path;
-          $scope.projectPath = data.namespace.path;
-
+          $scope.projectPath = data.namespace.name;
 				}else{
 	        errorHandler(response);
 				}
@@ -44,11 +41,26 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
       .catch(errorHandler);
     }
 
-   function resetProject(){
-       ProjectFactory.resetProject().put({
-           id:project_id
-       })
-   }
+  function resetproject(){
+    var projectName = $scope.projectName;
+    var visibility_level = $scope.visibility_level;
+    ProjectFactory.resetProject().put({
+      'id': project_id,
+      'name': projectName,
+      'visibility_level': visibility_level,
+    }).$promise
+    .then(function(data){
+      if (data.success) {
+        console.log("success reset");
+        // $state.go('app.project-detail.codes.commits({'id': project_id})');
+        $state.go('app.project-detail.codes.commits', {
+        "id":project_id
+        });
+      }else{
+        ToasterTool.error('权限不足');
+      }
+    });
+  }
         
 
 }]);
