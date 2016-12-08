@@ -1,0 +1,66 @@
+<div class="row">
+<div class="col-lg-12">
+<div class="wrapper wrapper-content animated fadeInUp">
+
+<div class="ibox">
+<div class="ibox-title">
+    <h5>里程碑列表</h5>
+
+    <div class="ibox-tools">
+        <a class="btn btn-primary btn-xs" ui-sref="app.project-create">新建里程碑</a>
+      
+    </div>
+    
+</div>
+<div class="ibox-content">
+<div class="row m-b-sm m-t-sm">
+    <div class="col-md-1">
+        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+    </div>
+    <div class="col-md-11">
+        <div class="input-group"><input type="text" placeholder="项目名搜索" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> 查找</button> </span></div>
+    </div>
+</div>
+
+<div class="project-list">
+
+<table class="table table-hover">
+<tbody>
+<tr ng-repeat="project in projects">
+    <td class="project-status">
+        <!-- <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"></a> -->
+        <div class="project_avatar">{{project.name.toLocaleUpperCase().charAt(0)}}</div>
+    </td>
+    <td class="project-title">
+        <a>{{project.name}}</a>
+        <br/>
+        <small>创建日期：{{project.created_at | date:'medium' }}</small>
+    </td>
+    <td class="project-completion">
+        <small>Completion with: 0%</small>
+        <div class="progress progress-mini">
+            <div style="width: 0%;" class="progress-bar"></div>
+        </div>
+    </td>
+    <td class="project-people">
+        <a ng-repeat="member in project.members" href="http://115.159.55.131/{{member.username}}" ><img alt="image" class="img-circle small-img" ng-src="{{member.avatar_url}}">&nbsp;</a>
+        <!-- <tr ng-repeat = "member in project.members"
+        <a ui-sref="name">{{member.name}}</a></tr> -->
+    </td>
+    <td class="project-actions">
+        <a ui-sref="app.project-detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+        <a ng-show="project.owner.name==user.name" href="" class="btn btn-white btn-sm" ng-click="deleteProject(project.id)"><i class="fa fa-trash"></i> 删除 </a>
+
+    </td>
+</tr>
+
+    
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
