@@ -37,6 +37,7 @@ angular.module('crowdsourcing')
                     }
                 });
             },
+        
 
             getProjectContent: function () {
                 return $resource(XXbaseUrl + '/:id/tree?path=:path', { id: '@id', path: '{{path}}' }, {
@@ -121,6 +122,24 @@ angular.module('crowdsourcing')
             },
             getProjectBranchFileDetail: function () {
                 return $resource(XXbaseUrl + '/:id/files?sha=:ref_name&filepath=:path', { id: '@id', ref_name: '{{ref_name}}', path: '{{path}}' }, {
+                    'get': {
+                        method: 'GET',
+                        headers: SessionService.headers()
+                    }
+                });
+            },
+
+             ResetProject: function () {
+                return $resource(XbaseUrl + '/:id', {id:'@id'}, {
+                    'put': {
+                        method: 'PUT',
+                        headers: SessionService.headers()
+                    }
+                });
+            },
+
+            getMilestonelist: function () {
+                return $resource(XbaseUrl + '/:id/milestone', {id:'@id'}, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()

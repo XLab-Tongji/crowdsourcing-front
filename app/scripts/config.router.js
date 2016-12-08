@@ -440,6 +440,39 @@ angular.module('crowdsourcing')
                     }
                 })
 
+                //项目重新设置
+                .state('app.project-reset', {
+                    url: "/project/reset/:id",
+                    controller: 'ProjectResetController',
+                    data: { pageTitle: '项目设置' },
+                    templateUrl: "views/app/project/project_reset.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/project/ProjectReset.controller.js',
+                                'scripts/factory/Project.factory.js',
+                                'scripts/service/Session.service.js',
+                                'scripts/factory/HttpResponse.factory.js',
+                                'scripts/factory/ErrorHandler.factory.js',
+                            ]);
+                        }]
+                    }
+                })
+                
+                   .state('app.milestone', {
+                    url: "/milestone",
+                    controller: 'MilestoneManagerController',
+                    data: { pageTitle: '里程碑' },
+                    templateUrl: "views/app/milestone/milestone.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/project/MilestoneManager.controller.js',
+                                'scripts/factory/Project.factory.js',
+                            ]);
+                        }]
+                    }
+                })
         }
     ])
     .run();

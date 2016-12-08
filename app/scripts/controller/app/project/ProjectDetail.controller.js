@@ -6,7 +6,8 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
     $scope.tab = 1;
 
     var project_id = $stateParams.id;
-
+    
+    $scope.projectid = "";
     $scope.projectName = "";
 
     var errorHandler = ErrorHandlerFactory.handle;
@@ -21,6 +22,7 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
     function init(){
       console.log($state);
       console.log('ready to get yardstick code content!');
+      console.log($stateParams);
       $scope.getProjectCommits = getProjectCommits;
       $scope.getProjectTasks = getProjectTasks;
       $scope.getProjectIssues = getProjectIssues;
@@ -28,6 +30,7 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
       $scope.getProjectMembers = getProjectMembers;
       $scope.getProjectSettings = getProjectSettings;
       getProjectDetail();
+
     }
 
     function getProjectDetail() {
@@ -38,7 +41,9 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 			.then(function(response){
 				if(HttpResponseFactory.isResponseSuccess(response)){
 					var data = HttpResponseFactory.getResponseData(response);
+          console.log(data);
 					$scope.projectName = data.name;
+          $scope.projectid  = data.id;
 				}else{
 	        errorHandler(response);
 				}
@@ -74,6 +79,6 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
     function getProjectSettings(){
       $scope.tab = 6;
     }
-
+        
 
 }]);
