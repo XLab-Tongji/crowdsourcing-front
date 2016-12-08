@@ -13,12 +13,12 @@ app.controller('ProjectMembersController', ['$scope', '$state', '$stateParams', 
     console.log($state);
     console.log('ready to get yardstick code content!');
     getProjectMembers(project_id);
-    $scope.goDetailPage=goDetailPage;
+    $scope.goDetailPage = goDetailPage;
   }
 
   function goDetailPage(username) {
-    $state.go("app.memberDetail",{
-      "username":username
+    $state.go("app.memberDetail", {
+      "username": username
     });
   }
 

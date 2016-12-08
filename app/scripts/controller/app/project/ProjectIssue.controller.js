@@ -24,7 +24,7 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
     $scope.goIssueCreate = goIssueCreate;
     $scope.goLabelsCreate = goLabelsCreate;
     getProjectIssues();
-    // getProjectIssuesLabels();
+    getProjectIssuesLabels();
 
   }
 
@@ -63,8 +63,12 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
     })
       .$promise.then(function (response) {
         if (HttpResponseFactory.isResponseSuccess(response)) {
+
           var data = HttpResponseFactory.getResponseData(response);
-          angular.copy(data, $scope.labels);
+          $scope.labels=data;
+
+          console.log($scope.labels);
+         
 
         }
         else {

@@ -167,7 +167,7 @@ angular.module('crowdsourcing')
             },
 
             getMilestonelist: function() {
-                return $resource(XbaseUrl + '/:id/milestone', { id: '@id' }, {
+                return $resource(XXbaseUrl + '/:id/milestones', { id: '@id' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()

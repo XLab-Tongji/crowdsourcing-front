@@ -7,16 +7,20 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
 
     var errorHandler = ErrorHandlerFactory.handle;
 
+    var membersData;
+    var milestonesData;
+
 
     init();
 
     function init() {
-     
+
         $scope.goLabelsCreate = goLabelsCreate;
         $scope.createProjectIssue = createProjectIssue;
 
         getLabelsList();
         getProjectMembers();
+        getProjectMilstone();
 
     }
 
@@ -32,22 +36,41 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
     //创建新issue
     function createProjectIssue() {
 
+        var assignee = $scope.assignee;
+        var milestone = $scope.milestone;
+        var assignee_id = assignee.id;
+        var milestone_id = milestone.id;
+        var title = $scope.title;
+        var description = $scope.description;
+
+        var labels = $scope.labels;
+        var labelsArrayList = "";
+
+        for (var i = 0; i < labels.length; i++) {
+
+            labelsArrayList +=labels[i].name+",";
+
+        }
 
         ProjectFactory.createProjectIssue().post({
             id: project_id,
-            "title": $scope.title,
-            "description": $scope.description,
-            "assignee": $scope.assignee,
-            "milestone": $scope.milestone,
-            "labels": $scope.labels
+            "title": title,
+            "description": description,
+            "assignee_id": assignee_id,
+            "milestone_id": milestone_id,
+            "labels": labelsArrayList
 
         }).$promise.then(function (response) {
-            if (HttpResponseFactory.isResponseSuccess(response)) {
-                var data = HttpResponseFactory.getResponseData(response);
+            if(response.code==201){
+                ToasterTool.success('问题创建成功','');
+                $state.go("app.project-detail.issues",{
+                    "id": project_id
+                });
             }
-            else {
-                errorHandler(response)
+            else{
+                ToasterTool.error('问题创建失败','');
             }
+         
         })
     }
     //获取标签列表
@@ -58,8 +81,8 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
         }).$promise.then(function (response) {
             if (HttpResponseFactory.isResponseSuccess(response)) {
                 var data = HttpResponseFactory.getResponseData(response);
-                $scope.labelslist=data;
-                
+                $scope.labelslist = data;
+
             }
             else {
                 errorHandler(response)
@@ -69,19 +92,36 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
     }
 
     //获取项目member
- 
-  function getProjectMembers() {
 
-    ProjectFactory.getProjectDetail().get({
-      id: project_id
-    })
-      .$promise.then(function (response) {
+    function getProjectMembers() {
 
-        var data = response.data;
-        $scope.members = data.members;
-      })
+        ProjectFactory.getProjectDetail().get({
+            id: project_id
+        })
+            .$promise.then(function (response) {
 
-  }
+                var data = response.data;
+                $scope.membersData = data;
+
+                $scope.members = data.members;
+            })
+
+    }
+
+    //获取项目milestone
+    function getProjectMilstone() {
+        ProjectFactory.getMilestonelist().get({
+            id: project_id
+        })
+            .$promise.then(function (response) {
+                var data = response.data;
+                $scope.milestonesData = data;
+                $scope.milestones = data.milestones;
+
+            })
+    }
+
+
 
 
 

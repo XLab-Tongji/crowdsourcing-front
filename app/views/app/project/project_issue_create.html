@@ -42,7 +42,7 @@
                                             <div><label class="col-sm-2 control-label">选择里程碑</label></div>
 
                                             <div class="col-md-4" style="float:left">
-                                                <select class="form-control" ng-model="milestone" ng-options="label.name for label in labelslist">
+                                                <select class="form-control" ng-model="milestone" ng-options="milestone.title for milestone in milestones">
                                                 </select>
                                             </div>
                                         </div>
@@ -50,7 +50,7 @@
                                             <div><label class="col-sm-2 control-label">选择标签</label></div>
 
                                             <div class="col-md-4" style="float:left">
-                                                <select class="form-control" chosen  multiple  ng-model="labelss" ng-options="label.name for label in labelslist">
+                                                <select class="form-control" chosen multiple ng-model="labels" ng-options="label.name for label in labelslist">
                                                      <option value=""></option>
                                                 </select>
                                             </div>
@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
 
-                                        <button class="btn btn-primary" type="submit" ng-click="createBranch()">创建</button>
+                                        <button class="btn btn-primary" type="submit" ng-click="createProjectIssue()">创建</button>
                                     </div>
                                 </div>
                                 </form>
