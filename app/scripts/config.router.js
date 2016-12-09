@@ -498,9 +498,9 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-
+//获取milestone
                 .state('app.milestone', {
-                    url: "/milestone",
+                    url: "/:id/milestones",
                     controller: 'MilestoneManagerController',
                     data: { pageTitle: '里程碑' },
                     templateUrl: "views/app/milestone/milestone.html",
@@ -509,11 +509,34 @@ angular.module('crowdsourcing')
                             return $ocLazyLoad.load([
                                 'scripts/controller/app/project/MilestoneManager.controller.js',
                                 'scripts/factory/Project.factory.js',
+                                'scripts/factory/HttpResponse.factory.js',
+                                'scripts/factory/ErrorHandler.factory.js',
                             ]);
                         }]
                     }
                 })
-                .state('app.project-detail.codes.nocontent', {
+                .state('app.milestone-detail', {
+                    url: "/:id/milestone/:milestoneId",
+                    controller: 'MilestoneDetailController',
+                    data: { pageTitle: '里程碑' },
+                    templateUrl: "views/app/milestone/milestone_detail.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/project/MilestoneDetail.controller.js',
+                                'scripts/factory/Project.factory.js',
+                                'scripts/factory/HttpResponse.factory.js',
+                                'scripts/factory/ErrorHandler.factory.js',
+                                'lib/libs/icheck.min.js',
+                                'lib/css/custom.css',
+                                'ui.checkbox',
+                            ]);
+                        }]
+                    }
+                })
+
+//项目没有文件
+                .state('app.project-detail.nocontent', {
                     url: "/nocontent",
                     data: { pageTitle: '里程碑' },
                     templateUrl: "views/common/nofilecontent.html",
@@ -525,7 +548,24 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-
+//新建milestone
+                .state('app.milestone-create', {
+                    url: "/:id/milestone/create",
+                    controller: 'MilestoneCreateController',
+                    data: { pageTitle: '新建项目' },
+                    templateUrl: "views/app/milestone/create_milestone.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/project/MilestoneCreate.controller.js',
+                                'scripts/factory/Project.factory.js',
+                                'scripts/service/Session.service.js',
+                                'scripts/factory/HttpResponse.factory.js',
+                                'scripts/factory/ErrorHandler.factory.js',
+                            ]);
+                        }]
+                    }
+                })
 
 
 

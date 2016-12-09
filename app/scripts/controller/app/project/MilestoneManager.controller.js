@@ -1,10 +1,14 @@
 'use strict';
 
-app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory', '$stateParams', function($scope,
-    $state, ToasterTool, ProjectFactory,$stateParams) {
+app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams', 'ToasterTool', 'ProjectFactory', 'HttpResponseFactory', 'ErrorHandlerFactory',  function($scope,
+    $state, $stateParams, ToasterTool, ProjectFactory, HttpResponseFactory, ErrorHandlerFactory) {
 
-    $scope.milestone = [];
-    $scope.deleteMilestone = deleteMilestone;
+    $scope.milestones = [];
+    $scope.milestoneId = -1;
+    $scope.getMilestoneDetail = getMilestoneDetail;
+    $scope.createMilestone = createMilestone;
+    $scope.closeMilestone = closeMilestone;
+    var project_id = $stateParams.id;
 
 
     init();
@@ -17,8 +21,8 @@ app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool',
     }
 
     function getMilestoneList(data){
-      ProjectFactory.getProjectList().get({
-        
+      ProjectFactory.getMilestonelist().get({
+        'id' : project_id
       },  getMilestoneListSuccess, getMilestoneListFailed);
 
       
@@ -27,7 +31,7 @@ app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool',
 
     function getMilestoneListSuccess(data) {
       if (data.success) {
-        angular.copy(data.data, $scope.projects);
+        angular.copy(data.data.milestones, $scope.milestones);
       }else{
         ToasterTool.error('错误',data.message);
       }
@@ -38,25 +42,41 @@ app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool',
       ToasterTool.error('错误','获取项目列表失败');
     }
 
+    function getMilestoneDetail(id) {
+   
+      $state.go('app.milestone-detail', {
+        "id":project_id,
+        "milestoneId":id
+      });
+    }
 
-    // function deleteProject(id){
-    //   ProjectFactory.deleteProject().delete({
-    //     id:id
-    //   }, deleteProjectSuccess, deleteProjectFailed);
-    // }
+    function createMilestone(){
+      $state.go('app.milestone-create',{
+        "id":project_id
+      });
+    }
 
-    // function deleteProjectSuccess (data) {
-    //   if(data.success) {
-    //     location.reload();
-    //     ToasterTool.message('删除项目成功');
-    //   } else {
-    //     ToasterTool.error('错误', data.message);
-    //   }
-    // }
 
-    // function deleteProjectFailed(error) {
-    //   ToasterTool.error('错误', '删除项目失败');
-    // }
+    function closeMilestone(id){
+      ProjectFactory.deleteProject().delete({
+        "id":project_id,
+        "milestoneId":id,
+        
+      }, closeMilestoneSuccess, closeMilestoneFailed);
+    }
+
+    function deleteProjectSuccess (data) {
+      if(data.success) {
+        location.reload();
+        ToasterTool.message('删除项目成功');
+      } else {
+        ToasterTool.error('错误', data.message);
+      }
+    }
+
+    function deleteProjectFailed(error) {
+      ToasterTool.error('错误', '删除项目失败');
+    }
 
 
 }]);

@@ -7,7 +7,7 @@
     <h5>里程碑列表</h5>
 
     <div class="ibox-tools">
-        <a class="btn btn-primary btn-xs" ui-sref="app.project-create">新建里程碑</a>
+        <a class="btn btn-primary btn-xs" ng-click="createMilestone()">新建里程碑</a>
       
     </div>
     
@@ -23,38 +23,36 @@
     </div>
 </div>
 
-<div class="project-list">
+<div class="milestone-list">
 
 <table class="table table-hover">
 <tbody>
-<tr ng-repeat="project in projects">
-    <td class="project-status">
-        <!-- <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"></a> -->
+<tr ng-repeat="milestone in milestones">
+    <!-- <td class="milestone-status">
+        <a href=""><img alt="image" class="mid-image" ng-src="{{project.avatar_url}}"></a>
         <div class="project_avatar">{{project.name.toLocaleUpperCase().charAt(0)}}</div>
-    </td>
-    <td class="project-title">
-        <a>{{project.name}}</a>
+    </td> -->
+    <td class="milestone-title">
+        <a>{{milestone.title}}</a>
+
+        <a ng-show="milestone.due_date != null">expires on {{milestone.due_date}}</a>
         <br/>
-        <small>创建日期：{{project.created_at | date:'medium' }}</small>
+        <!-- <small>过期日期：{{milestone.created_at | date:'medium' }}</small> -->
     </td>
-    <td class="project-completion">
-        <small>Completion with: 0%</small>
+    <td class="milestone-completion">
+        <small>Completion with: {{milestone.rate}}%</small>
         <div class="progress progress-mini">
             <div style="width: 0%;" class="progress-bar"></div>
         </div>
     </td>
-    <td class="project-people">
-        <a ng-repeat="member in project.members" href="http://115.159.55.131/{{member.username}}" ><img alt="image" class="img-circle small-img" ng-src="{{member.avatar_url}}">&nbsp;</a>
-        <!-- <tr ng-repeat = "member in project.members"
-        <a ui-sref="name">{{member.name}}</a></tr> -->
-    </td>
-    <td class="project-actions">
-        <a ui-sref="app.project-detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-        <a ng-show="project.owner.name==user.name" href="" class="btn btn-white btn-sm" ng-click="deleteProject(project.id)"><i class="fa fa-trash"></i> 删除 </a>
+
+    <td class="milestone-actions">
+        <a ng-click="getMilestoneDetail(milestone.id)" class="btn btn-white btn-sm" ng-model="milestoneId"><i class="fa fa-folder"></i> 查看 </a>
+        <a ng-click="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 关闭 </a>
+        <a ng-click="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> 删除 </a>
 
     </td>
 </tr>
-
     
 </tbody>
 </table>

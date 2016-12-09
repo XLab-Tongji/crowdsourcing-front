@@ -23,6 +23,7 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
       $scope.getProjectCommits = getProjectCommits;
       $scope.getProjectTasks = getProjectTasks;
       $scope.getProjectIssues = getProjectIssues;
+      $scope.getProjectMilestones = getProjectMilestones;
       $scope.getProjectFiles = getProjectFiles;
       $scope.getProjectMembers = getProjectMembers;
       $scope.getProjectSettings = getProjectSettings;
@@ -62,19 +63,24 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
       $scope.tab = 3;
       $state.go('app.project-detail.issues');
     }
-
-    function getProjectFiles(){
+    function getProjectMilestones(){
       $scope.tab = 4;
+      $state.go('app.milestone', {
+        "id":project_id
+      });
+    }
+    function getProjectFiles(){
+      $scope.tab = 5;
       $state.go('app.project-detail.files');
     }
 
     function getProjectMembers(){
-      $scope.tab = 5;
+      $scope.tab = 6;
       $state.go('app.project-detail.members');
     }
 
     function getProjectSettings(){
-      $scope.tab = 6;
+      $scope.tab = 7;
       $state.go('app.project-reset', {
         "id":project_id
       });
