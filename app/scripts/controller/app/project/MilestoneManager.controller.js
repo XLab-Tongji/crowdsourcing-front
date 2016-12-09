@@ -1,10 +1,13 @@
 'use strict';
 
-app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory', '$stateParams', function($scope,
-    $state, ToasterTool, ProjectFactory,$stateParams) {
+app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams', 'ToasterTool', 'ProjectFactory', 'HttpResponseFactory', 'ErrorHandlerFactory',  function($scope,
+    $state, $stateParams, ToasterTool, ProjectFactory, HttpResponseFactory, ErrorHandlerFactory) {
 
-    $scope.milestone = [];
-    $scope.deleteMilestone = deleteMilestone;
+    $scope.milestones = [];
+    $scope.milestoneId = -1;
+    $scope.getMilestoneDetail = getMilestoneDetail;
+    // $scope.deleteMilestone = deleteMilestone;
+    var project_id = $stateParams.id;
 
 
     init();
@@ -17,8 +20,8 @@ app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool',
     }
 
     function getMilestoneList(data){
-      ProjectFactory.getProjectList().get({
-        
+      ProjectFactory.getMilestonelist().get({
+        'id' : project_id
       },  getMilestoneListSuccess, getMilestoneListFailed);
 
       
@@ -27,7 +30,7 @@ app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool',
 
     function getMilestoneListSuccess(data) {
       if (data.success) {
-        angular.copy(data.data, $scope.projects);
+        angular.copy(data.data.milestones, $scope.milestones);
       }else{
         ToasterTool.error('错误',data.message);
       }
@@ -36,6 +39,14 @@ app.controller('MilestoneManagerController', ['$scope', '$state', 'ToasterTool',
 
     function getMilestoneListFailed(error){
       ToasterTool.error('错误','获取项目列表失败');
+    }
+
+    function getMilestoneDetail(id) {
+      console.log(project_id + " " + id);
+      $state.go('app.milestone-detail', {
+        "id":project_id,
+        "milestone_id":id
+      });
     }
 
 

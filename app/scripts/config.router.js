@@ -498,9 +498,9 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-
+//获取milestone
                 .state('app.milestone', {
-                    url: "/milestone",
+                    url: "/:id/milestones",
                     controller: 'MilestoneManagerController',
                     data: { pageTitle: '里程碑' },
                     templateUrl: "views/app/milestone/milestone.html",
@@ -513,6 +513,7 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+
                 .state('app.project-detail.nocontent', {
                     url: "/nocontent",
                     data: { pageTitle: '里程碑' },

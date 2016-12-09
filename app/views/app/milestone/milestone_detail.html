@@ -1,0 +1,115 @@
+ <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>任务看板</h2>
+
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content  animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>待完成</h3>
+
+                    <div class="input-group">
+                        <input type="text" placeholder="添加新的任务" class="input input-sm form-control">
+                                <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> 添加</button>
+                                </span>
+                    </div>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="todoList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in todoList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>开发中</h3>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="inProgressList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in inProgressList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>测试中</h3>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="toTestList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in toTestList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>已完成</h3>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="completedList">
+                        <li class="{{task.statusClass}}-element" ng-repeat="task in completedList">
+                            {{task.content}}
+                            <div class="agile-detail">
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-lg-12">
+
+            <h4>
+                Serialised Output
+            </h4>
+
+            <div class="output p-m m white-bg">
+
+                <h3>TodDo tasks</h3>
+                {{todoList }}
+
+                <h3>In progress tasks</h3>
+                {{inProgressList }}
+
+                <h3>Completed tasks</h3>
+                {{completedList }}
+
+                <h3>Completed tasks</h3>
+                {{toTestList }}
+
+            </div>
+
+
+        </div>
+    </div> -->
+
+
+</div>
