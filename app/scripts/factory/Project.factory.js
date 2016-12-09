@@ -173,7 +173,16 @@ angular.module('crowdsourcing')
                         headers: SessionService.headers()
                     }
                 });
-            }
+            },
+
+             createMilestone: function() {
+                return $resource(XXbaseUrl + '/:id/milestones', {id:'@id'}, {
+                    'post': {
+                        method: 'POST',
+                        headers: SessionService.headers()
+                    }
+                });
+            },
 
 
 

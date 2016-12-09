@@ -6,6 +6,7 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
     $scope.milestones = [];
     $scope.milestoneId = -1;
     $scope.getMilestoneDetail = getMilestoneDetail;
+    $scope.createMilestone = createMilestone;
     // $scope.deleteMilestone = deleteMilestone;
     var project_id = $stateParams.id;
 
@@ -42,10 +43,16 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
     }
 
     function getMilestoneDetail(id) {
-      console.log(project_id + " " + id);
+   
       $state.go('app.milestone-detail', {
         "id":project_id,
         "milestone_id":id
+      });
+    }
+
+    function createMilestone(){
+      $state.go('app.milestone-create',{
+        "id":project_id
       });
     }
 
