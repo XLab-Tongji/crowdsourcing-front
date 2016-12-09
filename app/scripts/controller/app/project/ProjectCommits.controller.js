@@ -66,6 +66,9 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
             path: path
         }).$promise.then(function (data) {
             $scope.contents = data.data;
+            if(data.data.length==0){
+                $state.go('app.project-detail.nocontent');
+            }
         })
     }
 

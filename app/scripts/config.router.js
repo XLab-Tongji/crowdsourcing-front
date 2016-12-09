@@ -513,6 +513,23 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+                .state('app.project-detail.nocontent', {
+                    url: "/nocontent",
+                    data: { pageTitle: '里程碑' },
+                    templateUrl: "views/common/nofilecontent.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                             
+                            ]);
+                        }]
+                    }
+                })
+
+
+
+
+
         }
     ])
     .run();
