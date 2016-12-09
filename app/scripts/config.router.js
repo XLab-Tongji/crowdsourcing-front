@@ -515,6 +515,26 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+                .state('app.milestone-detail', {
+                    url: "/:id/milestone/:milestoneId",
+                    controller: 'MilestoneDetailController',
+                    data: { pageTitle: '里程碑' },
+                    templateUrl: "views/app/milestone/milestone_detail.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/project/MilestoneDetail.controller.js',
+                                'scripts/factory/Project.factory.js',
+                                'scripts/factory/HttpResponse.factory.js',
+                                'scripts/factory/ErrorHandler.factory.js',
+                                'lib/libs/icheck.min.js',
+                                'lib/css/custom.css',
+                                'ui.checkbox',
+                            ]);
+                        }]
+                    }
+                })
+
 //项目没有文件
                 .state('app.project-detail.nocontent', {
                     url: "/nocontent",
