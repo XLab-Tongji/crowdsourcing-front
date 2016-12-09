@@ -28,9 +28,8 @@ app.controller('IssueDetailController', ['$scope', '$state', '$stateParams', 'To
     }
 
     function getDetail(){
-      ProjectFactory.getProjectIssueDetail().get({
-				id: project_id,
-        issueId: issue_id
+      ProjectFactory.getProjectIssues().get({
+				id: project_id
 			})
 			.$promise
 			.then(function(response){
