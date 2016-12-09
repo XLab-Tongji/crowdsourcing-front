@@ -13,6 +13,8 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
       console.log($state);
       console.log('ProjectManagerController Init');
 
+      $scope.refreshContent=refreshContent;
+
       getProjects();
     }
 
@@ -56,6 +58,11 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
 
     function deleteProjectFailed(error) {
       ToasterTool.error('错误', '删除项目失败');
+    }
+
+    //刷新
+    function refreshContent(){
+      $route.reload();
     }
 
 

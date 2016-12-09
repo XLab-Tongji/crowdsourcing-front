@@ -9,10 +9,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
     init();
 
     function init() {
-        console.log($state);
-        console.log('ready to get yardstick code content!');
-
-        //$scope.getProjectContent = getProjectContent;
+      
 
         $scope.getgetProjectContentTest = getProjectContentTest;
 
@@ -59,16 +56,16 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
         });
     }
 
-
+//获取项目路径
     function getProjectContentTest(id, path) {
         ProjectFactory.getProjectContent().get({
             id: id,
             path: path
         }).$promise.then(function (data) {
             $scope.contents = data.data;
-            if(data.data.length==0){
-                $state.go('app.project-detail.nocontent');
-            }
+            // if(data.data.length==0){
+            //     $state.go('app.project-detail.codes.nocontent');
+            // }
         })
     }
 

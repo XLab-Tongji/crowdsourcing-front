@@ -513,7 +513,7 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-                .state('app.project-detail.nocontent', {
+                .state('app.project-detail.codes.nocontent', {
                     url: "/nocontent",
                     data: { pageTitle: '里程碑' },
                     templateUrl: "views/common/nofilecontent.html",
