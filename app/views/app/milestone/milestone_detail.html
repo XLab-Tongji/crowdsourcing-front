@@ -11,9 +11,9 @@
 
     <div class="row">
         <div class="col-lg-3">
-            <div class="ibox">
+            <div class="ibox" ng-repeat="label in labels">
                 <div class="ibox-content">
-                    <h3>待完成</h3>
+                    <h3>{{label.name}}</h3>
 
                     <div class="input-group">
                         <input type="text" placeholder="添加新的任务" class="input input-sm form-control">
@@ -22,8 +22,8 @@
                                 </span>
                     </div>
                     <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" ng-model="todoList">
-                        <li class="{{task.statusClass}}-element" ng-repeat="task in todoList">
-                            {{task.content}}
+                        <li class="{{issue.statusClass}}-element" ng-repeat="issue in label.issues">
+                            {{issue}}
                             <div class="agile-detail">
                                 <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
                                 <i class="fa fa-clock-o"></i> {{task.date}}
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <!-- <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>开发中</h3>
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
 
     <!-- <div class="row">
         <div class="col-lg-12">

@@ -184,7 +184,24 @@ angular.module('crowdsourcing')
                 });
             },
 
+            getMilestoneDetails: function() {
+                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId', {id:'@id' , milestoneId:'@milestoneId'}, {
+                    'get': {
+                        method: 'GET',
+                        headers: SessionService.headers()
+                    }
+                });
+            },
 
+
+            getMilestoneLabels: function() {
+                return $resource(XXbaseUrl + '/:id/labels?milestone=:milestone', {id:'@id' , milestone:'@milestone'}, {
+                    'get': {
+                        method: 'GET',
+                        headers: SessionService.headers()
+                    }
+                });
+            },
 
         };
     });

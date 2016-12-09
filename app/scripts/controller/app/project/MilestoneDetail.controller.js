@@ -6,6 +6,7 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
     $scope.tab = 1;
 
     var project_id = $stateParams.id;
+    var milestoneId = $stateParams.milestoneId;
     
     $scope.projectName = "";
 
@@ -13,35 +14,26 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
 
     init();
 
-    $scope.issueBoxShow = {
-      list: true,
-      detail: false
-    }
-
     function init(){
       console.log('ready to get yardstick code content!');
-      $scope.getProjectCommits = getProjectCommits;
-      $scope.getProjectTasks = getProjectTasks;
-      $scope.getProjectIssues = getProjectIssues;
-      $scope.getProjectMilestones = getProjectMilestones;
-      $scope.getProjectFiles = getProjectFiles;
-      $scope.getProjectMembers = getProjectMembers;
-      $scope.getProjectSettings = getProjectSettings;
-      getProjectDetail();
+      
+      getMilestoneDetail();
 
     }
 
-    function getProjectDetail() {
-      ProjectFactory.getProjectDetail().get({
-				id:project_id
+    function getMilestoneDetail() {
+      ProjectFactory.getMilestoneDetails().get({
+				'id':project_id,
+        'milestoneId':milestoneId
 			})
 			.$promise
 			.then(function(response){
 				if(HttpResponseFactory.isResponseSuccess(response)){
 					var data = HttpResponseFactory.getResponseData(response);
-					$scope.projectName = data.name;
-          $scope.projectid  = data.id;
-          console.log($scope.projectid);
+          $scope.milestone = data.milestone;
+          console.log($scope.milestone);
+
+          getMilestoneLabels();
 				}else{
 	        errorHandler(response);
 				}
@@ -49,41 +41,23 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
       .catch(errorHandler);
     }
 
-    function getProjectCommits(){
-      $scope.tab = 1;
-      $state.go('app.project-detail.codes.commits');
-    }
-
-    function getProjectTasks(){
-      $scope.tab = 2;
-      $state.go('app.task');
-    }
-
-    function getProjectIssues(){
-      $scope.tab = 3;
-      $state.go('app.project-detail.issues');
-    }
-    function getProjectMilestones(){
-      $scope.tab = 4;
-      $state.go('app.milestone', {
-        "id":project_id
-      });
-    }
-    function getProjectFiles(){
-      $scope.tab = 5;
-      $state.go('app.project-detail.files');
-    }
-
-    function getProjectMembers(){
-      $scope.tab = 6;
-      $state.go('app.project-detail.members');
-    }
-
-    function getProjectSettings(){
-      $scope.tab = 7;
-      $state.go('app.project-reset', {
-        "id":project_id
-      });
+    
+    function getMilestoneLabels(){
+      ProjectFactory.getMilestoneLabels().get({
+        'id':project_id,
+        'milestoneId':$scope.milestone.title
+      })
+      .$promise
+      .then(function(response){
+        if(HttpResponseFactory.isResponseSuccess(response)){
+          var data = HttpResponseFactory.getResponseData(response);
+          $scope.labels = data;
+          console.log(data);
+        }else{
+          errorHandler(response);
+        }
+      })
+      .catch(errorHandler);
     }
         
 
