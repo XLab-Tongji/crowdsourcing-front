@@ -20,6 +20,7 @@
       'ui.codemirror',
       'summernote',
       'colorpicker.module',
-      'localytics.directives'
-    ])
+      'localytics.directives',
+      'ui.sortable'
+          ])
 })();
