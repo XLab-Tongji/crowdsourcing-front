@@ -51,31 +51,40 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
     }
 
     function createMilestone(){
+      console.log("test");
+      
+      
       $state.go('app.milestone-create',{
         "id":project_id
       });
+      
+
     }
 
 
     function closeMilestone(id){
-      ProjectFactory.deleteProject().delete({
+      var state_event = ''
+
+      ProjectFactory.closeMilestone().put({
         "id":project_id,
         "milestoneId":id,
-        
+        "state_event":'close'
+
       }, closeMilestoneSuccess, closeMilestoneFailed);
     }
 
-    function deleteProjectSuccess (data) {
+    function closeMilestoneSuccess (data) {
       if(data.success) {
         location.reload();
-        ToasterTool.message('删除项目成功');
+        ToasterTool.message('更改里程碑状态成功');
+
       } else {
         ToasterTool.error('错误', data.message);
       }
     }
 
-    function deleteProjectFailed(error) {
-      ToasterTool.error('错误', '删除项目失败');
+    function closeMilestoneFailed(error) {
+      ToasterTool.error('错误', '更改里程碑状态失败');
     }
 
 

@@ -203,5 +203,14 @@ angular.module('crowdsourcing')
                 });
             },
 
+            closeMilestone: function() {
+                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId?state_event=close', {id:'@id',milestoneId:'@milestoneId'}, {
+                    'put': {
+                        method: 'PUT',
+                        headers: SessionService.headers()
+                    }
+                });
+            },
+
         };
     });

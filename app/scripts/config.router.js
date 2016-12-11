@@ -515,8 +515,9 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+//获取milestone详情
                 .state('app.milestone-detail', {
-                    url: "/:id/milestone/:milestoneId",
+                    url: "/:id/milestonedetail/:milestoneId",
                     controller: 'MilestoneDetailController',
                     data: { pageTitle: '里程碑' },
                     templateUrl: "views/app/milestone/milestone_detail.html",
@@ -529,7 +530,7 @@ angular.module('crowdsourcing')
                                 'scripts/factory/ErrorHandler.factory.js',
                                 'lib/libs/icheck.min.js',
                                 'lib/css/custom.css',
-                                'ui.checkbox',
+                                'bower_components/ui-sortable/dist/ui-sortable.js',
                             ]);
                         }]
                     }
@@ -552,7 +553,7 @@ angular.module('crowdsourcing')
                 .state('app.milestone-create', {
                     url: "/:id/milestone/create",
                     controller: 'MilestoneCreateController',
-                    data: { pageTitle: '新建项目' },
+                    data: { pageTitle: '新建里程碑' },
                     templateUrl: "views/app/milestone/create_milestone.html",
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -565,10 +566,9 @@ angular.module('crowdsourcing')
                             ]);
                         }]
                     }
-                })
-
-
-
+                });
+                
+                
 
         }
     ])
