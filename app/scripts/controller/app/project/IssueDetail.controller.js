@@ -34,7 +34,11 @@ app.controller('IssueDetailController', ['$scope', '$state', '$stateParams', 'To
 			.$promise
 			.then(function(response){
 				if(HttpResponseFactory.isResponseSuccess(response)){
+
 					var data = HttpResponseFactory.getResponseData(response);
+
+          
+
           angular.copy(data, $scope.issueDetail);
 				}else{
 	        errorHandler(response);
