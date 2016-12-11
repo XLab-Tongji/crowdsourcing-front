@@ -1,25 +1,22 @@
 'use strict';
 
-app.controller('MilestoneCreateController',[],function(){
-
-});
-
-/*
 app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 'ToasterTool', 'ProjectFactory','SessionService', function($scope,
     $state, $stateParams,ToasterTool, ProjectFactory, SessionService) {
 
-    var project_id = $stateParams.id;
-    $scope.createmilestone= createmilestone;
-        
-    init();
 
+    init();
+    var project_id = $stateParams.id;
 
     function init(){
       console.log($state);
-      console.log('MilestoneCreateController Init');
+      console.log('ProjectCreateController Init');
       
+      
+      $scope.createmilestone= createmilestone;
 
     }
+
+    console.log(project_id);
 
     function createmilestone(){
 
@@ -55,4 +52,3 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
 
 }]);
 
-*/

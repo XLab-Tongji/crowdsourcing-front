@@ -42,8 +42,7 @@
     "angular-summernote": "^0.8.1",
     "angular-bootstrap-colorpicker": "^3.0.25",
     "chosen": "^1.6.2",
-    "angular-chosen-localytics": "^1.5.1",
-    "ui-sortable": "*"
+    "angular-chosen-localytics": "^1.5.1"
   },
   "resolutions": {
     "jquery": "~2.1.4",
