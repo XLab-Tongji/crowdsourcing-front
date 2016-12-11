@@ -46,7 +46,7 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
     function getMilestoneLabels(){
       ProjectFactory.getMilestoneLabels().get({
         'id':project_id,
-        'milestoneId':$scope.milestone.title
+        'milestone':$scope.milestone.title
       })
       .$promise
       .then(function(response){
