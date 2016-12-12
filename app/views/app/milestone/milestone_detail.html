@@ -22,12 +22,12 @@
                                 </span>
                     </div>
                     <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list">
-                        <li ng-repeat="issue in label.issues">
+                        <li ng-repeat="issue in label.issues" class="sortable-item">
                             {{issue.title}}
-                            <!--<div class="agile-detail">
+                            <div class="agile-detail">
                                 <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
                                 <i class="fa fa-clock-o"></i> {{task.date}}
-                            </div>-->
+                            </div>
                         </li>
                     </ul>
                 </div>

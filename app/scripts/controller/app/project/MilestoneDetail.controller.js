@@ -61,5 +61,8 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
       .catch(errorHandler);
     }
         
+$scope.sortableOptions = {
+        connectWith: ".connectList"
+    };
 
 }]);
