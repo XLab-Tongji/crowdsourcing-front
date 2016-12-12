@@ -7,7 +7,7 @@ app.controller('ProjectGroupDetailController', ['$scope', '$state', 'ToasterTool
     // $scope.members = [];
     $scope.deleteProjectGroup = deleteProjectGroup;
     $scope.groupid = $stateParams.id;
-
+    $scope.checkdetail = checkdetail;
     init();
 
     function init(){
@@ -60,5 +60,10 @@ app.controller('ProjectGroupDetailController', ['$scope', '$state', 'ToasterTool
       ToasterTool.error('错误', '删除项目组失败');
     }
 
-
+    function checkdetail(id){
+      console
+      $state.go('app.project-detail',{
+        'id':id
+      })
+    }
 }]);

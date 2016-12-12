@@ -193,7 +193,6 @@ angular.module('crowdsourcing')
                 });
             },
 
-
             getMilestoneLabels: function() {
                 return $resource(XXbaseUrl + '/:id/labels?milestone=:milestone', {id:'@id' , milestone:'@milestone'}, {
                     'get': {
@@ -202,6 +201,24 @@ angular.module('crowdsourcing')
                     }
                 });
             },
+
+            updateMilestoneIssue:function(){
+                return $resource(XXbaseUrl  + '/project/:id/issueid/:issue_id',{id:'@id' , issue_id:'@issue_id'},{
+                    put:{
+                        method:'PUT',
+                        headers:SessionService.headers()
+                    }
+                })
+            },
+
+            closeMilestone:function(){
+                return $resource(XXbaseUrl  + '/:id/milestones/:milestoneId',{id:'@id' , milestoneId:'@milestoneId'},{
+                    put:{
+                        method:'PUT',
+                        headers:SessionService.headers()
+                    }
+                })
+            }
 
         };
     });

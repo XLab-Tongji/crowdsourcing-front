@@ -32,6 +32,15 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
     function getMilestoneListSuccess(data) {
       if (data.success) {
         angular.copy(data.data.milestones, $scope.milestones);
+        for(var x = 0; x < data.data.milestones.length; x ++) {
+          console.log($scope.milestones[x].state);
+          if($scope.milestones[x].state == 'closed') {
+
+            $scope.milestones[x].visible = false;
+          } else {
+            $scope.milestones[x].visible = true;
+          }
+        }
       }else{
         ToasterTool.error('错误',data.message);
       }
@@ -58,23 +67,25 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
 
 
     function closeMilestone(id){
-      ProjectFactory.deleteProject().delete({
+      ProjectFactory.closeMilestone().put({
         "id":project_id,
         "milestoneId":id,
+        "state_event":'close'
         
       }, closeMilestoneSuccess, closeMilestoneFailed);
     }
 
-    function deleteProjectSuccess (data) {
+    function closeMilestoneSuccess (data) {
       if(data.success) {
         location.reload();
-        ToasterTool.message('删除项目成功');
+        ToasterTool.message('关闭里程碑成功');
+        state.go(app.milestone-detail)
       } else {
         ToasterTool.error('错误', data.message);
       }
     }
 
-    function deleteProjectFailed(error) {
+    function closeMilestoneFailed(error) {
       ToasterTool.error('错误', '删除项目失败');
     }
 

@@ -46,8 +46,7 @@
     <link rel="stylesheet" href="styles/project_avatar.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css">
     <link rel="stylesheet" href="bower_components/chosen/chosen.css">
-    <!--bootstrap-datetimepicker-->
-    <link rel="stylesheet" href="bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+
     <!--<link href="bower_components/angular-tooltips/dist/angular-tooltips.min.css" rel="stylesheet">-->
 
 
@@ -71,7 +70,8 @@
 
     <!-- MetsiMenu -->
     <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
-    
+    <!--bootstrap-datetimepicker.css-->
+    <script src="bower_components/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"></script>
     <!-- MetsiMenu -->
     <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
@@ -103,8 +103,7 @@
     <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
 
     <script src="bower_components/angular-ui-sortable/sortable.js"></script>
-<!--bootstrap-datetimepicker-->
-    <script src="bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
 
 
 

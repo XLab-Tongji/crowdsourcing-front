@@ -61,8 +61,14 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
       .catch(errorHandler);
     }
         
-$scope.sortableOptions = {
+    $scope.sortableOptions = {
         connectWith: ".connectList"
     };
 
+    function updateMilestoneIssue(){
+      ProjectFactory.updateMilestoneIssue().put({
+        'id':project_id,
+        'issue_id':$scope.issue.id
+      })
+    }
 }]);

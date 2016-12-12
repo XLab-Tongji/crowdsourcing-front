@@ -47,7 +47,7 @@
         <a ui-sref="name">{{member.name}}</a></tr> -->
     </td>
     <td class="project-actions">
-        <a ui-sref="app.project_group_detail.codes.commits({'id': '{{project.id}}', 'data':'{{project.name}}'})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+        <a ng-click="checkdetail(project.id)" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
         <!-- <a ng-show="true" href="" class="btn btn-white btn-sm" ng-click="deleteProjectGroup(project.id)"><i class="fa fa-trash"></i> 删除 </a></td> -->
     </td>
 </tr>

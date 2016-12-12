@@ -48,7 +48,7 @@
 
     <td class="milestone-actions">
         <a ng-click="getMilestoneDetail(milestone.id)" class="btn btn-white btn-sm" ng-model="milestoneId"><i class="fa fa-folder"></i> 查看 </a>
-        <a ng-click="" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 关闭 </a>
+        <a ng-click="closeMilestone(milestone.id)" class="btn btn-white btn-sm" ng-show="milestone.visible"><i class="fa fa-folder"></i> 关闭 </a>
         <a ng-click="" class="btn btn-white btn-sm"><i class="fa fa-trash"></i> 删除 </a>
 
     </td>

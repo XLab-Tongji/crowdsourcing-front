@@ -91,7 +91,6 @@ angular.module('crowdsourcing')
 
 
                 .state('app.project-detail', {
-                    abstract: true,
                     url: "/project/detail/:id",
                     controller: 'ProjectDetailController',
                     data: { pageTitle: '项目' },
@@ -516,7 +515,7 @@ angular.module('crowdsourcing')
                     }
                 })
                 .state('app.milestone-detail', {
-                    url: "/:id/milestone/:milestoneId",
+                    url: "/:id/milestonedetail/:milestoneId",
                     controller: 'MilestoneDetailController',
                     data: { pageTitle: '里程碑' },
                     templateUrl: "views/app/milestone/milestone_detail.html",

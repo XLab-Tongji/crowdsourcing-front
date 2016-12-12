@@ -21,18 +21,18 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
     function createmilestone(){
 
        var milestone_name = $scope.milestone_name;
-       var discription = $scope.discription;
+       var description = $scope.description;
        var due_date = $scope.due_date;
-       var start_time = $scope.start_time;
+       var start_date = $scope.start_date;
        
                
 
         ProjectFactory.createMilestone().post({
             'id':project_id,
             'title':milestone_name,
-            'start_time': start_time,
+            'start_date': start_date,
             'due_date':due_date,
-            'discription':discription,
+            'description':description,
             
 
         }).$promise
