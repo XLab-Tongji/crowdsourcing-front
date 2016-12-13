@@ -32,8 +32,6 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
 				if(HttpResponseFactory.isResponseSuccess(response)){
 					var data = HttpResponseFactory.getResponseData(response);
           $scope.milestone = data.milestone;
-          console.log($scope.milestone);
-
           getMilestoneLabels();
 				}else{
 	        errorHandler(response);
@@ -52,8 +50,20 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
       .then(function(response){
         if(HttpResponseFactory.isResponseSuccess(response)){
           var data = HttpResponseFactory.getResponseData(response);
-          $scope.labels = data;
-          console.log(data);
+          $scope.backlog = data[0];
+          $scope.ongoing = data[1];
+          $scope.completed = data[2];
+
+          for(var x = 0; x < $scope.backlog.length; x ++) {
+            $scope.backlog[x].index = x;
+          }
+          for(var x = 0; x < $scope.backlog.length; x ++) {
+            $scope.ongoing[x].index = x;
+          }
+          for(var x = 0; x < $scope.backlog.length; x ++) {
+            $scope.completed[x].index = x;
+          }
+
         }else{
           errorHandler(response);
         }
@@ -62,13 +72,19 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
     }
         
     $scope.sortableOptions = {
-        connectWith: ".connectList"
+        connectWith: ".connectList",
+        update: function (event, ui){ 
+          if (ui.item.sortable.received){
+            console.log("aaa");
+          //   ProjectFactory.updateMilestoneIssue().put({
+          //   'id':project_id,
+          //   'issue_id':$scope.issue.id,
+
+          // })
+      }    
+     
+    }
     };
 
-    function updateMilestoneIssue(){
-      ProjectFactory.updateMilestoneIssue().put({
-        'id':project_id,
-        'issue_id':$scope.issue.id
-      })
-    }
+  
 }]);

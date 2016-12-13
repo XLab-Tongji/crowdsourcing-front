@@ -9,8 +9,8 @@
 </div>
 <div class="wrapper wrapper-content  animated fadeInRight">
 
-    <div class="row">
-        <div class="col-lg-3" ng-repeat="label in labels">
+    <div class="row" ng-model="data">
+        <!--<div class="col-lg-3" ng-repeat="label in labels">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>{{label.name}}</h3>
@@ -32,6 +32,59 @@
                     </ul>
                 </div>
             </div>
+        </div>-->
+
+           <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>未开发</h3>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" >
+                        <li ng-repeat="issue in backlog.issues">
+                            {{issue.title}}
+                            <div class="agile-detail">
+                                <!--<a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}-->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+           <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>开发中</h3>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list">
+                        <li ng-repeat="issue in ongoing.issues">
+                            {{issue.title}}
+                            <div class="agile-detail">
+                                <!--<a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}-->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+           <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>已完成</h3>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list">
+                        <li ng-repeat="issue in completed.issues">
+                            {{issue.title}}
+                            <div class="agile-detail">
+                                <!--<a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}-->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
     </div>
 </div>
