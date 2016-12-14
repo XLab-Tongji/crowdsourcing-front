@@ -29,7 +29,10 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
   }
 
   function getDetail(id) {
-    $state.go('app.project-detail.issues-detail', { issueId: id });
+    $state.go('app.project-issues-detail', { 
+      'id': project_id,
+      'issueId': id 
+    });
   }
 
   //获取项目issue列表

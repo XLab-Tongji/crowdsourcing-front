@@ -61,7 +61,7 @@ angular.module('crowdsourcing')
             },
 
             getProjectIssueDetail: function() {
-                return $resource(XbaseUrl + '/:id/issues/:issueId', { id: '@id', issueId: 'issueId' }, {
+                return $resource(XXXbaseUrl + '/project/:id/issueid/:issueId', { id: '@id', issueId: '@issueId' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()

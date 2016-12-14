@@ -1,0 +1,116 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>问题列表</h5>
+                    
+                </div>
+                <div class="ibox-content">
+
+                    <div class="m-b-lg">
+
+                        <div class="input-group">
+                            <input type="text" placeholder="问题标题" class=" form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-white"> 查找</button>
+                                    </span>
+                        </div>
+                        <div class="m-t-md">
+
+                            <div class="pull-right">
+                                <div class="btn-group" uib-dropdown>
+                                    <button type="button" class="btn btn-sm" uib-dropdown-toggle>
+                                        排序 <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" uib-dropdown-menu="">
+                                        <li><a href="">发布时间正序</a></li>
+                                        <li><a href="">发布时间倒序</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" uib-dropdown>
+                                    <button type="button" class="btn btn-sm" uib-dropdown-toggle>
+                                        标签 <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" uib-dropdown-menu="">
+                                      <!--<li><a href="">全部</a></li>-->
+                                        <li ng-repeat="label in labels"><a href="">{{label.name}}</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group" uib-dropdown>
+                                    <button type="button" class="btn btn-sm" uib-dropdown-toggle>
+                                        发布者 <span class="caret"></span>
+                                    </button>
+                                    <ul role="menu" uib-dropdown-menu="">
+            
+                                        <li ng-repeat="name in authernames"><a href="">{{name}}</a></li>
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <strong></br></strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover issue-tracker">
+                            <tbody>
+                            <tr ng-repeat="issue in issues">
+                                <td>
+                                    <span class="label" ng-class="{'label-primary': issue.state=='opened', 'label-danger': issue.state=='closed'}">{{issue.state}}</span>
+                                </td>
+                                <td class="issue-info">
+                                    <a ng-click = "getIssueDetail(issue.project_id, issue.id)">
+                                        {{issue.title}}
+                                    </a>
+
+                                    <!--<small>
+                                        {{issue.description}}
+                                    </small>-->
+                                </td>
+                                <td>
+                                    {{issue.author.name}}
+                                </td>
+                                <td>
+                                    {{issue.created_at | date:'medium'}}
+                                </td>
+                                <!-- <td>
+                                    <span class="pie">0.52,1.041</span>
+                                    2d
+                                </td> -->
+                                <td class="text-right">
+                                    <button class="btn btn-white btn-xs" ng-repeat="label in issue.labels"> {{label}}</button>
+                                    <!-- <button class="btn btn-white btn-xs"> Mag</button>
+                                    <button class="btn btn-white btn-xs"> Rag</button> -->
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        <!--<footer>
+                          <div ng-if = "true" class="row clearfix" style="width: 100%;" >
+                            <div class="pull-left col-sm-4 m-t-sm">
+                              <span class="text-muted inline m-t-sm">&nbsp;&nbsp;&nbsp;共&nbsp;{{paginator.totalItems}}&nbsp;个问题</span>
+                            </div>
+                              <div class="pull-right">
+                              <uib-pagination max-size="7" previous-text="上一页" next-text="下一页" total-items="paginator.totalItems"
+                                ng-model="paginator.page" ng-change="pageChanged()"></uib-pagination>
+                            </div>
+                          </div>
+                        </footer>-->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

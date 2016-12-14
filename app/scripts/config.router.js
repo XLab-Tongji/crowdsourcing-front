@@ -163,14 +163,16 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-                .state('app.project-detail.issues-detail', {
-                    url: "/detail/:issueId",
+                .state('app.project-issues-detail', {
+                    url: "/:id/issue/:issueId",
                     controller: "IssueDetailController",
                     templateUrl: "views/app/project/issue_detail.html",
                     resolve: {
                         controller: ['$ocLazyLoad', function($ocLazyLoad) {
                             return $ocLazyLoad.load([
                                 'scripts/controller/app/project/IssueDetail.controller.js',
+                                'scripts/factory/Project.factory.js',
+                                'scripts/factory/HttpResponse.factory.js',
                             ]);
                         }]
                     }
@@ -438,6 +440,23 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+                //用户所有issue
+                 .state('app.issue', {
+                    url: "/myissue",
+                    controller: 'IssueManagerController',
+                    data: { pageTitle: '问题' },
+                    templateUrl: "views/app/issue/issue_list.html",
+                    resolve: {
+                        controller: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/issue/IssueManager.controller.js',
+                                'scripts/factory/Issue.factory.js',
+                            ]);
+                        }]
+                    }
+                })
+
+
                 //新issue创建页面
                 .state('app.issue-create', {
                     url: "/:project_id/issuecreate",
@@ -458,6 +477,8 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
+
+
                 .state('app.labels-create', {
                     url: "/:project_id/labelscreate",
                     controller: "ProjectLabelsCreate",
