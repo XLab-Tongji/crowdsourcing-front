@@ -34,57 +34,75 @@
             </div>
         </div>-->
 
-           <div class="col-lg-3">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>未开发</h3>
-                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list" >
+                    <!--<ul ui-sortable="sortableOptionsList[0]" class="sortable-list connectList agile-list" ng-model="issuelistBacklog" >
                         <li ng-repeat="issue in backlog.issues">
                             {{issue.title}}
                             <div class="agile-detail">
-                                <!--<a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
-                                <i class="fa fa-clock-o"></i> {{task.date}}-->
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
                             </div>
                         </li>
-                    </ul>
+                    </ul>-->
+
+
+                    <div ui-sortable="sortableOptionsList[0]" class="sortable-list connectList agile-list" ng-model="issuelistBacklog">
+
+                        <div class="agile-detail" ng-repeat="app in issuelistBacklog"># {{app.iid}} {{app.title}}</div>
+                    </div>
+
                 </div>
             </div>
         </div>
 
-           <div class="col-lg-3">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>开发中</h3>
-                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list">
+                    <!--<ul ui-sortable="sortableOptionsList[1]" class="sortable-list connectList agile-list" ng-model="issuelistOngoing">
                         <li ng-repeat="issue in ongoing.issues">
                             {{issue.title}}
                             <div class="agile-detail">
-                                <!--<a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
-                                <i class="fa fa-clock-o"></i> {{task.date}}-->
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
                             </div>
                         </li>
-                    </ul>
+                    </ul>-->
+                    <div ui-sortable="sortableOptionsList[1]" class="sortable-list connectList agile-list" ng-model="issuelistOngoing">
+
+                        <div class="agile-detail" ng-repeat="app in issuelistOngoing"># {{app.iid}} {{app.title}}</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-           <div class="col-lg-3">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <h3>已完成</h3>
-                    <ul ui-sortable="sortableOptions" class="sortable-list connectList agile-list">
+                    <!--<ul ui-sortable="sortableOptionsList[2]" class="sortable-list connectList agile-list" ng-model="issuelistDone">
                         <li ng-repeat="issue in completed.issues">
                             {{issue.title}}
                             <div class="agile-detail">
-                                <!--<a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
-                                <i class="fa fa-clock-o"></i> {{task.date}}-->
+                                <a href="#" class="pull-right btn btn-xs btn-white">{{task.tagName}}</a>
+                                <i class="fa fa-clock-o"></i> {{task.date}}
                             </div>
                         </li>
-                    </ul>
+                    </ul>-->
+
+                    <div ui-sortable="sortableOptionsList[2]" class="sortable-list connectList agile-list" ng-model="issuelistDone">
+                        
+                        <div class="agile-detail" ng-repeat="app in issuelistDone"># {{app.iid}} {{app.title}}</div>
+                    </div>
                 </div>
             </div>
         </div>
-        
+
+        <div style="clear: both;"></div>
+
 
     </div>
 </div>

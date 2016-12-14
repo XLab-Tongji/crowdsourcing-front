@@ -548,6 +548,7 @@ angular.module('crowdsourcing')
                                 'scripts/factory/HttpResponse.factory.js',
                                 'scripts/factory/ErrorHandler.factory.js',
                                 'lib/css/custom.css',
+                                'scripts/factory/User.factory.js'
                             ]);
                         }]
                     }

@@ -4,7 +4,7 @@
  * Git 项目 api
  */
 angular.module('crowdsourcing')
-    .factory('ProjectFactory', function($resource, $rootScope, SessionService) {
+    .factory('ProjectFactory', function ($resource, $rootScope, SessionService) {
         var baseUrl = base_Url;
         var XbaseUrl = xie_base_Url + '/projects';
         var XXbaseUrl = xie_base_Url + '/project';
@@ -12,7 +12,7 @@ angular.module('crowdsourcing')
 
         return {
 
-            createProject: function() {
+            createProject: function () {
                 return $resource(XbaseUrl + '/', {}, {
                     'post': {
                         method: 'POST',
@@ -21,7 +21,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectList: function() {
+            getProjectList: function () {
                 return $resource(XbaseUrl + '/', {}, {
                     'get': {
                         method: 'GET',
@@ -30,7 +30,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectDetail: function() {
+            getProjectDetail: function () {
                 return $resource(XbaseUrl + '/:id', { id: '@id' }, {
                     'get': {
                         method: 'GET',
@@ -39,7 +39,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectContent: function() {
+            getProjectContent: function () {
                 return $resource(XXbaseUrl + '/:id/tree?path=:path', { id: '@id', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
@@ -51,7 +51,7 @@ angular.module('crowdsourcing')
 
 
             //获取项目下的issue
-            getProjectIssues: function() {
+            getProjectIssues: function () {
                 return $resource(XXXbaseUrl + '/project/:id', { id: '@id' }, {
                     'get': {
                         method: 'GET',
@@ -60,7 +60,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectIssueDetail: function() {
+            getProjectIssueDetail: function () {
                 return $resource(XXXbaseUrl + '/project/:id/issueid/:issueId', { id: '@id', issueId: '@issueId' }, {
                     'get': {
                         method: 'GET',
@@ -69,7 +69,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            deleteProject: function() {
+            deleteProject: function () {
                 return $resource(XbaseUrl + '/:id', { id: '@id' }, {
                     'delete': {
                         method: 'DELETE',
@@ -77,7 +77,7 @@ angular.module('crowdsourcing')
                     }
                 });
             },
-            getProjectFileDetail: function() {
+            getProjectFileDetail: function () {
                 return $resource(XXbaseUrl + '/:id/files?filepath=:path', { id: '@id', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
@@ -86,7 +86,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectBranchesList: function() {
+            getProjectBranchesList: function () {
                 return $resource(XbaseUrl + '/:id/repository/branches', { id: '@id' }, {
                     'get': {
                         method: 'GET',
@@ -95,7 +95,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            createBranch: function() {
+            createBranch: function () {
                 return $resource(XbaseUrl + '/:id/repository/branches/:branchname/:ref', { id: '@id', branchname: '@branchname', ref: '@ref' }, {
                     'post': {
                         method: 'POST',
@@ -104,7 +104,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectBranchesNameList: function() {
+            getProjectBranchesNameList: function () {
                 return $resource(XbaseUrl + '/:id/repository/branches/names', { id: '@id' }, {
                     'get': {
                         method: 'GET',
@@ -113,7 +113,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getProjectBranchDetail: function() {
+            getProjectBranchDetail: function () {
                 return $resource(XXbaseUrl + '/:id/tree?path=:path&ref_name=:ref_name', { id: '@id', path: '{{path}}', ref_name: '{{ref_name}}' }, {
                     'get': {
                         method: 'GET',
@@ -121,7 +121,7 @@ angular.module('crowdsourcing')
                     }
                 });
             },
-            getProjectBranchFileDetail: function() {
+            getProjectBranchFileDetail: function () {
                 return $resource(XXbaseUrl + '/:id/files?sha=:ref_name&filepath=:path', { id: '@id', ref_name: '{{ref_name}}', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
@@ -130,7 +130,7 @@ angular.module('crowdsourcing')
                 });
             },
             //获取项目issue标签
-            getProjectIssueLabels: function() {
+            getProjectIssueLabels: function () {
                 return $resource(XXbaseUrl + '/:id/labels', { id: '@id' }, {
                     'get': {
                         method: 'GET',
@@ -139,7 +139,7 @@ angular.module('crowdsourcing')
                 });
             },
             //新建issue
-            createProjectIssue: function() {
+            createProjectIssue: function () {
                 return $resource(XXXbaseUrl + '/project/:id', { id: '@id' }, {
                     'post': {
                         method: 'POST',
@@ -148,7 +148,7 @@ angular.module('crowdsourcing')
                 })
             },
             //新建label
-            createLabels: function() {
+            createLabels: function () {
                 return $resource(XXbaseUrl + '/:id/labels', { id: '@id' }, {
                     'post': {
                         method: 'POST',
@@ -157,7 +157,7 @@ angular.module('crowdsourcing')
                 })
 
             },
-            resetProject: function() {
+            resetProject: function () {
                 return $resource(XbaseUrl + '/:id', { id: '@id' }, {
                     'put': {
                         method: 'PUT',
@@ -166,7 +166,7 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getMilestonelist: function() {
+            getMilestonelist: function () {
                 return $resource(XXbaseUrl + '/:id/milestones', { id: '@id' }, {
                     'get': {
                         method: 'GET',
@@ -175,8 +175,8 @@ angular.module('crowdsourcing')
                 });
             },
 
-             createMilestone: function() {
-                return $resource(XXbaseUrl + '/:id/milestones', {id:'@id'}, {
+            createMilestone: function () {
+                return $resource(XXbaseUrl + '/:id/milestones', { id: '@id' }, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -184,8 +184,8 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getMilestoneDetails: function() {
-                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId', {id:'@id' , milestoneId:'@milestoneId'}, {
+            getMilestoneDetails: function () {
+                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId', { id: '@id', milestoneId: '@milestoneId' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -193,8 +193,8 @@ angular.module('crowdsourcing')
                 });
             },
 
-            getMilestoneLabels: function() {
-                return $resource(XXbaseUrl + '/:id/labels?milestone=:milestone', {id:'@id' , milestone:'@milestone'}, {
+            getMilestoneLabels: function () {
+                return $resource(XXbaseUrl + '/:id/labels?milestone=:milestone', { id: '@id', milestone: '@milestone' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -202,23 +202,33 @@ angular.module('crowdsourcing')
                 });
             },
 
-            updateMilestoneIssue:function(){
-                return $resource(XXbaseUrl  + '/project/:id/issueid/:issue_id',{id:'@id' , issue_id:'@issue_id'},{
-                    put:{
-                        method:'PUT',
-                        headers:SessionService.headers()
+            updateMilestoneIssue: function () {
+                return $resource(XXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id' }, {
+                    put: {
+                        method: 'PUT',
+                        headers: SessionService.headers()
                     }
                 })
             },
 
-            closeMilestone:function(){
-                return $resource(XXbaseUrl  + '/:id/milestones/:milestoneId',{id:'@id' , milestoneId:'@milestoneId'},{
-                    put:{
-                        method:'PUT',
-                        headers:SessionService.headers()
+            closeMilestone: function () {
+                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId', { id: '@id', milestoneId: '@milestoneId' }, {
+                    put: {
+                        method: 'PUT',
+                        headers: SessionService.headers()
+                    }
+                })
+            },
+
+            changeMilestoneIssueState: function () {
+                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id', state: '@state' ,assignee_id:'@assignee_id'}, {
+                    put: {
+                        method: 'PUT',
+                        headers: SessionService.headers()
                     }
                 })
             }
+
 
         };
     });
