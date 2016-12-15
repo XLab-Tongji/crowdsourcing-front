@@ -1,0 +1,38 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <h5>代码质量分析</h5>
+                        <ul class="folder-list m-b-md" style="padding: 0">
+                            <li><a ui-sref=".measures"> <i class="fa fa-thumbs-up "></i> 衡量指标(Measures)
+                              <!-- <span class="label label-warning pull-right">4</span>  -->
+                            </a></li>
+                            <li><a ui-sref=".issues"> <i class="fa fa-thumbs-o-up"></i> 问题(Issues)
+                              <!-- <span class="label label-danger pull-right">1</span> -->
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                  <h4>已测项目列表：</h4>
+                  <a ui-sref=".measures">
+                    CodeAnalysisProject1
+                  </a>
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                  <h4>添加检测项目</h4>
+                  <button type="button" class="btn btn-primary btn-lg"> +</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 animated fadeInRight">
+                <div ui-view></div>
+        </div>
+    </div>
+</div>
