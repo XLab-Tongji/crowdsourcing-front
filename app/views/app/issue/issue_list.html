@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>问题列表</h5>
+                    <h5>任务列表</h5>
                     
                 </div>
                 <div class="ibox-content">
@@ -62,11 +62,11 @@
                             <tbody>
                             <tr ng-repeat="issue in issues">
                                 <td>
-                                    <span class="label" ng-class="{'label-primary': issue.state=='opened', 'label-danger': issue.state=='closed'}">{{issue.state}}</span>
+                                    <span class="label" ng-class="{'label-primary': issue.state=='opened', 'label-danger': issue.state=='closed'}">{{issue.target.state}}</span>
                                 </td>
                                 <td class="issue-info">
                                     <a ng-click = "getIssueDetail(issue.project_id, issue.id)">
-                                        {{issue.title}}
+                                        {{issue.target.title}}
                                     </a>
 
                                     <!--<small>
@@ -75,6 +75,7 @@
                                 </td>
                                 <td>
                                     {{issue.author.name}}
+                                    <a>分配的项目</a>
                                 </td>
                                 <td>
                                     {{issue.created_at | date:'medium'}}
