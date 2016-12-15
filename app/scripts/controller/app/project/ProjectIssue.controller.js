@@ -68,7 +68,7 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
         if (HttpResponseFactory.isResponseSuccess(response)) {
 
           var data = HttpResponseFactory.getResponseData(response);
-          $scope.labels=data.labels;
+          $scope.labels=data;
 
           console.log($scope.labels);
          

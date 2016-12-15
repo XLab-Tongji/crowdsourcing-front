@@ -232,14 +232,6 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
     return realid;
   }
 
-  //判断是在open或者reopen状态下是否具有assignee
-  function assigneeIsOrNo(issue) {
-
-
-
-
-
-  }
 
   /*判断undo和doing状态。open状态下到backlog状态，如果assigne已分配，则assign状态变为null,statues不变（还是open）,
   即在on doing状态下都是已分配的issue，如果用户自己移动，则分配给当前用户。close状态则改变state即可。从close移动出来的issue状态是reopen。

@@ -81,7 +81,7 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
         }).$promise.then(function (response) {
             if (HttpResponseFactory.isResponseSuccess(response)) {
                 var data = HttpResponseFactory.getResponseData(response);
-                $scope.labelslist = data.labels;
+                $scope.labelslist = data;
 
             }
             else {
