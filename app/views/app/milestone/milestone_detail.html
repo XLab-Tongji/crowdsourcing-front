@@ -49,10 +49,10 @@
                     </ul>-->
 
 
-                    <div ui-sortable="sortableOptionsList[0]" class="sortable-list connectList agile-list" ng-model="issuelistBacklog">
+                    <ul ui-sortable="sortableOptionsList[0]" class="sortable-list connectList agile-list" ng-model="issuelistBacklog">
 
-                        <div class="agile-detail" ng-repeat="app in issuelistBacklog"># {{app.iid}} {{app.title}}</div>
-                    </div>
+                        <li class="agile-detail" ng-repeat="app in issuelistBacklog"># {{app.iid}} {{app.title}}</li>
+                    </ul>
 
                 </div>
             </div>
@@ -71,10 +71,10 @@
                             </div>
                         </li>
                     </ul>-->
-                    <div ui-sortable="sortableOptionsList[1]" class="sortable-list connectList agile-list" ng-model="issuelistOngoing">
+                    <ul ui-sortable="sortableOptionsList[1]" class="sortable-list connectList agile-list" ng-model="issuelistOngoing">
 
-                        <div class="agile-detail" ng-repeat="app in issuelistOngoing"># {{app.iid}} {{app.title}}</div>
-                    </div>
+                        <li class="agile-detail" ng-repeat="app in issuelistOngoing"># {{app.iid}} {{app.title}}</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -93,10 +93,10 @@
                         </li>
                     </ul>-->
 
-                    <div ui-sortable="sortableOptionsList[2]" class="sortable-list connectList agile-list" ng-model="issuelistDone">
+                    <ul ui-sortable="sortableOptionsList[2]" class="sortable-list connectList agile-list" ng-model="issuelistDone">
                         
-                        <div class="agile-detail" ng-repeat="app in issuelistDone"># {{app.iid}} {{app.title}}</div>
-                    </div>
+                        <li class="agile-detail" ng-repeat="app in issuelistDone"># {{app.iid}} {{app.title}}</li>
+                    </ul>
                 </div>
             </div>
         </div>

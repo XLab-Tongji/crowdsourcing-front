@@ -247,7 +247,7 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
   close 状态不能设置为null。否则gitlab会出bug。assigned null状态只有在backlog
   ***gitlab 不会将assignee设置为null时将issue放回backlog？？再进行分配就会有问题（reopen才可以进行分配）
   ***系统限制，如果是reopen状态不能将assignee设置为null,只能改变assignee id。
-  ***即不存在再将问题移动到backlog里的操作逻辑
+  ***即不存在再将问题移动到backlog里的操作逻辑***
   */
 
 
