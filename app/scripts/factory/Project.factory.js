@@ -221,7 +221,7 @@ angular.module('crowdsourcing')
             },
 
             changeMilestoneIssueState: function () {
-                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id', state: '@state' ,assignee_id:'@assignee_id'}, {
+                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id'}, {
                     put: {
                         method: 'PUT',
                         headers: SessionService.headers()

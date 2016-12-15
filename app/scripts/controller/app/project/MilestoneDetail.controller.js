@@ -23,6 +23,7 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
 
     getMilestoneDetail();
     getNowUserId(SessionService.getCurrentUser().username);
+
     console.log($scope.assignee_id);
   }
 
@@ -70,7 +71,7 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
 
 
   }
-var itemid;
+  var itemid;
   /*option for sortable, a life cycle in move, B-->C, B remove(),update()，C receive(),update() 
   */
   function createOptions(listName) {
@@ -84,6 +85,7 @@ var itemid;
         console.log("list " + _listName + ": helper" + item);
         itemid = getIssuesID(item.context.textContent);
         console.log(itemid);
+        itemid = getIssueRealId(itemid);
         return item;
       },
       activate: function () {
@@ -109,18 +111,20 @@ var itemid;
       },
       receive: function () {
         console.log(itemid);
-    
+
         if (_listName == "A") {
-          changeState(itemid, "open", "null");
+          // changeState(itemid, "open", "null");
         } else if (_listName == "B") {
-          changeState(itemid, "open", $scope.assignee_id);
+
+          changeState(itemid, "reopen", $scope.assignee_id);
+
         } else if (_listName == "C") {
-          changeState(itemid, "close", "");
+          changStateToClose(itemid, "close");
         }
 
 
         console.log("list " + _listName + ": receive");
-      
+
       },
       remove: function () {
         console.log("list " + _listName + ": remove");
@@ -166,6 +170,26 @@ var itemid;
         }
       })
   }
+  //put milestone function to close 
+  function changStateToClose(issue_id, state) {
+    ProjectFactory.changeMilestoneIssueState().put({
+      'id': project_id,
+      'issue_id': issue_id,
+      'state': state
+    })
+      .$promise
+      .then(function (response) {
+        if (HttpResponseFactory.isResponseSuccess(response)) {
+          var data = HttpResponseFactory.getResponseData(response);
+          if (response.code == 200) {
+            ToasterTool.success('issue关闭成功', '');
+          } else {
+            ToasterTool.error('issue 关闭失败', '');
+          }
+        }
+      })
+
+  }
 
 
   //get issue id 
@@ -187,16 +211,43 @@ var itemid;
       .$promise
       .then(function (response) {
         var data = response.data;
-        if (response == 200) {
-          $scope.assignee_id = data[0].id;
-        }
+        $scope.assignee_id = data[0].id;
       })
+
+  }
+
+  //通过issue iid 获取issue id
+  function getIssueRealId(id) {
+
+    var realid;
+
+    for (var i = 0; i < $scope.milestoneissue.length; i++) {
+
+      if (id == $scope.milestoneissue[i].iid) {
+        realid = $scope.milestoneissue[i].id;
+      }
+
+    }
+
+    return realid;
+  }
+
+  //判断是在open或者reopen状态下是否具有assignee
+  function assigneeIsOrNo(issue) {
+
+
+
+
 
   }
 
   /*判断undo和doing状态。open状态下到backlog状态，如果assigne已分配，则assign状态变为null,statues不变（还是open）,
   即在on doing状态下都是已分配的issue，如果用户自己移动，则分配给当前用户。close状态则改变state即可。从close移动出来的issue状态是reopen。
   即reopen open close三种状态，区分open在backlog或者是ondoing状态需要判定assign是否为空，为空就是backlog，不为空就是ondoing
+  close 状态不能设置为null。否则gitlab会出bug。assigned null状态只有在backlog
+  ***gitlab 不会将assignee设置为null时将issue放回backlog？？再进行分配就会有问题（reopen才可以进行分配）
+  ***系统限制，如果是reopen状态不能将assignee设置为null,只能改变assignee id。
+  ***即不存在再将问题移动到backlog里的操作逻辑
   */
 
 
