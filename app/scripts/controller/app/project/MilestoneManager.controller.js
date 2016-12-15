@@ -29,6 +29,8 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
 
     }
 
+  
+
     function getMilestoneListSuccess(data) {
       if (data.success) {
         angular.copy(data.data.milestones, $scope.milestones);

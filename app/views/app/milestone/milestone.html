@@ -40,10 +40,11 @@
         <!-- <small>过期日期：{{milestone.created_at | date:'medium' }}</small> -->
     </td>
     <td class="milestone-completion">
-        <small>Completion with: {{milestone.rate}}%</small>
-        <div class="progress progress-mini">
-            <div style="width: 0%;" class="progress-bar"></div>
-        </div>
+        <small>Completion with: {{milestone.rate*100 | number:0 }}%</small>
+        <!--<div class="progress progress-mini">
+            <div style="width:69%;" class="progress-bar"></div>
+        </div>-->
+        <tek-progress-bar ng-model=(milestone.rate)*100></tek-progress-bar>
     </td>
 
     <td class="milestone-actions">

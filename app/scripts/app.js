@@ -21,6 +21,7 @@
       'summernote',
       'colorpicker.module',
       'localytics.directives',
-      'ui.sortable'
+      'ui.sortable',
+      'Tek.progressBar'
           ])
 })();
