@@ -74,6 +74,10 @@ app.controller('IssueDetailController', ['$scope', '$state', '$stateParams', 'To
           var data = HttpResponseFactory.getResponseData(response);
           //刷新
           getIssueComment();
+          //set blanck
+          $scope.commentContent="";
+
+
         } else {
           ToasterTool.error(response);
         }

@@ -1,9 +1,9 @@
 <div class="wrapper wrapper-content  animated fadeInRight">
     <div class="social-feed-box">
 
-        <div class="pull-right social-action" uib-dropdown>
+        <!--<div class="pull-right social-action" uib-dropdown>
             <button type="button" class="btn btn-sm btn-white" ng-click="goBack()"> <i class="fa fa-mail-reply"></i> </button>
-        </div>
+        </div>-->
         <div class="social-avatar">
             <a href="" class="pull-left">
                 <img alt="image" ng-src="{{issueDetail.author.avatar_url}}">
@@ -18,11 +18,8 @@
         </div>
 
         <div class="social-body">
-            <p>
-                {{issueDetail.description}}
+            <p ng-bind-html="issueDetail.description">
             </p>
-
-
 
             <div class="btn-group">
                 <button class="btn btn-white btn-xs" ng-repeat="label in issueDetail.labels">{{label}}</button>
