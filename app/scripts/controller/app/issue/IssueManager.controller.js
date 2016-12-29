@@ -4,6 +4,7 @@ app.controller('IssueManagerController', ['$scope', '$state', 'ToasterTool', 'Is
     $state, ToasterTool, IssueFactory,$stateParams) {
 
     $scope.issues = [];
+    $scope.projectid;
     
     init();
 
@@ -16,16 +17,15 @@ app.controller('IssueManagerController', ['$scope', '$state', 'ToasterTool', 'Is
 
     function getIssues(data){
       IssueFactory.getIssueList().get({
-        // 'members':members
       },  getIssueListSuccess, getIssueListFailed);
-
-      //  var members = data.members;
-
     }
+
+
 
     function getIssueListSuccess(data) {
       if (data.success) {
         console.log(data);
+       
         angular.copy(data.data, $scope.issues);
       }else{
         ToasterTool.error('错误',data.message);

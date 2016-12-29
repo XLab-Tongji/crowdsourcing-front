@@ -65,7 +65,7 @@
                                     <span class="label" ng-class="{'label-primary': issue.state=='opened', 'label-danger': issue.state=='closed'}">{{issue.target.state}}</span>
                                 </td>
                                 <td class="issue-info">
-                                    <a ng-click = "getIssueDetail(issue.project_id, issue.id)">
+                                    <a ng-click = "getIssueDetail(issue.project.id, issue.id)">
                                         {{issue.target.title}}
                                     </a>
 
