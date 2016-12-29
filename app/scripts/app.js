@@ -23,7 +23,7 @@
       'localytics.directives',
       'ui.sortable',
       'Tek.progressBar',
-      'ncy-angular-breadcrumb',
+     
       'chart.js'
           ])
 })();
