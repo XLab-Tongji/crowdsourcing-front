@@ -8,17 +8,20 @@
                         <ul class="folder-list m-b-md" style="padding: 0">
                             <li><a ui-sref="#"> <i class="fa fa-history " name="submit"></i> 提交  </a></li>
                             <li><a ng-click="goBranchList()"> <i class="fa fa-code-fork"></i> 分支  </a></li>
-                            <li><a ui-sref=".follower"> <i class="fa fa-share-alt"></i> 合并请求  </a></li>
-                            <li><a ui-sref=".follower"> <i class="fa fa-line-chart"></i> 项目统计  </a></li>
                         </ul>
 
-                        <div class="clearfix"></div>
+                        <!--<div class="clearfix"></div>-->
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-10 animated fadeInRight">
-                <div ui-view></div>
+             
+             <div class="ibox-content">
+                    <div ui-view></div>
+             </div>
+
+             
         </div>
     </div>
 </div>

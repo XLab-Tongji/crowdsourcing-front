@@ -221,13 +221,32 @@ angular.module('crowdsourcing')
             },
 
             changeMilestoneIssueState: function () {
-                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id'}, {
+                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id' }, {
                     put: {
                         method: 'PUT',
                         headers: SessionService.headers()
                     }
                 })
-            }
+            },
+            //get issue comment or activtities 
+            getIssueComment: function () {
+                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id/notes', { id: '@id', issue_id: '@issue_id' }, {
+                    get: {
+                        method: 'GET',
+                        headers: SessionService.headers()
+                    }
+                })
+            },
+            //post a new issue comment
+            postIssueComment: function () {
+                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id/notes', { id: '@id', issue_id: '@issue_id' ,body: '@body'}, {
+                    post: {
+                        method: 'POST',
+                        headers: SessionService.headers()
+                    }
+                })
+            },
+
 
 
         };

@@ -22,6 +22,7 @@
       'colorpicker.module',
       'localytics.directives',
       'ui.sortable',
-      'Tek.progressBar'
+      'Tek.progressBar',
+      'ncy-angular-breadcrumb'
           ])
 })();

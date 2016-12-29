@@ -46,6 +46,9 @@ angular.module('crowdsourcing')
                     controller: 'ProjectManagerController',
                     data: { pageTitle: '项目' },
                     templateUrl: "views/app/project/project_list.html",
+                    ncyBreadCrumb: {
+                        label: 'Project List'
+                    },
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
@@ -61,6 +64,7 @@ angular.module('crowdsourcing')
                     url: "/project/:id",
                     controller: 'ProjectManagerController',
                     data: { pageTitle: '项目' },
+              
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
@@ -77,6 +81,9 @@ angular.module('crowdsourcing')
                     controller: 'ProjectCreateController',
                     data: { pageTitle: '新建项目' },
                     templateUrl: "views/app/project/create_project.html",
+                    ncyBreadCrumb: {
+                        label: 'Project Create'
+                    },
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
@@ -88,7 +95,6 @@ angular.module('crowdsourcing')
                         }]
                     }
                 })
-
 
                 .state('app.project-detail', {
                     url: "/project/detail/:id",

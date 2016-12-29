@@ -1,77 +1,87 @@
 <div class="wrapper wrapper-content  animated fadeInRight">
-<div class="social-feed-box">
+    <div class="social-feed-box">
 
-    <div class="pull-right social-action" uib-dropdown>
-        <button type="button" class="btn btn-sm btn-white" ng-click="goBack()"> <i class="fa fa-mail-reply"></i> </button>
-    </div>
-    <div class="social-avatar">
-        <a href="" class="pull-left">
-            <img alt="image" ng-src="{{issueDetail.author.avatar_url}}">
-        </a>
-        <div class="media-body">
-            <a href="#">
+        <div class="pull-right social-action" uib-dropdown>
+            <button type="button" class="btn btn-sm btn-white" ng-click="goBack()"> <i class="fa fa-mail-reply"></i> </button>
+        </div>
+        <div class="social-avatar">
+            <a href="" class="pull-left">
+                <img alt="image" ng-src="{{issueDetail.author.avatar_url}}">
+            </a>
+            <div class="media-body">
+                <a href="#">
                 {{issueDetail.title}}
             </a>
-            <small class="text-muted">{{issueDetail.created_at}}</small>
+                <small class="text-muted">{{issueDetail.created_at | date:'medium'}}</small> 
+                <small class="text-muted">  由{{issueDetail.author.name}}创建</small>
+            </div>
         </div>
-    </div>
-    <div class="social-body">
-        <p>
-            {{issueDetail.author.name}}
-        </p>
 
-        <div class="btn-group">
-            <button class="btn btn-white btn-xs" ng-repeat="label in issueDetail.labels"><i class="fa fa-thumbs-up"></i> {{label}}</button>
-            <!-- <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
-            <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button> -->
+        <div class="social-body">
+            <p>
+                {{issueDetail.description}}
+            </p>
+
+
+
+            <div class="btn-group">
+                <button class="btn btn-white btn-xs" ng-repeat="label in issueDetail.labels">{{label}}</button>
+
+            </div>
+
+
+
+
         </div>
-    </div>
-    <div class="social-footer">
-        <div class="social-comment" ng-repeat="note in issueDetail.notes">
-            <a href="" class="pull-left">
-                <img alt="image" ng-src="{{note.author.avatar_url}}">
-            </a>
-            <div class="media-body">
-                <a href="#">
+
+        <div class="social-footer">
+            <div class="social-comment" ng-repeat="note in issueDetail.notes">
+                <a href="" class="pull-left">
+                    <img alt="image" ng-src="{{note.author.avatar_url}}">
+                </a>
+                <div class="media-body">
+                    <a href="#">
                     {{note.author.name}}
-                </a>
-                {{note.body}}
-                <br/>
-                <!-- <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> - -->
-                <small class="text-muted">{{note.created_at}}</small>
-            </div>
-        </div>
+                </a> {{note.body}}
+                    <br/>
 
-        <!-- <div class="social-comment">
-            <a href="" class="pull-left">
-                <img alt="image" src="images/avatar2.jpg">
-            </a>
-            <div class="media-body">
-                <a href="#">
-                    Andrew Williams
-                </a>
-                Making this the first true generator on the Internet. It uses a dictionary of.
-                <br/>
-                <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 11 Like this!</a> -
-                <small class="text-muted">10.07.2014</small>
+                    <small class="text-muted">{{note.created_at}}</small>
+                </div>
             </div>
-        </div> -->
 
-        <div class="social-comment">
-            <a href="" class="pull-left">
-                <img alt="image" ng-src="{{currentUser.avatarUrl}}">
-            </a>
-            <div class="media-body">
-                <textarea class="form-control" placeholder="写入评论..."></textarea>
+            <div class="social-comment" ng-repeat="item in issueComment | orderBy: 'updated_at'">
+                <a href="" class="pull-left">
+                    <img alt="image" ng-src="{{item.author.avatar_url}}">
+                </a>
+                <div class="media-body">
+                    <a>
+                    {{item.author.username}}
+                </a> {{item.body}}
+                    <br/>
+                    <!--<a href="#" class="small"><i class="fa fa-thumbs-up"></i> 11 Like this!</a> -->
+                    <small class="text-muted">{{item.updated_at | date:'medium'}}</small>
+                </div>
             </div>
-          </br>
-            <button type="button" class="btn btn-sm btn-primary" ng-click="">
+
+
+
+            <div class="social-comment">
+                <a href="" class="pull-left">
+                    <img alt="image" ng-src="{{currentUser.avatarUrl}}">
+                </a>
+                <div class="media-body">
+                    <textarea class="form-control" placeholder="写入评论..." ng-model="commentContent"></textarea>
+                </div>
+                </br>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="postNewComment()">
                 评论
             </button>
-          </br>
+                </br>
+            </div>
+
         </div>
 
     </div>
 
-</div>
+
 </div>

@@ -65,5 +65,10 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
       $route.reload();
     }
 
+    //跳转:)
+    // function goProjectDetail(){
+    //   $state.go("")
+    // }
+
 
 }]);
