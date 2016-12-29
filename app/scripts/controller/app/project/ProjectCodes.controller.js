@@ -11,6 +11,7 @@ app.controller('ProjectCodesController', ['$scope', '$state', '$stateParams', '$
   function init() {
    
     $scope.goBranchList = goBranchList;
+    $scope.goCommitStatistic=goCommitStatistic;
 
   }
 
@@ -21,6 +22,10 @@ app.controller('ProjectCodesController', ['$scope', '$state', '$stateParams', '$
     });
   }
 
-
+  function goCommitStatistic(){
+    $state.go("app.project-detail.codes.commitStatistic",{
+      "project_id": project_id
+    })
+  }
 
 }]);

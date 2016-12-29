@@ -8,7 +8,8 @@ angular.module('crowdsourcing')
         var baseUrl = base_Url;
         var XbaseUrl = xie_base_Url + '/projects';
         var XXbaseUrl = xie_base_Url + '/project';
-        var XXXbaseUrl = xie_base_Url + '/issues'
+        var XXXbaseUrl = xie_base_Url + '/issues';
+        var XXXXbaseUrl=xie_base_Url+'/commit';
 
         return {
 
@@ -246,7 +247,16 @@ angular.module('crowdsourcing')
                     }
                 })
             },
-
+            //get repository commit statistic data
+            getCommitStatistic: function(){
+                return $resource(XXXXbaseUrl+'/contributors/:project_id',{project_id: '@project_id'},{
+                    get:{
+                        method: 'GET',
+                        headers: SessionService.headers()
+                    }
+                })
+            }
+ 
 
 
         };

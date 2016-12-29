@@ -44,7 +44,8 @@
     "chosen": "^1.6.2",
     "angular-chosen-localytics": "^1.5.1",
     "angular-ui-sortable": "^0.16.0",
-    "angular-tek-progress-bar": "^0.2.0"
+    "angular-tek-progress-bar": "^0.2.0",
+    "angular-chart.js": "^1.1.1"
   },
   "resolutions": {
     "jquery": "~2.1.4",

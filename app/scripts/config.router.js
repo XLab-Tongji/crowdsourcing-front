@@ -620,6 +620,22 @@ angular.module('crowdsourcing')
                     }
                 })
 
+                //项目提交信息统计页面
+                .state('app.project-detail.codes.commitStatistic', {
+                    url: "/:project_id/commitStatistic",
+                    controller: "ProjectCommitStatisticController",
+                    templateUrl: "views/app/project/project_commit_display.html",
+                    data: { pageTitle: '项目提交统计' },
+                    resolve: {
+                        controller: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'scripts/controller/app/project/ProjectCommitDisplay.controller.js',
+                                'scripts/factory/Project.factory.js',
+                            ]);
+                        }]
+                    }
+                })
+
 
 
 
