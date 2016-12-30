@@ -104,7 +104,6 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
       "project_id": project_id
     })
   }
-
   //创建新issue
   function createProjectIssue() {
 

@@ -92,7 +92,7 @@
                                     2d
                                 </td> -->
                                 <td class="text-right">
-                                    <button class="btn btn-white btn-xs" ng-repeat="label in issue.labels"> {{label}}</button>
+                                    <button class="btn btn-white btn-xs" ng-style="{'background-color':labels[label].color,'color':'white'}" ng-repeat="label in issue.labels"> {{label}}</button>
                                     <!-- <button class="btn btn-white btn-xs"> Mag</button>
                                     <button class="btn btn-white btn-xs"> Rag</button> -->
                                 </td>
