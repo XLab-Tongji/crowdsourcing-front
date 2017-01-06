@@ -46,16 +46,5 @@ angular.module('crowdsourcing')
         });
       },
 
-      // getProjectContent: function () {
-      //   return $resource(XXbaseUrl + '/:id/tree?path=:path', { id: '@id', path: '{{path}}' }, {
-      //     'get': {
-      //       method: 'GET',
-      //       headers: SessionService.headers(),
-      //       //isArray: true
-      //     }
-      //   });
-      // },
-
-
     };
   });

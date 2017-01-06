@@ -594,19 +594,22 @@ angular.module('crowdsourcing')
                 //代码检测页面
                 .state('app.codeAnalysis', {
                     url: "/codeAnalysis",
-                    // controller: 'MilestoneCreateController',
+                    controller: 'CodeMeasureController',
                     data: { pageTitle: '代码分析' },
                     templateUrl: "views/app/codemeasures/CAContainer.html",
                     resolve: {
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
-
+                                'scripts/controller/app/code_analysis/CodeMeasure.controller.js',
+                                'scripts/factory/Project.factory.js',
+                                'scripts/factory/CodeAnalysis.factory.js'
                             ]);
                         }]
                     }
                 })
                 .state('app.codeAnalysis.measures', {
                     url: "/measures",
+                    // controller:'CodeMeasureController',
                     templateUrl: "views/app/codemeasures/measures.html",
                     resolve: {
 
