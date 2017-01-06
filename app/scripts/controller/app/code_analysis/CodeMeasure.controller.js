@@ -24,12 +24,6 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
     function getProjectListSuccess(data) {
       if (data.success) {
         angular.copy(data.data, $scope.projects);
-        // for(var x = 0;x < data.data.length;x++){
-        //     // console.log(data.data[x].name_with_namespace);
-        //     $scope.projects.push(data.data[x].name_with_namespace);
-        // }
-        // console.log($scope.projects);
-        // $scope.test="test";
       }else{
         ToasterTool.error('错误',data.message);
       }
@@ -54,12 +48,8 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
 
         }).$promise
           .then(function (data) {
-            console.log(data.success);
             if (data.success) {
-                // ToasterTool.success('新建成功！');
-                // $state.go('app.milestone',{
-                //     'id':project_id
-                // });
+                console.log(data.data);
             } else {
                 ToasterTool.error('错误', data.message);
             }
