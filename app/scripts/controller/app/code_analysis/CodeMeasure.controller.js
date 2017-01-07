@@ -39,17 +39,23 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
         name = name.replace(" ","");
         name = name.replace(" ","");
 
-        var archivePath = "http://115.159.55.131/" + name + "/repository/archive.zip?ref=master";
+        // var archivePath = "http://115.159.55.131/" + name + "/repository/archive.zip?ref=master";
+        var archivePath = "https://github.com/alina52/File-Management-With-DesignPattern/archive/master.zip";
         console.log(archivePath);
 
         CodeAnalysisFactory.codeAnalysis().post({
+            // 'name':name,
             'path':'test',
             'archivePath':archivePath            
 
         }).$promise
           .then(function (data) {
             if (data.success) {
-                console.log(data.data);
+              $scope.detectedProject = name;
+              $scope.metric = data.data.SoftwareMetrics[0][0].metricsData;
+              console.log(data.data.SoftwareMetrics[0]);
+              console.log(data.data.SoftwareMetrics[0][0]);
+              console.log($scope.metric);
             } else {
                 ToasterTool.error('错误', data.message);
             }

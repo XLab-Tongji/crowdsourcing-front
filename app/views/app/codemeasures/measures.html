@@ -75,7 +75,7 @@
                           </div>
                           <div class="col-sm-4">
                             <h3>Code Smell</h3>
-                            <h1>70</h1>
+                            <h1>0</h1>
                           </div>
                           <div class="col-sm-4">
                             <h4>分析结果1</h4>
@@ -90,16 +90,16 @@
                           </div>
                           <div class="col-sm-4">
                             <h3>Line of Code</h3>
-                            <h1>150</h1>
+                            <h1>0</h1>
                           </div>
                           <div class="col-sm-4">
                             <ul class="folder-list m-b-md" style="padding: 0">
-                                <li>  Lines <span class="pull-right">200</span> </a></li>
-                                <li>  Statements <span class="pull-right">98</span></a></li>
-                                <li>  Functions <span class="pull-right">12</span> </a></li>
-                                <li>  Classes <span class="pull-right">5</span></a></li>
-                                <li>  Files <span class="pull-right">3</span> </a></li>
-                                <li>  Directories <span class="pull-right">3</span></a></li>
+                                <li>  Lines <span class="pull-right">0</span> </a></li>
+                                <li>  Statements <span class="pull-right">0</span></a></li>
+                                <li>  Functions <span class="pull-right">0</span> </a></li>
+                                <li>  Classes <span class="pull-right">0</span></a></li>
+                                <li>  Files <span class="pull-right">0</span> </a></li>
+                                <li>  Directories <span class="pull-right">0</span></a></li>
                             </ul>
                           </div>
                       </div>
@@ -111,13 +111,13 @@
                           </div>
                           <div class="col-sm-4">
                             <h3>Complexity</h3>
-                            <h1>30</h1>
+                            <h1>0</h1>
                           </div>
                           <div class="col-sm-4">
                             <ul class="folder-list m-b-md" style="padding: 0">
-                                <li>  Complexity / Function <span class="pull-right">10.0</span> </a></li>
-                                <li>  Complexity / File <span class="pull-right">10.0</span></a></li>
-                                <li>  Complexity / Class <span class="pull-right">10.0</span> </a></li>
+                                <li>  Complexity / Function <span class="pull-right">0.0</span> </a></li>
+                                <li>  Complexity / File <span class="pull-right">0.0</span></a></li>
+                                <li>  Complexity / Class <span class="pull-right">0.0</span> </a></li>
                             </ul>
                           </div>
                       </div>
@@ -129,14 +129,14 @@
                           </div>
                           <div class="col-sm-4">
                             <h3>Comments(%)</h3>
-                            <h1>30</h1>
+                            <h1>0</h1>
                           </div>
                           <div class="col-sm-4">
                             <ul class="folder-list m-b-md" style="padding: 0">
-                                <li>  Comment Lines <span class="pull-right">13</span> </a></li>
-                                <li>  Public  API <span class="pull-right">8</span></a></li>
-                                <li>  Public Documented API (%) <span class="pull-right">12.5%</span></a></li>
-                                <li>  Public Undocumented API <span class="pull-right">7</span></a></li>
+                                <li>  Comment Lines <span class="pull-right">0</span> </a></li>
+                                <li>  Public  API <span class="pull-right">0</span></a></li>
+                                <li>  Public Documented API (%) <span class="pull-right">0.0%</span></a></li>
+                                <li>  Public Undocumented API <span class="pull-right">0</span></a></li>
                             </ul>
                           </div>
                       </div>
@@ -349,7 +349,7 @@
                           </div>
                           <div class="col-sm-4">
                             <h3>Code Smell</h3>
-                            <h1>70</h1>
+                            <h1>0</h1>
                           </div>
                           <div class="col-sm-4">
                             <h4>分析结果1</h4>
@@ -431,12 +431,12 @@
                           </div>
                           <div class="col-sm-10">
                             <ul class="folder-list m-b-md" style="padding: 0">
-                                <li>  总行数 LOC <span class="pull-right">200</span> </a></li>
-                                <li>  纯代码的行数  SLOC <span class="pull-right">150</span></a></li>
-                                <li>  空行数 BLOC <span class="pull-right">30</span> </a></li>
-                                <li>  同时包含代码和注释的行数  C&SLOC <span class="pull-right">8</span></a></li>
-                                <li>  纯注释的行数  CLOC <span class="pull-right">12</span> </a></li>
-                                <li>  注释比例 <span class="pull-right">10%</span></a></li>
+                                <li>  总行数 LOC <span class="pull-right">{{metric.loc_TOTAL}}</span> </a></li>
+                                <li>  纯代码的行数  SLOC <span class="pull-right">{{metric.loc_EXECUTABLE}}</span></a></li>
+                                <li>  空行数 BLOC <span class="pull-right">{{metic.loc_BLANK}}</span> </a></li>
+                                <li>  同时包含代码和注释的行数  C&SLOC <span class="pull-right">{{metric.loc_CODE_AND_COMMENT}}</span></a></li>
+                                <li>  纯注释的行数  CLOC <span class="pull-right">{{metric.loc_COMMENT}}</span> </a></li>
+                                <li>  注释比例 <span class="pull-right">{{metric.percent_COMMENTS}}</span></a></li>
                             </ul>
                           </div>
                       </div>
@@ -449,22 +449,22 @@
                           </div>
                           <div class="col-sm-10">
                             <ul class="folder-list m-b-md" style="padding: 0">
-                                <li>  分支数 <span class="pull-right">12</span> </a></li>
-                                <li>  函数调用数 <span class="pull-right">21</span></a></li>
-                                <li>  参数个数 <span class="pull-right">6</span> </a></li>
-                                <li>  程序复杂度 D <span class="pull-right">5</span></a></li>
-                                <li>  程序困难度 I <span class="pull-right">3</span> </a></li>
-                                <li>  预计的人力成本 E = D * V <span class="pull-right">30</span></a></li>
-                                <li>  预计的错误数 B <span class="pull-right">7</span> </a></li>
-                                <li>  程序长度N = N1 + N2 <span class="pull-right">30</span></a></li>
-                                <li>  程序的可理解程度L=(2/n1) * (n2/N2). <span class="pull-right">0.7</span> </a></li>
-                                <li>  预计的实现耗时T= E/18 <span class="pull-right">5</span></a></li>
-                                <li>  编码程序所需的最小比特数V <span class="pull-right">3</span> </a></li>
-                                <li>  维护严重程度 ＝ ev(G)/v(G) <span class="pull-right">3</span></a></li>
-                                <li>  运算元总数 <span class="pull-right">33</span> </a></li>
-                                <li>  运算符总数 <span class="pull-right">19</span></a></li>
-                                <li>  不重复的运算元数 <span class="pull-right">23</span> </a></li>
-                                <li>  不重复的运算符数 <span class="pull-right">9</span></a></li>
+                                <li>  分支数 <span class="pull-right">{{metric.branch_COUNT}}</span> </a></li>
+                                <li>  函数调用数 <span class="pull-right">{{metirc.call_PAIRS}}</span></a></li>
+                                <li>  参数个数 <span class="pull-right">{{metric.parameter_COUNT}}</span> </a></li>
+                                <!-- <li>  程序复杂度 D <span class="pull-right">5</span></a></li> -->
+                                <li>  程序困难度 I <span class="pull-right">{{metric.halstead_DIFFICULTY}}</span> </a></li>
+                                <li>  预计的人力成本 E = D * V <span class="pull-right">{{metric.halstead_EFFORT_EST}}</span></a></li>
+                                <li>  预计的错误数 B <span class="pull-right">{{metric.halstead_ERROR_SET}}</span> </a></li>
+                                <li>  程序长度N = N1 + N2 <span class="pull-right">{{metric.halstead_LENGTH}}</span></a></li>
+                                <!-- <li>  程序的可理解程度L=(2/n1) * (n2/N2). <span class="pull-right">0.7</span> </a></li> -->
+                                <li>  预计的实现耗时T= E/18 <span class="pull-right">{{metric.halstead_PROGRAM_TIME}}</span></a></li>
+                                <!-- <li>  编码程序所需的最小比特数V <span class="pull-right">3</span> </a></li> -->
+                                <li>  维护严重程度 ＝ ev(G)/v(G) <span class="pull-right">{{metric.maintenance_SEVERITY}}</span></a></li>
+                                <li>  运算元总数 <span class="pull-right">{{metirc.num_OPERANDS}}</span> </a></li>
+                                <li>  运算符总数 <span class="pull-right">{{metric.num_OPERATORS}}</span></a></li>
+                                <li>  不重复的运算元数 <span class="pull-right">{{metric.num_UNIQUE_OPERANDS}}</span> </a></li>
+                                <li>  不重复的运算符数 <span class="pull-right">{{metric.num_UNIQUE_OPERATORS}}</span></a></li>
                             </ul>
                           </div>
                       </div>
@@ -477,22 +477,22 @@
                           </div>
                           <div class="col-sm-10">
                             <ul class="folder-list m-b-md" style="padding: 0">
-                                <li>  节点数 <span class="pull-right">12</span> </a></li>
-                                <li>  条件数 <span class="pull-right">22</span> </a></li>
-                                <li>  连锁条件数 <span class="pull-right">4</span></a></li>
-                                <li>  能独立影响决策的条件数 <span class="pull-right">8</span> </a></li>
-                                <li>  圈复杂度v(G) ＝ 线性独立路径的个数 <span class="pull-right">17</span></a></li>
-                                <li>  圈密度vd(G) ＝ 圈复杂度／代码行数 <span class="pull-right">0.06</span> </a></li>
-                                <li>  决策点的数量 <span class="pull-right">5</span></a></li>
-                                <li>  决策密度dd(G) ＝ 条件数／决策点数 <span class="pull-right">3</span> </a></li>
-                                <li>  设计复杂度iv(G) ＝ 外部调用数 <span class="pull-right">3</span></a></li>
-                                <li>  设计密度id(G) ＝ iv(G)/v(G) <span class="pull-right">0.1</span> </a></li>
-                                <li>  边缘数 ＝ 模块间的控制转移数 <span class="pull-right">98</span></a></li>
-                                <li>  本质复杂度ev(G) <span class="pull-right">12</span> </a></li>
-                                <li>  本质密度ed(G) ＝ (ev(G)-1)/(v(G)-1) <span class="pull-right">0.17</span></a></li>
-                                <li>  全局数据复杂度gdv(G) <span class="pull-right">3</span> </a></li>
-                                <li>  全局数据密度gd(G) ＝ gdv(G) / v(G) <span class="pull-right">0.3</span></a></li>
-                                <li>  规范化的圈复杂度 ＝ v(G) / nl <span class="pull-right">7</span></a></li>
+                                <li>  节点数 <span class="pull-right">{{metric.node_COUNT}}</span> </a></li>
+                                <li>  条件数 <span class="pull-right">{{metric.condition_COUNT}}</span> </a></li>
+                                <!-- <li>  连锁条件数 <span class="pull-right">4</span></a></li>
+                                <li>  能独立影响决策的条件数 <span class="pull-right">8</span> </a></li> -->
+                                <li>  圈复杂度v(G) ＝ 线性独立路径的个数 <span class="pull-right">{{metric.cyclomatic_COMPLEXITY}}</span></a></li>
+                                <li>  圈密度vd(G) ＝ 圈复杂度／代码行数 <span class="pull-right">{{metric.cyclomatic_DENSITY}}</span> </a></li>
+                                <li>  决策点的数量 <span class="pull-right">{{metric.decision_COUNT}}</span></a></li>
+                                <li>  决策密度dd(G) ＝ 条件数／决策点数 <span class="pull-right">{{metric.decision_DENSITY}}</span> </a></li>
+                                <li>  设计复杂度iv(G) ＝ 外部调用数 <span class="pull-right">{{metric.design_COMPLEXITY}}</span></a></li>
+                                <li>  设计密度id(G) ＝ iv(G)/v(G) <span class="pull-right">{{metric.design_DENSITY}}</span> </a></li>
+                                <li>  边缘数 ＝ 模块间的控制转移数 <span class="pull-right">{{metric.edge_COUNT}}</span></a></li>
+                                <li>  本质复杂度ev(G) <span class="pull-right">{{metric.essential_COMPLEXITY}}</span> </a></li>
+                                <li>  本质密度ed(G) ＝ (ev(G)-1)/(v(G)-1) <span class="pull-right">{{metric.essential_DENSITY}}</span></a></li>
+                                <li>  全局数据复杂度gdv(G) <span class="pull-right">{{metric.global_DATA_COMPLEXITY}}</span> </a></li>
+                                <li>  全局数据密度gd(G) ＝ gdv(G) / v(G) <span class="pull-right">{{metric.global_DATA_DENSITY}}</span></a></li>
+                                <li>  规范化的圈复杂度 ＝ v(G) / nl <span class="pull-right">{{metric.normalized_CYCLOMATIC_COMPLEXITY}}</span></a></li>
                             </ul>
                           </div>
                       </div>
