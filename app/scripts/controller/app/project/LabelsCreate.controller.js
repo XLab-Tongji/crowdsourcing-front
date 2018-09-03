@@ -23,7 +23,7 @@ app.controller('ProjectLabelsCreate', ['$scope', '$state', '$stateParams', 'Toas
         })
             .$promise
             .then(function (response) {
-                if(response.code==201){
+                if(response){
                     ToasterTool.success('创建成功','');
                     $state.go('app.issue-create',{
                         'project_id':project_id

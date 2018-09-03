@@ -38,12 +38,12 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
 
         var assignee = $scope.assignee;
         var milestone = $scope.milestone;
-        var assignee_id = assignee.id;
-        var milestone_id = milestone.id;
+        var assignee_id = assignee? assignee.id : null;
+        var milestone_id = milestone? milestone.id : null;
         var title = $scope.title;
         var description = $scope.description;
 
-        var labels = $scope.labels;
+        var labels = $scope.labels ? $scope.labels: [];
         var labelsArrayList = "";
 
         for (var i = 0; i < labels.length; i++) {
@@ -61,14 +61,11 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
             "labels": labelsArrayList
 
         }).$promise.then(function (response) {
-            if(response.code==201){
+            if(response){
                 ToasterTool.success('问题创建成功','');
                 $state.go("app.project-detail.issues",{
                     "id": project_id
                 });
-            }
-            else{
-                ToasterTool.error('问题创建失败','');
             }
          
         })
@@ -79,13 +76,10 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
         ProjectFactory.getProjectIssueLabels().get({
             id: project_id
         }).$promise.then(function (response) {
-            if (HttpResponseFactory.isResponseSuccess(response)) {
-                var data = HttpResponseFactory.getResponseData(response);
+            if ( response && response.length>0) {
+                var data = response;
                 $scope.labelslist = data;
 
-            }
-            else {
-                errorHandler(response)
             }
         })
 
@@ -95,15 +89,13 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
 
     function getProjectMembers() {
 
-        ProjectFactory.getProjectDetail().get({
+        ProjectFactory.getProjectMembers().get({
             id: project_id
         })
             .$promise.then(function (response) {
 
-                var data = response.data;
-                $scope.membersData = data;
-
-                $scope.members = data.members;
+                var data = response;
+                $scope.members = data;
             })
 
     }

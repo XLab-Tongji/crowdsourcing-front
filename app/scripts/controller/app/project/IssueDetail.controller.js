@@ -32,12 +32,10 @@ app.controller('IssueDetailController', ['$scope', '$state', '$stateParams', 'To
     })
       .$promise
       .then(function (response) {
-        if (HttpResponseFactory.isResponseSuccess(response)) {
+        if (response) {
 
-          var data = HttpResponseFactory.getResponseData(response);
+          var data = response;
           angular.copy(data, $scope.issueDetail);
-        } else {
-          ToasterTool(response);
         }
       })
   }
@@ -50,12 +48,10 @@ app.controller('IssueDetailController', ['$scope', '$state', '$stateParams', 'To
     })
       .$promise
       .then(function (response) {
-        if (HttpResponseFactory.isResponseSuccess(response)) {
-          var data = HttpResponseFactory.getResponseData(response);
+        if (response && response.length > 0) {
+          var data = response;
           angular.copy(data, $scope.issueComment);
 
-        } else {
-          ToasterTool.error(response);
         }
       })
   }
@@ -70,16 +66,13 @@ app.controller('IssueDetailController', ['$scope', '$state', '$stateParams', 'To
     })
       .$promise
       .then(function (response) {
-        if (HttpResponseFactory.isResponseSuccess(response)) {
-          var data = HttpResponseFactory.getResponseData(response);
+        if (response) {
+          var data = response;
           //刷新
           getIssueComment();
           //set blanck
           $scope.commentContent="";
 
-
-        } else {
-          ToasterTool.error(response);
         }
       })
 
