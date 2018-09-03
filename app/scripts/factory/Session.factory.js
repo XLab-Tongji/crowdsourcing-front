@@ -15,6 +15,15 @@ angular.module('crowdsourcing')
         });
       },
 
+      getUser: function() {
+        return $resource(baseUrl + '/api/v4/users?username=:username', {username: '@username'}, {
+          'get': {
+            method: 'get',
+            isArray: true
+          }
+        })
+      },
+
       register: function(){
         return $resource(XbaseUrl, {}, {
           'post': {

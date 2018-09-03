@@ -10,7 +10,7 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
     init();
 
     function init(){
-      console.log($state);
+      // console.log($state);
       console.log('ProjectManagerController Init');
 
       $scope.refreshContent=refreshContent;
@@ -23,7 +23,6 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
     }
 
     function getProjectListSuccess(data) {
-      console.log(data)
 
       angular.copy(data, $scope.projects);
 

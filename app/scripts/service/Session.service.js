@@ -10,6 +10,7 @@ angular.module('crowdsourcing').service('SessionService',
   		};
 
       this.saveUser = function(user){
+        console.log(user);
         $localStorage.currentUser = user;
       }
 

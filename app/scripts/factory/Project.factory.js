@@ -23,7 +23,7 @@ angular.module('crowdsourcing')
             },
 
             getProjectList: function () {
-                return $resource('http://10.60.38.173:18080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
+                return $resource('http://10.60.38.173:18080/api/v4/users/:userId/projects' + '?access_token=' + SessionService.getToken(), {userId: SessionService.getCurrentUser().id}, {
                     'get': {
                         method: 'GET',
                         isArray: true,
