@@ -56,13 +56,14 @@ angular.module('crowdsourcing')
                 return $resource("http://10.60.38.173:18080/api/v4/projects/:id/issues", { id: '@id' }, {
                     'get': {
                         method: 'GET',
+                        isArray: true,
                         headers: SessionService.headers()
                     }
                 });
             },
 
             getProjectIssueDetail: function () {
-                return $resource(XXXbaseUrl + '/project/:id/issueid/:issueId', { id: '@id', issueId: '@issueId' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/issues/:issueId', { id: '@id', issueId: '@issueId' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -132,16 +133,17 @@ angular.module('crowdsourcing')
             },
             //获取项目issue标签
             getProjectIssueLabels: function () {
-                return $resource(XXbaseUrl + '/:id/labels', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/labels', { id: '@id' }, {
                     'get': {
                         method: 'GET',
+                        isArray: true,
                         headers: SessionService.headers()
                     }
                 });
             },
             //新建issue
             createProjectIssue: function () {
-                return $resource(XXXbaseUrl + '/project/:id', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/issues', { id: '@id' }, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -150,7 +152,7 @@ angular.module('crowdsourcing')
             },
             //新建label
             createLabels: function () {
-                return $resource(XXbaseUrl + '/:id/labels', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/labels', { id: '@id' }, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -231,16 +233,17 @@ angular.module('crowdsourcing')
             },
             //get issue comment or activtities 
             getIssueComment: function () {
-                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id/notes', { id: '@id', issue_id: '@issue_id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/issues/:issue_id/notes', { id: '@id', issue_id: '@issue_id' }, {
                     get: {
                         method: 'GET',
+                        isArray: true,
                         headers: SessionService.headers()
                     }
                 })
             },
             //post a new issue comment
             postIssueComment: function () {
-                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id/notes', { id: '@id', issue_id: '@issue_id' ,body: '@body'}, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/issues/:issue_id/notes', { id: '@id', issue_id: '@issue_id' ,body: '@body'}, {
                     post: {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -255,8 +258,17 @@ angular.module('crowdsourcing')
                         headers: SessionService.headers()
                     }
                 })
-            }
-
+            },
+            //get project members
+            getProjectMembers: function () {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/members', { id: '@id' }, {
+                    get: {
+                        method: 'GET',
+                        isArray: true,
+                        headers: SessionService.headers()
+                    }
+                })
+            },
 
         };
     });
