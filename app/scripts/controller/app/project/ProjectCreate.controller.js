@@ -15,7 +15,6 @@ app.controller('ProjectCreateController' ,['$scope', '$state', 'ToasterTool', 'P
       var namespace  = $scope.namespace;
       
       $scope.user = SessionService.getCurrentUser();
-      $scope.createproject = createproject;
     
       getProjectGroups();
       var groups = $scope.groups = [] ;
@@ -36,13 +35,7 @@ app.controller('ProjectCreateController' ,['$scope', '$state', 'ToasterTool', 'P
     }
 
     function getProjectGroupListSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data, $scope.groups);
-      }else{
-        console.log("错误","data.message");
-        // ToasterTool.error('错误',data.message);
-      }
-
+      angular.copy(data.data, $scope.groups);
     }
 
     function getProjectGroupListFailed(error){
@@ -62,38 +55,26 @@ app.controller('ProjectCreateController' ,['$scope', '$state', 'ToasterTool', 'P
     // }
 
     function createproject(){
-
-
       
        var project_name = $scope.project_name;
        var visibility_level = $scope.visibility_level;
-       var type = '';
-       var namespace = $scope.namespace;
-
-       
-       console.log($scope.user.username);
-        if(namespace == $scope.user.username) {
-          type = 'user';
-        } else {
-          type = 'group';
-        }
+       // var type = '';
+       // var namespace = $scope.namespace;
+        // if(namespace == $scope.user.username) {
+        //   type = 'user';
+        // } else {
+        //   type = 'group';
+        // }
 
         ProjectFactory.createProject().post({
-            'type':type,
-            'namespace':namespace,
             'name': project_name,
             'visibility_level':visibility_level.value,
-            
-
         }).$promise
           .then(function (data) {
-            console.log(data.success);
-            if (data.success) {
-                ToasterTool.success('新建成功！');
-                $state.go('app.project');
-            } else {
-                ToasterTool.error('错误', data.message);
-            }
+            ToasterTool.success('新建成功！');
+            $state.go('app.project');
+        }).catch(function (error){
+          ToasterTool.error('错误', "");
         });
 
     }

@@ -14,21 +14,19 @@ app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool
       var password = $scope.loginPassword;
 
       var loginForm = {
-        'login': name,
+        "grant_type": "password",
+        'username': name,
         'password': password
       }
 
       SessionFactory.login().post(loginForm, loginSuccess, loginFailed);
 
       function loginSuccess(data){
-        if (data.success) {
+        if (data.access_token) {
           SessionService.saveUser({
-            'username':data.data.username,
-            'name':data.data.name,
-            'avatarUrl':data.data.avatar_url,
-            'email':data.data.email
+            'username':loginForm.username
           });
-          SessionService.saveToken(data.data.private_token);
+          SessionService.saveToken(data.access_token);
           ToasterTool.success('登录成功','欢迎回到众包平台!');
         }else {
           ToasterTool.success('登录失败',data.message);

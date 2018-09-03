@@ -14,7 +14,7 @@ angular.module('crowdsourcing')
         return {
 
             createProject: function () {
-                return $resource(XbaseUrl + '/', {}, {
+                return $resource('http://172.16.101.90:8080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -23,10 +23,10 @@ angular.module('crowdsourcing')
             },
 
             getProjectList: function () {
-                return $resource(XbaseUrl + '/', {}, {
+                return $resource('http://172.16.101.90:8080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
                     'get': {
                         method: 'GET',
-                        headers: SessionService.headers()
+                        isArray: true,
                     }
                 });
             },

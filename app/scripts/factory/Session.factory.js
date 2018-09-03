@@ -5,11 +5,10 @@
  */
 angular.module('crowdsourcing')
   .factory('SessionFactory', function($resource, $rootScope, SessionService) {
-    var baseUrl = base_Url;
-    var XbaseUrl = xie_base_Url + '/account';
+    var baseUrl = "http://172.16.101.90:8080";
     return {
       login: function(){
-        return $resource(XbaseUrl+ '/authentication', {}, {
+        return $resource(baseUrl+ '/oauth/token', {}, {
           'post': {
             method: 'POST'
           }

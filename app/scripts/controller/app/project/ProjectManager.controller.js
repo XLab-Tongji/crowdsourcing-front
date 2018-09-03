@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory', '$stateParams', function($scope,
+app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', 'ProjectFactory', '$stateParams', 'SessionService', function($scope,
     $state, ToasterTool, ProjectFactory,$stateParams) {
 
     $scope.projects = [];
@@ -18,21 +18,14 @@ app.controller('ProjectManagerController', ['$scope', '$state', 'ToasterTool', '
       getProjects();
     }
 
-    function getProjects(data){
-      ProjectFactory.getProjectList().get({
-        // 'members':members
-      },  getProjectListSuccess, getProjectListFailed);
-
-      //  var members = data.members;
-
+    function getProjects(){
+      ProjectFactory.getProjectList().get({}, getProjectListSuccess, getProjectListFailed);
     }
 
     function getProjectListSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data, $scope.projects);
-      }else{
-        ToasterTool.error('错误',data.message);
-      }
+      console.log(data)
+
+      angular.copy(data, $scope.projects);
 
     }
 

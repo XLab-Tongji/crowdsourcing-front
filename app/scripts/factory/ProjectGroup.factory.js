@@ -20,9 +20,10 @@ angular.module('crowdsourcing')
       },
 
       getProjectGroupList: function () {
-        return $resource(XbaseUrl + '/', {}, {
+        return $resource('http://172.16.101.90:8080/api/v4/groups' + '?access_token=' + SessionService.getToken() , {}, {
           'get': {
             method: 'GET',
+            isArray: true,
             headers: SessionService.headers()
           }
         });
