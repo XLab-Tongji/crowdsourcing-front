@@ -23,9 +23,16 @@ app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool
 
       function loginSuccess(data){
         if (data.access_token) {
-          SessionService.saveUser({
-            'username':loginForm.username
-          });
+          SessionFactory.getUser().get({username: loginForm.username})
+            .$promise
+            .then(function(response) {
+              SessionService.saveUser({
+                'id': response[0].id,
+                'username':loginForm.username,
+                'avatar': response[0].avatar_url
+              });
+            });
+
           SessionService.saveToken(data.access_token);
           ToasterTool.success('登录成功','欢迎回到众包平台!');
         }else {

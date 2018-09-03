@@ -45,16 +45,16 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
     })
       .$promise
       .then(function (response) {
-        if (HttpResponseFactory.isResponseSuccess(response)) {
-          var data = HttpResponseFactory.getResponseData(response);
+        if (response && response.length > 0) {
+          var data = response;
           angular.copy(data, $scope.issues);
-          for (var i in data) {
-            $scope.authernames.push(data[i].author.name);
-          }
+          data.forEach(function(element) {
+            $scope.authernames.push(element.author.name);
+          });
           $scope.authernames = arrayNoRepeat($scope.authernames);
-          $scope.paginator = HttpResponseFactory.getResponsePaginator(response);
-        } else {
-          errorHandler(response);
+          // $scope.paginator = HttpResponseFactory.getResponsePaginator(response);
+
+          console.log($scope.labels);
         }
       })
       .catch(errorHandler);
@@ -65,17 +65,11 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
       id: project_id
     })
       .$promise.then(function (response) {
-        if (HttpResponseFactory.isResponseSuccess(response)) {
-
-          var data = HttpResponseFactory.getResponseData(response);
+        if (response.length > 0) {
+          var data = response
           $scope.labels=data;
 
           console.log($scope.labels);
-         
-
-        }
-        else {
-          errorHandler(response)
         }
       })
       .catch(errorHandler);
@@ -117,13 +111,10 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
       "labels": $scope.labels
 
     }).$promise.then(function (response) {
-      if (HttpResponseFactory.isResponseSuccess(response)) {
-        var data = HttpResponseFactory.getResponseData(response);
+      if (response) {
+        var data = response;
         angular.copy(data, $scope.labels);
 
-      }
-      else {
-        errorHandler(response)
       }
     })
   }

@@ -10,6 +10,7 @@ angular.module('crowdsourcing').service('SessionService',
   		};
 
       this.saveUser = function(user){
+        console.log(user);
         $localStorage.currentUser = user;
       }
 
@@ -47,7 +48,7 @@ angular.module('crowdsourcing').service('SessionService',
       }
 
       this.headers = function(){
-        return {'Authorization': 'Bearer ' + this.getToken()}
+        return {'Authorization': "Bearer "+this.getToken()}
       }
 
     }
