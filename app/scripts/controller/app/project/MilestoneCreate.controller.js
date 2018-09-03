@@ -12,7 +12,7 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
       console.log('ProjectCreateController Init');
       
       
-      $scope.createmilestone= createmilestone;
+      $scope.createmilestone = createmilestone;
 
     }
 
@@ -37,15 +37,12 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
 
         }).$promise
           .then(function (data) {
-            console.log(data.success);
-            if (data.success) {
-                ToasterTool.success('新建成功！');
-                $state.go('app.milestone',{
-                    'id':project_id
-                });
-            } else {
-                ToasterTool.error('错误', data.message);
-            }
+              ToasterTool.success('新建成功！');
+              $state.go('app.milestone',{
+                  'id':project_id
+              });
+        }).catch(function (error) {
+              ToasterTool.error('新建失败!');
         });
 
     }

@@ -168,16 +168,17 @@ angular.module('crowdsourcing')
             },
 
             getMilestonelist: function () {
-                return $resource(XXbaseUrl + '/:id/milestones', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/milestones', { id: '@id' }, {
                     'get': {
                         method: 'GET',
+                        isArray: true,
                         headers: SessionService.headers()
                     }
                 });
             },
 
             createMilestone: function () {
-                return $resource(XXbaseUrl + '/:id/milestones', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/milestones', { id: '@id' }, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -186,7 +187,7 @@ angular.module('crowdsourcing')
             },
 
             getMilestoneDetails: function () {
-                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId', { id: '@id', milestoneId: '@milestoneId' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/milestones/:milestoneId', { id: '@id', milestoneId: '@milestoneId' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -194,8 +195,18 @@ angular.module('crowdsourcing')
                 });
             },
 
+            getMilestoneIssues: function () {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/milestones/:milestoneId/issues', { id: '@id', milestoneId: '@milestoneId'}, {
+                    'get': {
+                        method: 'GET',
+                        isArray: true,
+                        headers: SessionService.headers()
+                    }
+                });
+            },
+
             getMilestoneLabels: function () {
-                return $resource(XXbaseUrl + '/:id/labels?milestone=:milestone', { id: '@id', milestone: '@milestone' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/labels?milestone=:milestone', { id: '@id', milestone: '@milestone' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -204,7 +215,7 @@ angular.module('crowdsourcing')
             },
 
             updateMilestoneIssue: function () {
-                return $resource(XXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id' }, {
                     put: {
                         method: 'PUT',
                         headers: SessionService.headers()
@@ -213,7 +224,7 @@ angular.module('crowdsourcing')
             },
 
             closeMilestone: function () {
-                return $resource(XXbaseUrl + '/:id/milestones/:milestoneId', { id: '@id', milestoneId: '@milestoneId' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/milestones/:milestoneId', { id: '@id', milestoneId: '@milestoneId' }, {
                     put: {
                         method: 'PUT',
                         headers: SessionService.headers()
@@ -222,7 +233,7 @@ angular.module('crowdsourcing')
             },
 
             changeMilestoneIssueState: function () {
-                return $resource(XXXbaseUrl + '/project/:id/issueid/:issue_id', { id: '@id', issue_id: '@issue_id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id/issues/:issue_id?state_event=:state', { id: '@id', issue_id: '@issue_id', state: '@state' }, {
                     put: {
                         method: 'PUT',
                         headers: SessionService.headers()

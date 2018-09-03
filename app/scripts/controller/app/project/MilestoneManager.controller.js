@@ -24,29 +24,20 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
       ProjectFactory.getMilestonelist().get({
         'id' : project_id
       },  getMilestoneListSuccess, getMilestoneListFailed);
-
-      
-
     }
 
   
 
     function getMilestoneListSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data.milestones, $scope.milestones);
-        for(var x = 0; x < data.data.milestones.length; x ++) {
-          console.log($scope.milestones[x].state);
-          if($scope.milestones[x].state == 'closed') {
-
-            $scope.milestones[x].visible = false;
-          } else {
-            $scope.milestones[x].visible = true;
-          }
+      angular.copy(data, $scope.milestones);
+      for(var x = 0; x < data.length; x ++) {
+        if($scope.milestones[x].state == 'closed') {
+          $scope.milestones[x].visible = false;
+        } else {
+          $scope.milestones[x].visible = true;
         }
-      }else{
-        ToasterTool.error('错误',data.message);
+        console.log($scope.milestones[x]);
       }
-
     }
 
     function getMilestoneListFailed(error){
@@ -67,7 +58,6 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
       });
     }
 
-
     function closeMilestone(id){
       ProjectFactory.closeMilestone().put({
         "id":project_id,
@@ -78,13 +68,9 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
     }
 
     function closeMilestoneSuccess (data) {
-      if(data.success) {
-        location.reload();
-        ToasterTool.message('关闭里程碑成功');
-        state.go(app.milestone-detail)
-      } else {
-        ToasterTool.error('错误', data.message);
-      }
+      location.reload();
+      ToasterTool.success('关闭里程碑成功');
+      state.go(app.milestone-detail)
     }
 
     function closeMilestoneFailed(error) {

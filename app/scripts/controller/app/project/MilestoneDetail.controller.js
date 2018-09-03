@@ -41,16 +41,18 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
     })
       .$promise
       .then(function (response) {
-        if (HttpResponseFactory.isResponseSuccess(response)) {
-          var data = HttpResponseFactory.getResponseData(response);
-          $scope.milestone = data.milestone;
-          $scope.milestoneissue = data.milestone.issues;
-          statusFilter($scope.milestoneissue);
+        $scope.milestone = response;
 
-
-        } else {
-          errorHandler(response);
-        }
+        ProjectFactory.getMilestoneIssues().get({
+          'id': project_id,
+          'milestoneId': milestoneId
+        })
+          .$promise
+          .then(function (response) {
+            $scope.milestoneissue = response;
+            statusFilter($scope.milestoneissue);
+          })
+          .catch(errorHandler);
       })
       .catch(errorHandler);
   }
@@ -85,7 +87,7 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
         console.log("list " + _listName + ": helper" + item);
         itemid = getIssuesID(item.context.textContent);
         console.log(itemid);
-        itemid = getIssueRealId(itemid);
+        // itemid = getIssueRealId(itemid);
         return item;
       },
       activate: function () {
