@@ -14,7 +14,7 @@ angular.module('crowdsourcing')
         return {
 
             createProject: function () {
-                return $resource('http://172.16.101.90:8080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -23,7 +23,7 @@ angular.module('crowdsourcing')
             },
 
             getProjectList: function () {
-                return $resource('http://172.16.101.90:8080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
                     'get': {
                         method: 'GET',
                         isArray: true,
@@ -53,7 +53,7 @@ angular.module('crowdsourcing')
 
             //获取项目下的issue
             getProjectIssues: function () {
-                return $resource(XXXbaseUrl + '/project/:id', { id: '@id' }, {
+                return $resource("http://10.60.38.173:18080/api/v4/projects/:id/issues", { id: '@id' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()

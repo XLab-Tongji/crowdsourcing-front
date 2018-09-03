@@ -47,7 +47,7 @@ angular.module('crowdsourcing').service('SessionService',
       }
 
       this.headers = function(){
-        return {'PRIVATE-TOKEN':this.getToken()}
+        return {'Authorization': "Bearer "+this.getToken()}
       }
 
     }
