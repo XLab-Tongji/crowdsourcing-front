@@ -41,11 +41,11 @@ angular.module('crowdsourcing')
             },
 
             getProjectContent: function () {
-                return $resource(XXbaseUrl + '/:id/tree?path=:path', { id: '@id', path: '{{path}}' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/tree?path=:path', { id: '@id', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers(),
-                        //isArray: true
+                        isArray: true
                     }
                 });
             },
@@ -80,7 +80,7 @@ angular.module('crowdsourcing')
                 });
             },
             getProjectFileDetail: function () {
-                return $resource(XXbaseUrl + '/:id/files?filepath=:path', { id: '@id', path: '{{path}}' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/files/:path/raw?ref=master', { id: '@id', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
