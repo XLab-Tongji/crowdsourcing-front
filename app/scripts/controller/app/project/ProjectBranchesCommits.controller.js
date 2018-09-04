@@ -22,7 +22,7 @@ app.controller('ProjectBranchesCommitsController', ['$scope', '$state', '$stateP
 
     getProjectBranchDetail(project_id, path, branch_name);
 
-    getProjectBranchFileDetail(project_id, path, branch_name);
+    // getProjectBranchFileDetail(project_id, path, branch_name);
 
     $scope.editorOptions = {
       lineWrapping: true,
@@ -58,7 +58,7 @@ app.controller('ProjectBranchesCommitsController', ['$scope', '$state', '$stateP
       path: path,
       ref_name: branch_name
     }).$promise.then(function (data) {
-      $scope.contents = data.data;
+      $scope.contents = data;
     })
   }
 

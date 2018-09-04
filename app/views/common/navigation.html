@@ -4,7 +4,7 @@
             <li class="nav-header">
 
                 <div class="profile-element" uib-dropdown>
-                    <img alt="image" class="img-circle" ng-src="{{user.avatarUrl}}" />
+                    <img alt="image" class="img-circle" ng-src="{{user.avatar}}" />
                     <div>
                         <span class="clear">
                               <span class="block m-t-xs">
@@ -42,10 +42,10 @@
                 </span> </a>
             </li>
 
-            <li ng-class="{active: $state.includes('app.codeAnalysis')}">
+            <!-- <li ng-class="{active: $state.includes('app.codeAnalysis')}">
                 <a ui-sref="app.codeAnalysis.measures"><i class="fa fa-file"></i> <span class="nav-label">代码分析
                 </span> </a>
-            </li>
+            </li> -->
 
         </ul>
 

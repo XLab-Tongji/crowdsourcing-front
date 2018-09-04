@@ -26,8 +26,8 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
 
         getProjectContentTest(project_id, path);
 
-
-        getProjectFileDetail(project_id, path);
+        if (path != undefined)
+            getProjectFileDetail(project_id, path);
 
 
         $scope.editorOptions = {
@@ -45,11 +45,21 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
             id: id,
             path: path
         }).$promise.then(function (data) {
-
-            if (data.data.length == 0) {
+            if (data.length == 0) {
                 return;
             } else {
-                $scope.codeDetail = data.data;
+                var output = "";
+                for (var key in data) {
+                    if (key == "$promise")
+                        break
+                    if (output == "") {
+                        output = data[key];
+                    }
+                    else {
+                        output += data[key];
+                    }
+                }
+                $scope.codeDetail = output;
                 $scope.refresh = false;//刷新问题
             }
 
@@ -62,7 +72,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
             id: id,
             path: path
         }).$promise.then(function (data) {
-            $scope.contents = data.data;
+            $scope.contents = data;
             // if(data.data.length==0){
             //     $state.go('app.project-detail.codes.nocontent');
             // }

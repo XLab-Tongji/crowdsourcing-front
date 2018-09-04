@@ -19,7 +19,7 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
     }
 
     function init(){
-      console.log('ready to get yardstick code content!');
+      // console.log('ready to get yardstick code content!');
       $scope.getProjectCommits = getProjectCommits;
       $scope.getProjectTasks = getProjectTasks;
       $scope.getProjectIssues = getProjectIssues;
@@ -37,13 +37,11 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 			})
 			.$promise
 			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					var data = HttpResponseFactory.getResponseData(response);
+				if(response){
+					var data = response;
 					$scope.projectName = data.name;
           $scope.projectid  = data.id;
           console.log($scope.projectid);
-				}else{
-	        errorHandler(response);
 				}
 			})
       .catch(errorHandler);

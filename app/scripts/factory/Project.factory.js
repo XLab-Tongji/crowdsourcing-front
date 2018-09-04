@@ -41,11 +41,11 @@ angular.module('crowdsourcing')
             },
 
             getProjectContent: function () {
-                return $resource(XXbaseUrl + '/:id/tree?path=:path', { id: '@id', path: '{{path}}' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/tree?path=:path', { id: '@id', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers(),
-                        //isArray: true
+                        isArray: true
                     }
                 });
             },
@@ -80,7 +80,7 @@ angular.module('crowdsourcing')
                 });
             },
             getProjectFileDetail: function () {
-                return $resource(XXbaseUrl + '/:id/files?filepath=:path', { id: '@id', path: '{{path}}' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/files/:path/raw?ref=master', { id: '@id', path: '{{path}}' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -89,10 +89,11 @@ angular.module('crowdsourcing')
             },
 
             getProjectBranchesList: function () {
-                return $resource(XbaseUrl + '/:id/repository/branches', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/branches', { id: '@id' }, {
                     'get': {
                         method: 'GET',
-                        headers: SessionService.headers()
+                        headers: SessionService.headers(),
+                        isArray: true
                     }
                 });
             },
@@ -107,7 +108,7 @@ angular.module('crowdsourcing')
             },
 
             getProjectBranchesNameList: function () {
-                return $resource(XbaseUrl + '/:id/repository/branches/names', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/branches/names', { id: '@id' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -116,10 +117,11 @@ angular.module('crowdsourcing')
             },
 
             getProjectBranchDetail: function () {
-                return $resource(XXbaseUrl + '/:id/tree?path=:path&ref_name=:ref_name', { id: '@id', path: '{{path}}', ref_name: '{{ref_name}}' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/repository/tree?path=:path&ref_name=:ref_name', { id: '@id', path: '{{path}}', ref_name: '{{ref_name}}' }, {
                     'get': {
                         method: 'GET',
-                        headers: SessionService.headers()
+                        headers: SessionService.headers(),
+                        isArray:true
                     }
                 });
             },
@@ -263,10 +265,11 @@ angular.module('crowdsourcing')
             },
             //get repository commit statistic data
             getCommitStatistic: function(){
-                return $resource(XXXXbaseUrl+'/contributors/:project_id',{project_id: '@project_id'},{
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:project_id/repository/contributors',{project_id: '@project_id'},{
                     get:{
                         method: 'GET',
-                        headers: SessionService.headers()
+                        headers: SessionService.headers(),
+                        isArray: true
                     }
                 })
             },

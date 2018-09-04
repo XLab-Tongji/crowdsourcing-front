@@ -57,7 +57,7 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
           console.log($scope.labels);
         }
       })
-      .catch(errorHandler);
+      // .catch(errorHandler);
   }
 
   function getProjectIssuesLabels() {
@@ -72,7 +72,7 @@ app.controller('ProjectIssuesController', ['$scope', '$state', '$stateParams', '
           console.log($scope.labels);
         }
       })
-      .catch(errorHandler);
+      // .catch(errorHandler);
   }
 
   //去重
