@@ -13,6 +13,7 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
       
       
       $scope.createmilestone = createmilestone;
+      $scope.reloadPage = reloadPage;
 
     }
 
@@ -47,5 +48,8 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
 
     }
 
+    function reloadPage() {
+      location.reload();
+    }
 }]);
 

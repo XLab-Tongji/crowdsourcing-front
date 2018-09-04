@@ -8,6 +8,7 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
     $scope.getMilestoneDetail = getMilestoneDetail;
     $scope.createMilestone = createMilestone;
     $scope.closeMilestone = closeMilestone;
+    $scope.refresh = refresh;
     var project_id = $stateParams.id;
 
 
@@ -36,7 +37,6 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
         } else {
           $scope.milestones[x].visible = true;
         }
-        console.log($scope.milestones[x]);
       }
     }
 
@@ -77,5 +77,8 @@ app.controller('MilestoneManagerController', ['$scope', '$state', '$stateParams'
       ToasterTool.error('错误', '删除项目失败');
     }
 
+    function refresh () {
+      location.reload();
+    }
 
 }]);
