@@ -29,13 +29,8 @@ app.controller('ProjectGroupManagerController', ['$scope', '$state', 'ToasterToo
     }
 
     function getProjectGroupListSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data, $scope.groups);
+        angular.copy(data, $scope.groups);
         console.log($scope.groups);
-      }else{
-        ToasterTool.error('错误',data.message);
-      }
-
     }
 
     function getProjectGroupListFailed(error){

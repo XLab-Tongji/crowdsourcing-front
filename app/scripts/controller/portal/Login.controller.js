@@ -19,9 +19,9 @@ app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool
         'password': password
       }
 
-      SessionFactory.login().post(loginForm, loginSuccess, loginFailed);
-
-      function loginSuccess(data){
+      SessionFactory.login().post(loginForm)
+      .$promise
+      .then(function (data) {
         if (data.access_token) {
           SessionFactory.getUser().get({username: loginForm.username})
             .$promise
@@ -35,15 +35,22 @@ app.controller('LoginController', ['$scope', '$state', 'AlertTool', 'ToasterTool
 
           SessionService.saveToken(data.access_token);
           ToasterTool.success('登录成功','欢迎回到众包平台!');
-        }else {
-          ToasterTool.success('登录失败',data.message);
+        } else {
+          ToasterTool.error('登录失败',error.message);
         }
+      })
+      .catch(function (error) {
+        ToasterTool.error('登录失败',error.message);
+      })
 
-      }
-      function loginFailed(error){
-        AlertTool.error({title:'失败',text:'用户名或者密码错误'}).then(function() {
-        });
-      }
+      // function loginSuccess(data){
+        
+
+      // }
+      // function loginFailed(error){
+      //   AlertTool.error({title:'失败',text:'用户名或者密码错误'}).then(function() {
+      //   });
+      // }
       //ToasterTool.success('登录成功','欢迎回到众包平台!');
     }
 
