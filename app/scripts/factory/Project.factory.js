@@ -32,7 +32,7 @@ angular.module('crowdsourcing')
             },
 
             getProjectDetail: function () {
-                return $resource(XbaseUrl + '/:id', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects' + '/:id', { id: '@id' }, {
                     'get': {
                         method: 'GET',
                         headers: SessionService.headers()
@@ -161,7 +161,7 @@ angular.module('crowdsourcing')
 
             },
             resetProject: function () {
-                return $resource(XbaseUrl + '/:id', { id: '@id' }, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id', { id: '@id' }, {
                     'put': {
                         method: 'PUT',
                         headers: SessionService.headers()

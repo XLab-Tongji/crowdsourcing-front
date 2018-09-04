@@ -30,12 +30,11 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
 			})
 			.$promise
 			.then(function(response){
-				if(HttpResponseFactory.isResponseSuccess(response)){
-					var data = HttpResponseFactory.getResponseData(response);
+				if(response){
+					var data = response;
 					$scope.projectName = data.name;
           $scope.projectPath = data.namespace.name;
-				}else{
-	        errorHandler(response);
+          $scope.visibility_level = data.visibility;
 				}
 			})
       .catch(errorHandler);
@@ -47,18 +46,20 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
     ProjectFactory.resetProject().put({
       'id': project_id,
       'name': projectName,
-      'visibility_level': visibility_level,
+      'visibility': visibility_level,
     }).$promise
     .then(function(data){
-      if (data.success) {
+      if (data) {
         console.log("success reset");
         // $state.go('app.project-detail.codes.commits({'id': project_id})');
         $state.go('app.project-detail.codes.commits', {
-        "id":project_id
+          "id":project_id
         });
-      }else{
-        ToasterTool.error('权限不足');
+        ToasterTool.success('重置成功');
       }
+    })
+    .catch(function(error){
+      ToasterTool.error('重置失败');
     });
   }
         
