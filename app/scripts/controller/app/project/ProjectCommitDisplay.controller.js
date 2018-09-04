@@ -18,7 +18,6 @@ app.controller('ProjectCommitStatisticController', ['$scope', '$state', '$stateP
 
     function init() {
 
-        console.log($scope.project_id);
         getCommitStatisticData();
 
 
@@ -29,12 +28,11 @@ app.controller('ProjectCommitStatisticController', ['$scope', '$state', '$stateP
             project_id: $scope.project_id
         })
             .$promise.then(function (data) {
-                if (data.code = 200) {
-                    $scope.result = data.data;
-                    dataParse($scope.result);
-                } else {
-                    ToasterTool.error("获取失败");
-                }
+                $scope.result = data;
+                dataParse($scope.result);
+            })
+            .catch(function (data) {
+                ToasterTool.error("获取失败");
             })
     }
 

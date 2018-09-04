@@ -6,13 +6,14 @@
 angular.module('crowdsourcing')
   .factory('IssueFactory', function($resource, $rootScope, SessionService) {
     var baseUrl = base_Url;
-    var XbaseUrl = xie_base_Url+'/issues/mine';
+    var XbaseUrl = 'http://10.60.38.173:18080/api/v4/todos';
     return {
 
       getIssueList: function() {
         return $resource(XbaseUrl, {}, {
           'get': {
             method: 'GET',
+            isArray: true,
             headers: SessionService.headers()
           }
         });

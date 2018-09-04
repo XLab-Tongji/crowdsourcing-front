@@ -20,7 +20,7 @@ angular.module('crowdsourcing')
       },
 
       getProjectGroupList: function () {
-        return $resource('http://10.60.38.173:8080/api/v4/groups' + '?access_token=' + SessionService.getToken() , {}, {
+        return $resource('http://10.60.38.173:18080/api/v4/groups', {}, {
           'get': {
             method: 'GET',
             isArray: true,
@@ -30,7 +30,7 @@ angular.module('crowdsourcing')
       },
 
       getProjectGroupDetail: function () {
-        return $resource(XbaseUrl + '/:id', { id: '@id' }, {
+        return $resource('http://10.60.38.173:18080/api/v4/groups/:id', { id: '@id' }, {
           'get': {
             method: 'GET',
             headers: SessionService.headers()

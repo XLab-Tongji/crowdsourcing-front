@@ -17,7 +17,7 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
         $scope.goBranchCommit=goBranchCommit;
 
         getProjectBranches(project_id);
-        getProjectBranchesNames(project_id);
+        // getProjectBranchesNames(project_id);
 
 
     }
@@ -27,11 +27,7 @@ app.controller('ProjectBranchesController', ['$scope', '$state', '$stateParams',
         ProjectFactory.getProjectBranchesList().get({
             id: id
         }).$promise.then(function (data) {
-            var result = data;
-            var branchlist = data.data;
-            $scope.branchlist = branchlist;
-            console.log(result);
-
+            $scope.branchlist = data;
         });
     }
 

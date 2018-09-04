@@ -26,13 +26,7 @@ app.controller('ProjectGroupDetailController', ['$scope', '$state', 'ToasterTool
     }
 
     function getProjectGroupDetailSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data, $scope.group);
-        // angular.copy(data.data.members,$scope.members);
-      }else{
-        ToasterTool.error('错误',data.message);
-      }
-
+        angular.copy(data, $scope.group);
     }
 
     function getProjectGroupDetailFailed(error){
@@ -62,7 +56,7 @@ app.controller('ProjectGroupDetailController', ['$scope', '$state', 'ToasterTool
 
     function checkdetail(id){
       console
-      $state.go('app.project-detail',{
+      $state.go('app.project-detail.codes.commits',{
         'id':id
       })
     }

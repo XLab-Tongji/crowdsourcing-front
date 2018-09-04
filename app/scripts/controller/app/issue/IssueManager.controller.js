@@ -9,6 +9,7 @@ app.controller('IssueManagerController', ['$scope', '$state', 'ToasterTool', 'Is
     init();
 
     $scope.getIssueDetail = getIssueDetail;
+    $scope.getProjectDetail = getProjectDetail;
 
     function init(){
       getIssues();
@@ -23,12 +24,10 @@ app.controller('IssueManagerController', ['$scope', '$state', 'ToasterTool', 'Is
 
 
     function getIssueListSuccess(data) {
-      if (data.success) {
-        console.log(data);
+      if (data && data.length) {
+        // console.log(data);
        
-        angular.copy(data.data, $scope.issues);
-      }else{
-        ToasterTool.error('错误',data.message);
+        angular.copy(data, $scope.issues);
       }
 
     }
@@ -41,6 +40,12 @@ app.controller('IssueManagerController', ['$scope', '$state', 'ToasterTool', 'Is
       $state.go('app.project-issues-detail',{
         'id':id,
         'issueId' : issueId
+      })
+    }
+
+    function getProjectDetail(id){
+      $state.go('app.project-detail.issues',{
+        'id':id
       })
     }
 
