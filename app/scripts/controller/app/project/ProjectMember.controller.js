@@ -16,22 +16,21 @@ app.controller('ProjectMembersController', ['$scope', '$state', '$stateParams', 
     $scope.goDetailPage = goDetailPage;
   }
 
-  function goDetailPage(username) {
+  function goDetailPage(userid) {
     $state.go("app.memberDetail", {
-      "username": username
+      "userid": userid
     });
   }
 
 
   function getProjectMembers(id) {
 
-    ProjectFactory.getProjectDetail().get({
+    ProjectFactory.getProjectMembers().get({
       id: project_id
     })
       .$promise.then(function (response) {
-
-        var data = response.data;
-        $scope.data = data;
+        $scope.data = {members: null};
+        $scope.data.members = response;
       })
 
   }

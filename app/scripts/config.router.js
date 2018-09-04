@@ -381,7 +381,7 @@ angular.module('crowdsourcing')
                 })
                 //开发者详情页
                 .state('app.memberDetail', {
-                    url: "/memberDetail/:username",
+                    url: "/memberDetail/:userid",
                     controller: "UserDetailController",
                     templateUrl: "views/app/contact/member_detail.html",
                     data: { pageTitle: '个人详情' },

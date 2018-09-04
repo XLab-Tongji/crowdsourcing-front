@@ -12,22 +12,21 @@ app.controller('UserDetailController', ['$scope', '$state', '$stateParams', 'Toa
     init();
 
     function init() {
-        var username = $stateParams.username;
+        var userid = $stateParams.userid;
         console.log($stateParams);
-
-        getDetail(username);
+        getDetail(userid);
     }
 
  
 
-    function getDetail(username) {
-        UserFactory.getUserListbyUserName().get({
-            username: username
+    function getDetail(userid) {
+        UserFactory.getUserbyId().get({
+            userid: userid
         })
             .$promise
             .then(function (response) {
 
-                $scope.userdetail=response.data[0];
+                $scope.userdetail=response;
 
             })
             .catch(errorHandler);
