@@ -26,8 +26,6 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
 
         getProjectContentTest(project_id, path);
 
-
-        console.log(path)
         if (path != undefined)
             getProjectFileDetail(project_id, path);
 
