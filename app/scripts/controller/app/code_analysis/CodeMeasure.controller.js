@@ -22,8 +22,8 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
     }
 
     function getProjectListSuccess(data) {
-      if (data.success) {
-        angular.copy(data.data, $scope.projects);
+      if (data) {
+        angular.copy(data, $scope.projects);
       }else{
         ToasterTool.error('错误',data.message);
       }
@@ -36,11 +36,9 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
 
     function codeAnalysis(name){
         var name = $scope.name;
-        name = name.replace(" ","");
-        name = name.replace(" ","");
 
-        // var archivePath = "http://115.159.55.131/" + name + "/repository/archive.zip?ref=master";
-        var archivePath = "https://github.com/alina52/File-Management-With-DesignPattern/archive/master.zip";
+        var ip = "http://10.60.38.173:18080";
+        var archivePath = ip + "/" + name + "/-/archive/master/test-master.zip"
         console.log(archivePath);
 
         CodeAnalysisFactory.codeAnalysis().post({

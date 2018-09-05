@@ -609,7 +609,7 @@ angular.module('crowdsourcing')
                 })
                 .state('app.codeAnalysis.measures', {
                     url: "/measures",
-                    // controller:'CodeMeasureController',
+                    controller:'CodeMeasureController',
                     templateUrl: "views/app/codemeasures/measures.html",
                     resolve: {
 

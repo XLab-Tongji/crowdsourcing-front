@@ -31,10 +31,10 @@
                         <!--{{projects}}-->
                         <select class="form-control" ng-model='name'>
                             <ul>
-                                <li><option ng-repeat="project in projects">{{project.name_with_namespace}}</option></li>
+                                <li><option ng-repeat="project in projects">{{project.path_with_namespace}}</option></li>
                             </ul>
                         </select> 
-                        <span class="input-group-btn"> <button type="button" class="btn btn-primary" ng-click="codeAnalysis()">Go!</button> </span>
+                        <span class="input-group-btn"> <button type="button" class="btn btn-primary" ng-click="codeAnalysis(name)">Go!</button> </span>
                     </div>
                 </div>
             </div>

@@ -105,12 +105,10 @@ app.controller('ProjectIssueCreateController', ['$scope', '$state', '$stateParam
         ProjectFactory.getMilestonelist().get({
             id: project_id
         })
-            .$promise.then(function (response) {
-                var data = response.data;
-                $scope.milestonesData = data;
-                $scope.milestones = data.milestones;
+        .$promise.then(function (response) {
+            $scope.milestones = response;
 
-            })
+        })
     }
 
 
