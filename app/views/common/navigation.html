@@ -28,7 +28,7 @@
             </li>
 
             <li ng-class="{active: $state.includes('app.project')||$state.includes('app.project-detail')}">
-                <a ui-sref="app.project"><i class="fa fa-tasks"></i> <span class="nav-label">项目</span> 
+                <a ui-sref="app.project"><i class="fa fa-folder-o"></i> <span class="nav-label">项目</span> 
                 </a>
             </li>
 
@@ -38,12 +38,12 @@
             </li>
 
             <li ng-class="{active: $state.includes('app.issue')}">
-                <a ui-sref="app.issue"><i class="fa fa-file"></i> <span class="nav-label">任务
+                <a ui-sref="app.issue"><i class="fa fa-tasks"></i> <span class="nav-label">任务
                 </span> </a>
             </li>
 
             <li ng-class="{active: $state.includes('app.codeAnalysis')}">
-                <a ui-sref="app.codeAnalysis.measures"><i class="fa fa-file"></i> <span class="nav-label">代码分析
+                <a ui-sref="app.codeAnalysis.sonarqube"><i class="fa fa-code"></i> <span class="nav-label">代码卫士
                 </span> </a>
             </li>
 

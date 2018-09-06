@@ -601,10 +601,29 @@ angular.module('crowdsourcing')
                         controller: ['$ocLazyLoad', function ($ocLazyLoad) {
                             return $ocLazyLoad.load([
                                 'scripts/controller/app/code_analysis/CodeMeasure.controller.js',
+                                'scripts/controller/app/code_analysis/TaskRecord.controller.js',
                                 'scripts/factory/Project.factory.js',
                                 'scripts/factory/CodeAnalysis.factory.js'
                             ]);
                         }]
+                    }
+                })
+                .state('app.codeAnalysis.sonarqube', {
+                    url: "/sonarqube",
+                    controller:'CodeMeasureController',
+                    templateUrl: "views/app/codemeasures/sonarqube.html",
+                    resolve: {
+
+                    }
+                })
+                .state('app.codeAnalysis.records', {
+                    url: "/records/:id",
+                    params: {"name":null, "id":"id"},
+                    // 新的TaskRecordController来处理
+                    controller:'TaskRecordController',
+                    templateUrl: "views/app/codemeasures/records.html",
+                    resolve: {
+
                     }
                 })
                 .state('app.codeAnalysis.measures', {

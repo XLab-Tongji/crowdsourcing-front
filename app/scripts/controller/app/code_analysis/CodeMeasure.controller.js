@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'ToasterTool', 'ProjectFactory','CodeAnalysisFactory','SessionService', function($scope,
-    $state, $stateParams,ToasterTool,ProjectFactory, CodeAnalysisFactory, SessionService) {
+app.controller('CodeMeasureController' ,['$scope', '$http', '$state','$stateParams', 'ToasterTool', 'ProjectFactory','CodeAnalysisFactory','SessionService', function($scope,
+  $http, $state, $stateParams,ToasterTool,ProjectFactory, CodeAnalysisFactory, SessionService) {
 
     $scope.projects = [];
     $scope.codeAnalysis = codeAnalysis;
@@ -9,14 +9,37 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
 
 
     function init(){
-      console.log($state);
-      console.log('CodeMeasureController Init');
-
+      if($state.current.url == "/records/:id") {
+        console.log($stateParams.id)
+        $scope.projectId = $stateParams.id;
+        $scope.projectName = $stateParams.name;
+      }
+      getCheckedProjects();
       getProjects();
     }
 
+    function getCheckedProjects() {
+      var url = "http://120.79.15.205:8080/api/tasks"
+      // var cfg = {
+       
+      // }
 
-     function getProjects(data){
+      // $http.get(url, {}, cfg).then(function (res) {
+      //   console.log(res)
+      // });
+
+      $http.get(url, {
+        headers : {'authorization': '1_7a387e078ff047aeb513a1b0cb5f4686'}
+      }).success(function(results){
+        // console.log(results.RESULT_DATA.result)
+        console.log(results)
+        $scope.detectedProject = results.RESULT_DATA.result
+      });
+
+      
+    }
+
+    function getProjects(data){
       ProjectFactory.getProjectList().get({
       },  getProjectListSuccess, getProjectListFailed);
     }
@@ -37,23 +60,21 @@ app.controller('CodeMeasureController' ,['$scope', '$state','$stateParams', 'Toa
     function codeAnalysis(name){
         var name = $scope.name;
 
-        var ip = "http://10.60.38.173:18080";
-        var archivePath = ip + "/" + name + "/-/archive/master/test-master.zip"
-        console.log(archivePath);
-
+        // var ip = "http://10.60.38.173:18080";
+        // var archivePath = ip + "/" + name + "/-/archive/master/test-master.zip"
+        // mock地址 因为内网无法访问的原因
+        var archivePath = "https://github.com/jaki2012/springboot-mybatis/archive/master.zip";
         CodeAnalysisFactory.codeAnalysis().post({
-            // 'name':name,
-            'path':'test',
-            'archivePath':archivePath            
-
+          'projectName':name,
+          'projectVersion':"1.0",
+          'path':'test',
+          'archivePath':archivePath           
         }).$promise
           .then(function (data) {
             if (data.success) {
-              $scope.detectedProject = name;
+              // $scope.detectedProject = name;
               $scope.metric = data.data.SoftwareMetrics[0][0].metricsData;
-              console.log(data.data.SoftwareMetrics[0]);
-              console.log(data.data.SoftwareMetrics[0][0]);
-              console.log($scope.metric);
+              console.log(data.data);
             } else {
                 ToasterTool.error('错误', data.message);
             }
