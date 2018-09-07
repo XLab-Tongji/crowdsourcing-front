@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', 'ToasterTool', 'ProjectFactory', 'HttpResponseFactory', 'ErrorHandlerFactory',  function($scope,
-    $state, $stateParams, ToasterTool, ProjectFactory, HttpResponseFactory, ErrorHandlerFactory) {
+app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', 'ToasterTool', 'ProjectFactory', 'HttpResponseFactory', 'ErrorHandlerFactory', '$localStorage', function($scope,
+    $state, $stateParams, ToasterTool, ProjectFactory, HttpResponseFactory, ErrorHandlerFactory, $localStorage) {
 
     $scope.tab = 1;
 
@@ -41,10 +41,17 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 					var data = response;
 					$scope.projectName = data.name;
           $scope.projectid  = data.id;
+          var path = data.path_with_namespace;
+          if (data.permissions.project_access.access_level != 10)
+            $localStorage.gitUrl = path;
+          $localStorage.access_level = data.permissions.project_access.access_level;
+
           console.log($scope.projectid);
 				}
 			})
-      .catch(errorHandler);
+      .catch(function(error) {
+        delete $localStorage.gitUrl;
+      });
     }
 
     function getProjectCommits(){

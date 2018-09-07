@@ -13,8 +13,18 @@ angular.module('crowdsourcing')
 
         return {
 
+            getUserList: function () {
+                return $resource('http://10.60.38.173:18080/api/v4/users', {}, {
+                    'get': {
+                        method: 'GET',
+                        headers: SessionService.headers(),
+                        isArray: true
+                    }
+                });
+            },
+
             createProject: function () {
-                return $resource('http://10.60.38.173:18080/api/v4/projects' + '?access_token=' + SessionService.getToken(), {}, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects', {}, {
                     'post': {
                         method: 'POST',
                         headers: SessionService.headers()
@@ -23,7 +33,7 @@ angular.module('crowdsourcing')
             },
 
             getProjectList: function () {
-                return $resource('http://10.60.38.173:18080/api/v4/users/:userId/projects' , {userId: SessionService.getCurrentUser().id}, {
+                return $resource('http://10.60.38.173:18080/api/v4/projects?membership=true' , {}, {
                     'get': {
                         method: 'GET',
                         isArray: true,
@@ -284,6 +294,24 @@ angular.module('crowdsourcing')
                     }
                 })
             },
+            //add new project member
+            addProjectMember: function () {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/members', { id: '@id'}, {
+                    post: {
+                        method: "POST",
+                        headers: SessionService.headers()
+                    }
+                })
+            },
+
+            updateProjectMemberAccessLevel () {
+                return $resource('http://10.60.38.173:18080/api/v4/projects/:id/members/:user_id?access_level=:access_level', {id: '@id', user_id: '@user_id', access_level: '@access_level'},{
+                    put: {
+                        method: "PUT",
+                        headers: SessionService.headers()
+                    }
+                })
+            }
 
         };
     });

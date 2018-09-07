@@ -32,7 +32,7 @@ app.controller('ProjectCommitStatisticController', ['$scope', '$state', '$stateP
                 dataParse($scope.result);
             })
             .catch(function (data) {
-                ToasterTool.error("获取失败");
+                ToasterTool.error("权限不足");
             })
     }
 
