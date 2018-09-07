@@ -1,0 +1,18 @@
+<div class="row">
+    <iframe id="SonarQube" width=100% scrolling=auto frameborder=0 src="http://120.79.15.205/"> </iframe>
+</div>
+
+
+<script>
+    
+    window.localStorage.removeItem('sonarqubeHeight')
+    if (window.sessionStorage.getItem('sonarqubeHeight') == null) {
+        $(document).ready(function () {
+            var iframeHeight = document.getElementById("CAContainer").offsetHeight;
+            document.getElementById("SonarQube").height = iframeHeight + 250;
+            window.sessionStorage.setItem('sonarqubeHeight', iframeHeight + 250);
+        });
+    } else {
+        document.getElementById("SonarQube").height = window.sessionStorage.getItem('sonarqubeHeight');
+    }
+</script>

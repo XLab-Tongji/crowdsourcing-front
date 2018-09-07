@@ -1,0 +1,97 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>作业编号{{projectId}} - 评测情况汇总</h2>
+    </div>
+
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <!-- <div class="row">您尚无已分析完成的代码质量评测报告</div> -->
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>评测项</th>
+                <th>项值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>评测任务ID</td>
+                <td>{{taskDetail.taskID}} </td>
+            </tr>
+            <tr>
+                <td>项目名称</td>
+                <td>{{taskDetail.projectName}} </td>
+            </tr>
+            <tr>
+                <td>项目版本</td>
+                <td>{{taskDetail.projectVersion}} </td>
+            </tr>
+            <tr>
+                <td>项目持有人ID</td>
+                <td>{{taskDetail.userID}}</td>
+            </tr>
+            <tr>
+                <td>代码下载路径</td>
+                <td><a>{{taskDetail.archivePath}}</a></td>
+            </tr>
+            <tr>
+                <td>代码分析进度</td>
+                <td>{{taskDetail.taskStateDesc}}</td>
+            </tr>
+            <tr>
+                <td>分析起始时间</td>
+                <td>{{ taskDetail.startTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+            </tr>
+            <tr>
+                <td>分析结束时间</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>Sonarqube质量检测报表</td>
+                <!-- Iframe需要配置参数自动跳转 -->
+                <td><a>http://lab409.Sonarqube.com/{{taskDetail.taskID}}</a></td>
+            </tr>
+            <tr>
+                <td>机器学习缺陷预测报表</td>
+                <td><a>http://lab409.Sonarqube.com/id</a></td>
+            </tr>
+            <tr>
+                <td>PMD检测报表</td>
+                <td><a>http://lab409.Sonarqube.com/id</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- CodeMirror -->
+<script src="lib/codeMirror/codemirror.js"></script>
+<script src="lib/codeMirror/mode/javascript/javascript.js"></script>
+
+<script>
+    $(document).ready(function () {
+        
+
+    });
+    var locate = function (index, op) {
+        var divElement = document.getElementById("code_div" + index);
+        var locate_btn = document.getElementById("locate_btn" + index);
+        var hide_btn = document.getElementById("hide_btn" + index);
+        if (op == 0) {
+            divElement.style.display = 'none';
+            locate_btn.style.display = 'inline';
+            hide_btn.style.display = 'none';
+        } else {
+            divElement.style.display = 'block';
+            hide_btn.style.display = 'inline';
+            locate_btn.style.display = 'none';
+        }
+    }
+
+    var hideCodeDiv = function (num) {
+        for (var i = 1; i < num + 1; i++) {
+            var divElement = document.getElementById("code_div" + i);
+            divElement.style.display = 'none';
+        }
+    }
+</script>
