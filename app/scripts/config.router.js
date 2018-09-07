@@ -602,6 +602,7 @@ angular.module('crowdsourcing')
                             return $ocLazyLoad.load([
                                 'scripts/controller/app/code_analysis/CodeMeasure.controller.js',
                                 'scripts/controller/app/code_analysis/TaskRecord.controller.js',
+                                'scripts/controller/app/code_analysis/ModuleMeasure.controller.js',
                                 'scripts/factory/Project.factory.js',
                                 'scripts/factory/CodeAnalysis.factory.js'
                             ]);
@@ -627,11 +628,16 @@ angular.module('crowdsourcing')
                     }
                 })
                 .state('app.codeAnalysis.measures', {
-                    url: "/measures",
-                    controller:'CodeMeasureController',
+                    url: "/measures/:id",
+                    params: {"id":"id"},
+                    controller:'ModuleMeasureController',
                     templateUrl: "views/app/codemeasures/measures.html",
                     resolve: {
-
+                        // controller: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        //     return $ocLazyLoad.load([
+                        //         'scripts/controller/app/code_analysis/ModuleMeasure.controller.js'
+                        //     ]);
+                        // }]
                     }
                 })
                 .state('app.codeAnalysis.issues', {

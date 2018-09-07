@@ -50,15 +50,17 @@
             <tr>
                 <td>Sonarqube质量检测报表</td>
                 <!-- Iframe需要配置参数自动跳转 -->
-                <td><a>http://lab409.Sonarqube.com/{{taskDetail.taskID}}</a></td>
+                <td ng-if="taskDetail.sonarqubeUrl==null"><a>http://lab409.Sonarqube.com/{{taskDetail.taskID}}</a></td>
+                <td ng-if="taskDetail.sonarqubeUrl!=null"><a href="{{taskDetail.sonarqubeUrl}}">{{taskDetail.sonarqubeUrl}}</a></td>
             </tr>
             <tr>
                 <td>机器学习缺陷预测报表</td>
-                <td><a>http://lab409.Sonarqube.com/id</a></td>
+                <!-- TODO:ui-sref不生效的原因 -->
+                <td><a ng-click="suck()" href="http://localhost:9000/#/index/codeAnalysis/measures/{{taskDetail.taskID}}">http://lab409.machinelearningreport.com/{{taskDetail.taskID}}</a></td>
             </tr>
             <tr>
                 <td>PMD检测报表</td>
-                <td><a>http://lab409.Sonarqube.com/id</a></td>
+                <td><a>http://lab409.pmdcheckreport.com/{{taskID}}</a></td>
             </tr>
         </tbody>
     </table>

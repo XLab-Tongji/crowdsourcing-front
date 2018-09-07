@@ -54,7 +54,7 @@ angular.module('crowdsourcing').service('SessionService',
       this.codeAnalyzeHeader = function() {
         return {
           'Content-Type' : 'application/json',
-          'authorization' : '1_4b303d9611b94b9a99174ae0ed90412d'
+          'authorization' : '1_0ecdf26882d34204be661c4051d00a2f'
         }
       }
 

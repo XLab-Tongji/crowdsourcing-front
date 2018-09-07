@@ -13,11 +13,17 @@ app.controller('TaskRecordController' ,['$scope', '$http', '$state','$stateParam
       getTaskDetail();
     }
 
+    function suck() {
+      console.log("suck")
+    }
+
+    $scope.suck = suck;
+
     function getTaskDetail() {
       var url = "http://120.79.15.205:8080/api/task/" + $scope.projectId;
 
       $http.get(url, {
-        headers : {'authorization': '1_7a387e078ff047aeb513a1b0cb5f4686'}
+        headers : {'authorization': '1_0ecdf26882d34204be661c4051d00a2f'}
       }).success(function(results){
         $scope.taskDetail = results.RESULT_DATA.result;
       });

@@ -9,7 +9,7 @@
                             <li><a ui-sref=".sonarqube"> <i class="fa fa-file-code-o "></i> SonarQube检测报告
                                     <!-- <span class="label label-warning pull-right">4</span>  -->
                                 </a></li>
-                            <li><a ui-sref=".issues"> <i class="fa fa-file-code-o"></i> 模块缺陷性预测报告
+                            <li><a ui-sref=".measures({'id':67})"> <i class="fa fa-file-code-o"></i> 模块缺陷性预测报告
                                     <!-- <span class="label label-danger pull-right">1</span> -->
                                 </a></li>
                             <li><a ui-sref=".issues"> <i class="fa fa-file-code-o"></i> 开源工具PMD检测报告
@@ -30,7 +30,7 @@
                             您尚无正在检测的项目
                         </div>
                         <div ng-if="detectedProject!=null">
-                            <li ng-repeat="(key, value) in detectedProject" ui-sref=".records({'id':value.taskID, 'name': value.projectName})"  ng-if="key<=3" ui-sref=".measures" style="margin-bottom:4px;color:grey;list-style:none;">
+                            <li ng-repeat="(key, value) in detectedProject" ui-sref=".records({'id':value.taskID, 'name': value.projectName})"  ng-if="key<=3" style="margin-bottom:4px;color:grey;list-style:none;">
                                 {{value.projectName}}
                                 <i ng-if="value.taskState==1" class="fa fa-check-circle" style="color:green;float:right">已完成</i>
                                 <i ng-if="value.taskState==2" class="fa fa-clock-o" style="color:#87CEFA;float:right">排队中</i>

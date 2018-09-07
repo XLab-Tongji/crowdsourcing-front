@@ -1,21 +1,24 @@
 'use strict';
 
-app.controller('CodeMeasureController' ,['$scope', '$http', '$state','$stateParams', 'ToasterTool', 'ProjectFactory','CodeAnalysisFactory','SessionService', function($scope,
-  $http, $state, $stateParams,ToasterTool,ProjectFactory, CodeAnalysisFactory, SessionService) {
+app.controller('CodeMeasureController' ,['$scope', '$sce', '$http', '$state','$stateParams', 'ToasterTool', 'ProjectFactory','CodeAnalysisFactory','SessionService', function($scope,
+  $sce, $http,  $state, $stateParams,ToasterTool,ProjectFactory, CodeAnalysisFactory, SessionService) {
 
     $scope.projects = [];
     $scope.codeAnalysis = codeAnalysis;
+    $scope.sonarqubeUrl = "http://120.79.15.205/";
+    $scope.sonarqubeUrl = $sce.trustAsResourceUrl('http://120.79.15.205/');
     init();
 
 
     function init(){
-      if($state.current.url == "/records/:id") {
-        console.log($stateParams.id)
-        $scope.projectId = $stateParams.id;
-        $scope.projectName = $stateParams.name;
-      }
+      // if($state.current.url == "/records/:id") {
+      //   console.log($stateParams.id)
+      //   $scope.projectId = $stateParams.id;
+      //   $scope.projectName = $stateParams.name;
+      // }
       getCheckedProjects();
       getProjects();
+
     }
 
     function getCheckedProjects() {
@@ -29,7 +32,7 @@ app.controller('CodeMeasureController' ,['$scope', '$http', '$state','$statePara
       // });
 
       $http.get(url, {
-        headers : {'authorization': '1_7a387e078ff047aeb513a1b0cb5f4686'}
+        headers : {'authorization': '1_0ecdf26882d34204be661c4051d00a2f'}
       }).success(function(results){
         // console.log(results.RESULT_DATA.result)
         console.log(results)
@@ -64,20 +67,24 @@ app.controller('CodeMeasureController' ,['$scope', '$http', '$state','$statePara
         // var archivePath = ip + "/" + name + "/-/archive/master/test-master.zip"
         // mock地址 因为内网无法访问的原因
         var archivePath = "https://github.com/jaki2012/springboot-mybatis/archive/master.zip";
+        // archivePath = "https://github.com/jaki2012/SoftwareMetricsAnalyse/archive/master.zip";
         CodeAnalysisFactory.codeAnalysis().post({
           'projectName':name,
           'projectVersion':"1.0",
           'path':'test',
+          // 必须是integer 否则无法自动转换
+          'userID' : 0,
           'archivePath':archivePath           
         }).$promise
           .then(function (data) {
-            if (data.success) {
-              // $scope.detectedProject = name;
-              $scope.metric = data.data.SoftwareMetrics[0][0].metricsData;
-              console.log(data.data);
-            } else {
-                ToasterTool.error('错误', data.message);
-            }
+            ToasterTool.success('成功', "您的评测任务已提交到后台分析队列中！\n请稍后来查看结果哦~")
+            // if (data.success) {
+            //   // $scope.detectedProject = name;
+            //   $scope.metric = data.data.SoftwareMetrics[0][0].metricsData;
+            //   console.log(data.data);
+            // } else {
+            //     ToasterTool.error('错误', data.message);
+            // }
         });
 
     }
