@@ -1,27 +1,50 @@
  <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-4" ng-repeat="member in data.members">
-                <div class="contact-box">
-                    <a ng-click="goDetailPage(member.id)">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src={{member.avatar_url}}>
-                            <div class="m-t-xs font-bold">Developer</div>
+
+    <div class="row">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">    
+                <!-- change icon -->
+                <a><i class="fa">添加成员</i> </a>
+            </div>
+            <div class="ibox-content col-lg-12">
+                <div class="col-lg-8" style="margin-bottom: 20px;">
+                    <div class="col-sm-4" style="padding-left: 0 !important"> 
+                        <label class="control-label">成员</label>
+                        <select class="form-control" ng-model="user" ng-options="user.username for user in users track by user.id" /> 
+                    </div>
+                    <div class="col-sm-4" style="padding-left: 0 !important">
+                        <label class="control-label">权限</label>
+                        <select class="form-control" ng-model="access" ng-options="level.name for level in levels track by level.value" />
+                    </div>
+                    <div class="col-sm-4" style="padding-left: 0 !important">
+                         <label class="control-label">添加</label>
+                        <button type="submit" class="btn btn-primary block m-b" ng-click="addProjectMember()">确定</button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-box" ng-repeat="member in data.members"> 
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                                <img alt="image" class="img-circle m-t-xs img-responsive" src={{member.avatar_url}}>
+                            </div>
                         </div>
+                        <div class="col-sm-8">
+                            <h3><strong>{{member.name}}</strong></h3>
+                            <address>
+                                <!-- <strong>用户名</strong><br>
+                                <a ng-click="goDetailPage(member.id)">{{member.username}}</a> -->
+                            </address>
+                            <select class="form-control" ng-model="member_access_level" ng-init="member_access_level = member.access_level"
+                            ng-change="updateProjectMemberAccessLevel(member.id, member_access_level)" 
+                            ng-options="level.value as level.name for level in levels">
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                            </a>
                     </div>
-                    <div class="col-sm-8">
-                        <h3><strong>{{member.name}}</strong></h3>
-                        <!--<p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>-->
-                        <address>
-                            <strong>Username</strong><br>
-                            
-                           {{member.username}}
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
-                        </a>
                 </div>
             </div>
         </div>
- </div>
+    </div>
+</div>
  

@@ -59,7 +59,7 @@ app.controller('ProjectResetController', ['$scope', '$state', '$stateParams', 'T
       }
     })
     .catch(function(error){
-      ToasterTool.error('重置失败');
+      ToasterTool.error('权限不足');
     });
   }
         

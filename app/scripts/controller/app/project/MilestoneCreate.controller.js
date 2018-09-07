@@ -43,7 +43,7 @@ app.controller('MilestoneCreateController' ,['$scope', '$state','$stateParams', 
                   'id':project_id
               });
         }).catch(function (error) {
-              ToasterTool.error('新建失败!');
+              ToasterTool.error('权限不足');
         });
 
     }

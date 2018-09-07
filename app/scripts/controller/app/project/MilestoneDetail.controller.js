@@ -171,6 +171,9 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
           }
         }
       })
+      .catch(function (error) {
+        ToasterTool.error("权限不足")
+      })
   }
   //put milestone function to close 
   function changStateToClose(issue_id, state) {
@@ -189,6 +192,9 @@ app.controller('MilestoneDetailController', ['$scope', '$state', '$stateParams',
             ToasterTool.error('issue 关闭失败', '');
           }
         }
+      })
+      .catch(function (error) {
+        ToasterTool.error("权限不足")
       })
 
   }

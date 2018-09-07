@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', '$location', 'ToasterTool', 'ProjectFactory', function ($scope,
-    $state, $stateParams, $location, ToasterTool, ProjectFactory) {
+app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', '$location', 'ToasterTool', 'ProjectFactory', '$localStorage', function ($scope,
+    $state, $stateParams, $location, ToasterTool, ProjectFactory, $localStorage) {
 
     var project_id = $stateParams.id;
     $scope.projectsId = project_id;
@@ -9,6 +9,10 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
     init();
 
     function init() {
+        var ip = "http://10.60.38.173:18080/";
+        $scope.gitUrl = ip + $localStorage.gitUrl + ".git";
+        $scope.access_level = $localStorage.access_level;
+        console.log($scope.access_level)
       
 
         $scope.getgetProjectContentTest = getProjectContentTest;
@@ -63,7 +67,10 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
                 $scope.refresh = false;//刷新问题
             }
 
-        });
+        })
+        .catch(function (error) {
+            ToasterTool.error("权限不足")
+        })
     }
 
 //获取项目路径
