@@ -9,12 +9,7 @@ app.controller('ProjectCommitsController', ['$scope', '$state', '$stateParams', 
     init();
 
     function init() {
-        var ip = "http://10.60.38.173:18080/";
-        $scope.gitUrl = ip + $localStorage.gitUrl + ".git";
-        $scope.access_level = $localStorage.access_level;
-        console.log($scope.access_level)
-      
-
+        
         $scope.getgetProjectContentTest = getProjectContentTest;
 
         $scope.getProjectFileDetail = getProjectFileDetail;
