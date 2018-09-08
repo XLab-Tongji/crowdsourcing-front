@@ -5,7 +5,7 @@
  */
 angular.module('crowdsourcing')
   .factory('SessionFactory', function($resource, $rootScope, SessionService) {
-    var baseUrl = "http://172.16.101.91:80";
+    var baseUrl = "http://172.16.101.91:80/proxy";
     return {
       login: function(){
         return $resource(baseUrl+ '/oauth/token', {}, {
