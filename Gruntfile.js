@@ -1,6 +1,6 @@
 'use strict';
-module.exports = function (grunt) {
 
+module.exports = function (grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
@@ -15,7 +15,6 @@ module.exports = function (grunt) {
 
     // Grunt configuration
     grunt.initConfig({
-
         // Project settings
         crowdsourcing: appConfig,
 
