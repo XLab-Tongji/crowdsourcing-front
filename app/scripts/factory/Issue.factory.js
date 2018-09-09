@@ -6,7 +6,7 @@
 angular.module('crowdsourcing')
   .factory('IssueFactory', function($resource, $rootScope, SessionService) {
     var baseUrl = base_Url;
-    var XbaseUrl = 'http://172.16.101.91:80/proxy/api/v4/todos';
+    var XbaseUrl = 'http://172.16.101.91:8000/proxy/api/v4/todos';
     return {
 
       getIssueList: function() {

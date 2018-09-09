@@ -20,7 +20,7 @@ angular.module('crowdsourcing')
       },
 
       getProjectGroupList: function () {
-        return $resource('http://172.16.101.91:80/proxy/api/v4/groups', {}, {
+        return $resource('http://172.16.101.91:8000/proxy/api/v4/groups', {}, {
           'get': {
             method: 'GET',
             isArray: true,
@@ -30,7 +30,7 @@ angular.module('crowdsourcing')
       },
 
       getProjectGroupDetail: function () {
-        return $resource('http://172.16.101.91:80/proxy/api/v4/groups/:id', { id: '@id' }, {
+        return $resource('http://172.16.101.91:8000/proxy/api/v4/groups/:id', { id: '@id' }, {
           'get': {
             method: 'GET',
             headers: SessionService.headers()
