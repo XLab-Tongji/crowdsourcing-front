@@ -36,8 +36,25 @@
                 <td><a>{{taskDetail.archivePath}}</a></td>
             </tr>
             <tr>
-                <td>代码分析进度</td>
+                <td>作业执行状态</td>
                 <td>{{taskDetail.taskStateDesc}}</td>
+            </tr>
+            <tr>
+                <td>分析进度</td>
+                <td ng-if="taskDetail.taskState==1">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                100%
+                        </div>
+                    </div>
+                </td>
+                <td ng-if="taskDetail.taskState!=1">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                60%
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>分析起始时间</td>
@@ -45,55 +62,31 @@
             </tr>
             <tr>
                 <td>分析结束时间</td>
-                <td>暂无</td>
+                <td>{{ taskDetail.endTime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
             </tr>
             <tr>
                 <td>Sonarqube质量检测报表</td>
                 <!-- Iframe需要配置参数自动跳转 -->
-                <td ng-if="taskDetail.sonarqubeUrl==null"><a>http://lab409.Sonarqube.com/{{taskDetail.taskID}}</a></td>
-                <td ng-if="taskDetail.sonarqubeUrl!=null"><a href="{{taskDetail.sonarqubeUrl}}">{{taskDetail.sonarqubeUrl}}</a></td>
+                <td ng-if="taskDetail.sonarqubeUrl==null"><a>http://lab409.sonarqube.com/{{taskDetail.taskID}}</a></td>
+                <td ng-click="jumpToSonarqube(taskDetail.sonarqubeUrl)" class="taskDetail.sonarqubeUrl" ng-if="taskDetail.sonarqubeUrl!=null"><a>{{taskDetail.sonarqubeUrl}}</a></td>
             </tr>
             <tr>
                 <td>机器学习缺陷预测报表</td>
-                <!-- TODO:ui-sref不生效的原因 -->
-                <td><a ng-click="suck()" href="http://localhost:9000/#/index/codeAnalysis/measures/{{taskDetail.taskID}}">http://lab409.machinelearningreport.com/{{taskDetail.taskID}}</a></td>
+                <td><a href="http://localhost:9000/#/index/codeAnalysis/measures/{{taskDetail.taskID}}">http://lab409.machinelearningreport.com/{{taskDetail.taskID}}</a></td>
             </tr>
             <tr>
                 <td>PMD检测报表</td>
-                <td><a>http://lab409.pmdcheckreport.com/{{taskID}}</a></td>
+                <td><a>http://lab409.pmdcheckreport.com/{{taskDetail.taskID}}</a></td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<!-- CodeMirror -->
-<script src="lib/codeMirror/codemirror.js"></script>
-<script src="lib/codeMirror/mode/javascript/javascript.js"></script>
 
 <script>
-    $(document).ready(function () {
+    // $(document).ready(function () {
         
 
-    });
-    var locate = function (index, op) {
-        var divElement = document.getElementById("code_div" + index);
-        var locate_btn = document.getElementById("locate_btn" + index);
-        var hide_btn = document.getElementById("hide_btn" + index);
-        if (op == 0) {
-            divElement.style.display = 'none';
-            locate_btn.style.display = 'inline';
-            hide_btn.style.display = 'none';
-        } else {
-            divElement.style.display = 'block';
-            hide_btn.style.display = 'inline';
-            locate_btn.style.display = 'none';
-        }
-    }
-
-    var hideCodeDiv = function (num) {
-        for (var i = 1; i < num + 1; i++) {
-            var divElement = document.getElementById("code_div" + i);
-            divElement.style.display = 'none';
-        }
-    }
+    // });
+    
 </script>

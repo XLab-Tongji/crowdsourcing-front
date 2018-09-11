@@ -7,23 +7,29 @@ app.controller('TaskRecordController' ,['$scope', '$http', '$state','$stateParam
     init();
 
     function init(){
-      console.log($state)
       $scope.projectId = $stateParams.id;
       $scope.projectName = $stateParams.name;
       getTaskDetail();
     }
 
-    function suck() {
-      console.log("suck")
+    // 正则表达式获取对应的sonarqube报表url
+    function jumpToSonarqube(url) {
+      var pattern = /id=(.*)/
+      var result = pattern.exec(url)
+      if(url.search(pattern) != -1) {
+        $state.go('app.codeAnalysis.sonarqube', {projectUrl: result[1]})
+      } else {
+        $state.go('app.codeAnalysis.sonarqube')
+      }
     }
 
-    $scope.suck = suck;
+    $scope.jumpToSonarqube = jumpToSonarqube
 
     function getTaskDetail() {
       var url = "http://120.79.15.205:8080/api/task/" + $scope.projectId;
 
       $http.get(url, {
-        headers : {'authorization': '1_0ecdf26882d34204be661c4051d00a2f'}
+        headers : {'authorization': '1_95ea71c38f0a476e87e4ac5dfa0ad394'}
       }).success(function(results){
         $scope.taskDetail = results.RESULT_DATA.result;
       });

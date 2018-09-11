@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>模块缺陷性预测检测报告</h2>
+        <h2>作业编号{{projectId}} - 模块缺陷性预测检测报告</h2>
 
     </div>
 
@@ -10,8 +10,8 @@
     <li ng-repeat="(key, value) in moduleMeasures" style="margin-bottom:4px;color:grey;list-style:none;">
     
     <button type="button" style="width: 100%; text-align: left" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">方法：{{value[0]}}
-        <span ng-if="value[1]==false" style="color:red;float:right">Defective模块</span>
-        <span ng-if="value[1]!=false" style="color:green;float:right">Non-Defective模块</span>
+        <span ng-if="value[1]!=false" style="color:red;float:right">Defective模块</span>
+        <span ng-if="value[1]==false" style="color:green;float:right">Non-Defective模块</span>
     </button>
     <div uib-collapse="isCollapsed" collapsed="coled()" collapsing="coling()" expanded="exped()" expanding="exping()">
         <div class="well well-lg">
@@ -38,9 +38,15 @@
                         <td>A</td>
                     </tr>
                     <tr>
+                        <td>PERCENT_COMMENTS</td>
+                        <td>{{value[2].percent_COMMENTS}}</td>
+                        <td>注释行占代码的比例</td>
+                        <td>B+</td>
+                    </tr>
+                    <tr>
                         <td>CYCLOMETIC_COMPLEXITY</td>
                         <td>{{value[2].cyclomatic_COMPLEXITY}}</td>
-                        <td>全复杂度</td>
+                        <td>圈复杂度</td>
                         <td>A+</td>
                     </tr>
                     <tr>

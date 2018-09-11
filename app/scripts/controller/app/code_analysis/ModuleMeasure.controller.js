@@ -7,7 +7,6 @@ app.controller('ModuleMeasureController', ['$scope', '$http', '$state','$statePa
     init();
 
     function init(){
-      console.log($state)
       $scope.projectId = $stateParams.id;
       $scope.projectName = $stateParams.name;
 
@@ -29,7 +28,7 @@ app.controller('ModuleMeasureController', ['$scope', '$http', '$state','$statePa
     }
 
     function getModuleMeasures() {
-      var url = "http://120.79.15.205:8080/api/testjoin/" + $scope.projectId;
+      var url = "http://120.79.15.205:8080/api/testjoin/" + $scope.projectId + "?pageNum=1&pageSize=5";
 
       $http.get(url, {
         

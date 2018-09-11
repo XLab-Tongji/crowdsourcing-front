@@ -1,0 +1,40 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>基于机器学习方法的代码模块缺陷性预测报告</h2>
+            <p>基于机器学习的软件缺陷预测是一种有效的提高软件可靠性的方法。</p>
+            <p>通过软件模块的全面度量特征与基于真实代码缺陷库的训练模型，预测并判断每一个待测软件模块是否具有高缺陷倾向性。通过对软件模块缺陷状况的预测，开发决策人员可以将有限的资源集中于容易出现缺陷的模块，从而有效地提高软件产品的质量。</p>
+        </div>
+        
+    </div>
+    
+    <!-- Bootstrap面板pannel -->
+    <div class="wrapper wrapper-content animated fadeIn" style="margin-left: -15px;margin-right: -15px; padding-left: 0;">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><h3>已获得的模块缺陷性预测报告汇总</h3></div>
+            <!-- List group -->
+            <ul class="list-group" ng-if="detectedProject!=null">
+                <a><li ui-sref="app.codeAnalysis.measures({'id':value.taskID})" class="list-group-item" ng-repeat="(key, value) in detectedProject" 
+                    ng-if="key<=10" style="margin-bottom:4px;color:grey;list-style:none;">
+                    <span class="badge" style="float:left; margin-right: 3px">{{value.taskID}}</span>
+                      {{value.projectName}}
+                    <!-- <i ng-if="value.taskState==1" class="fa fa-check-circle" style="color:green;float:right">已完成</i>
+                    <i ng-if="value.taskState==2" class="fa fa-clock-o" style="color:#87CEFA;float:right">排队中</i>
+                    <i ng-if="value.taskState==3" class="fa fa-spinner" style="color:#87CEFA;float:right">分析中</i>
+                    <i ng-if="value.taskState==4" class="fa fa-times-circle" style="color:red;float:right">已失败</i> -->
+                </li></a>
+            </ul>
+            <nav aria-label="..." style="text-align:center">
+                <ul class="pagination" >
+                    <!-- <ul class="pager"> -->
+                      <li class="disabled"><a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                      <li class="active"><a href="">1 <span class="sr-only">(current)</span></a></li>
+                      <li ><a href="">2 <span class="sr-only">(current)</span></a></li>
+                      <li ><a href="">3 <span class="sr-only">(current)</span></a></li>
+                      <li ><a href="">... <span class="sr-only">(current)</span></a></li>
+                      <li ><a href="">7 <span class="sr-only">(current)</span></a></li>
+                      <li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>

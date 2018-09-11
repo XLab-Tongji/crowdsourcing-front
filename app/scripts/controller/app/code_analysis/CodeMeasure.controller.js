@@ -5,37 +5,59 @@ app.controller('CodeMeasureController' ,['$scope', '$sce', '$http', '$state','$s
 
     $scope.projects = [];
     $scope.codeAnalysis = codeAnalysis;
-    $scope.sonarqubeUrl = "http://120.79.15.205/";
-    $scope.sonarqubeUrl = $sce.trustAsResourceUrl('http://120.79.15.205/');
+    
     init();
 
 
     function init(){
-      // if($state.current.url == "/records/:id") {
-      //   console.log($stateParams.id)
-      //   $scope.projectId = $stateParams.id;
-      //   $scope.projectName = $stateParams.name;
-      // }
+      var baseUrl = "http://120.79.15.205/";
+      if($state.current.url == "/sonarqube") {
+        
+        if($stateParams.projectUrl != null) {
+          console.log(baseUrl + "dashboard?id=" + $stateParams.projectUrl)
+          $scope.sonarqubeUrl = $sce.trustAsResourceUrl(baseUrl + "dashboard?id=" + $stateParams.projectUrl);
+        } else {
+          $scope.sonarqubeUrl = $sce.trustAsResourceUrl(baseUrl);
+        }
+      }
+      
       getCheckedProjects();
       getProjects();
 
     }
 
+    //TODO: 添加refresh参数boolean self/auto
+    // 主动刷新的话 提示正在刷新
+    // auto刷新的话 setInterval和clearInterval
+    // 同时需要决策终止条件是--> 无分析中项目 两秒轮询一次
+    function refresh() {
+      getCheckedProjects()
+      if(hasClass(document.getElementById("refreshBtn"), 'rotate')) {
+        console.log("have")
+        document.getElementById("refreshBtn").classList.remove("rotate")
+      }
+      // 需要设置延时才能旋转
+      setTimeout(function() {
+        document.getElementById("refreshBtn").classList.add("rotate")
+        }, 10)
+      // document.getElementById("refreshBtn").animate()
+      ToasterTool.success("正在为您刷新~")
+    }
+
+    function hasClass(element, cls) {
+      return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+  
+
+    $scope.refresh = refresh
+
+  
     function getCheckedProjects() {
       var url = "http://120.79.15.205:8080/api/tasks"
-      // var cfg = {
-       
-      // }
-
-      // $http.get(url, {}, cfg).then(function (res) {
-      //   console.log(res)
-      // });
 
       $http.get(url, {
-        headers : {'authorization': '1_0ecdf26882d34204be661c4051d00a2f'}
+        headers : {'authorization': '1_95ea71c38f0a476e87e4ac5dfa0ad394'}
       }).success(function(results){
-        // console.log(results.RESULT_DATA.result)
-        console.log(results)
         $scope.detectedProject = results.RESULT_DATA.result
       });
 
@@ -66,8 +88,9 @@ app.controller('CodeMeasureController' ,['$scope', '$sce', '$http', '$state','$s
         // var ip = "http://10.60.38.173:18080";
         // var archivePath = ip + "/" + name + "/-/archive/master/test-master.zip"
         // mock地址 因为内网无法访问的原因
-        var archivePath = "https://github.com/jaki2012/springboot-mybatis/archive/master.zip";
+        // var archivePath = "https://github.com/jaki2012/springboot-mybatis/archive/master.zip";
         // archivePath = "https://github.com/jaki2012/SoftwareMetricsAnalyse/archive/master.zip";
+        var archivePath = "https://github.com/jaki2012/SwQualityAssessment/archive/master.zip";
         CodeAnalysisFactory.codeAnalysis().post({
           'projectName':name,
           'projectVersion':"1.0",
@@ -78,6 +101,7 @@ app.controller('CodeMeasureController' ,['$scope', '$sce', '$http', '$state','$s
         }).$promise
           .then(function (data) {
             ToasterTool.success('成功', "您的评测任务已提交到后台分析队列中！\n请稍后来查看结果哦~")
+            refresh()
             // if (data.success) {
             //   // $scope.detectedProject = name;
             //   $scope.metric = data.data.SoftwareMetrics[0][0].metricsData;

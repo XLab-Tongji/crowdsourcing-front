@@ -33,9 +33,9 @@ angular.module('crowdsourcing')
     return {
       request: function (config) {
         //检查是否已经登录，如果没有登录强制跳转到登录框
-        if(config && isNotInWithList(config.url)){
-            checkToken();
-        }
+        // if(config && isNotInWithList(config.url)){
+        //     checkToken();
+        // }
         return config || $q.when(config);
       },
       requestError: function (config) {

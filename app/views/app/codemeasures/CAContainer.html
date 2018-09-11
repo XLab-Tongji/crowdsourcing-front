@@ -1,30 +1,9 @@
 <div id="CAContainer" class="wrapper wrapper-content">
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-2" style="width:22%">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <div>
-                        <h4>检测报告汇总</h4>
-                        <ul class="folder-list m-b-md" style="padding: 0">
-                            <li><a ui-sref=".sonarqube"> <i class="fa fa-file-code-o "></i> SonarQube检测报告
-                                    <!-- <span class="label label-warning pull-right">4</span>  -->
-                                </a></li>
-                            <li><a ui-sref=".measures({'id':67})"> <i class="fa fa-file-code-o"></i> 模块缺陷性预测报告
-                                    <!-- <span class="label label-danger pull-right">1</span> -->
-                                </a></li>
-                            <li><a ui-sref=".issues"> <i class="fa fa-file-code-o"></i> 开源工具PMD检测报告
-                                    <!-- <span class="label label-danger pull-right">1</span> -->
-                                </a></li>
-                            <li><a style="text-align:left;color:#D1D1D1" ui-sref=".issues"> <i class="fa fa-ellipsis-h"></i> 更多功能集成中
-
-                                </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="ibox float-e-margins">
-                <div class="ibox-content">
-                    <h4>项目评测记录</h4>
+                    <h4>项目评测记录<i id="refreshBtn" ng-click="refresh()" style="float: right" class="rotate fa fa-refresh"></i></h4>
                     <a>
                         <div ng-if="detectedProject==null">
                             您尚无正在检测的项目
@@ -34,13 +13,34 @@
                                 {{value.projectName}}
                                 <i ng-if="value.taskState==1" class="fa fa-check-circle" style="color:green;float:right">已完成</i>
                                 <i ng-if="value.taskState==2" class="fa fa-clock-o" style="color:#87CEFA;float:right">排队中</i>
-                                <i ng-if="value.taskState==3" class="fa fa-spinner" style="color:#87CEFA;float:right">分析中</i>
+                                <span ng-if="value.taskState==3" style="color:#87CEFA;float:right"><i class="rotate_infinite  fa fa-spinner"></i>分析中</span>
                                 <i ng-if="value.taskState==4" class="fa fa-times-circle" style="color:red;float:right">已失败</i>
                             </li>
-                            <li style="margin-top:5px;list-style:none;text-align:right"> 查看更多 </li>
+                            <li ui-sref=".recordslist" style="margin-top:5px;list-style:none;text-align:right"> 查看更多 </li>
                         </div>
                     </a>
                 </div>
+            </div>
+            <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div>
+                            <h4>检测报告汇总</h4>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a ui-sref=".sonarqube"> <i class="fa fa-file-code-o "></i> SonarQube检测报告
+                                        <!-- <span class="label label-warning pull-right">4</span>  -->
+                                    </a></li>
+                                <li><a ui-sref=".measureslist"> <i class="fa fa-file-code-o"></i> 模块缺陷性预测报告
+                                        <!-- <span class="label label-danger pull-right">1</span> -->
+                                    </a></li>
+                                <li><a ui-sref=".issues"> <i class="fa fa-file-code-o"></i> PMDAnalyzer检测报告
+                                        <!-- <span class="label label-danger pull-right">1</span> -->
+                                    </a></li>
+                                <li><a style="text-align:left;color:#D1D1D1" ui-sref=".issues"> <i class="fa fa-ellipsis-h"></i> 更多功能集成中
+    
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
             </div>
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-10 animated fadeInRight">
+        <div class="col-lg-10 animated fadeInRight" style="width:78%">
             <div ui-view></div>
         </div>
     </div>

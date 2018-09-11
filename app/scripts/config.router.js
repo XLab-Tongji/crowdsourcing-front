@@ -604,15 +604,34 @@ angular.module('crowdsourcing')
                                 'scripts/controller/app/code_analysis/TaskRecord.controller.js',
                                 'scripts/controller/app/code_analysis/ModuleMeasure.controller.js',
                                 'scripts/factory/Project.factory.js',
-                                'scripts/factory/CodeAnalysis.factory.js'
+                                'scripts/factory/CodeAnalysis.factory.js',
+                                'styles/rotate.css'
                             ]);
                         }]
                     }
                 })
                 .state('app.codeAnalysis.sonarqube', {
                     url: "/sonarqube",
+                    params: {"projectUrl":null},
                     controller:'CodeMeasureController',
                     templateUrl: "views/app/codemeasures/sonarqube.html",
+                    resolve: {
+
+                    }
+                })
+                .state('app.codeAnalysis.recordslist', {
+                    url: "/recordslist",
+                    controller:'CodeMeasureController',
+                    templateUrl: "views/app/codemeasures/recordsList.html",
+                    resolve: {
+
+                    }
+                })
+                // 机器学习报告汇总页
+                .state('app.codeAnalysis.measureslist', {
+                    url: "/measureslist",
+                    controller:'CodeMeasureController',
+                    templateUrl: "views/app/codemeasures/measuresList.html",
                     resolve: {
 
                     }
