@@ -85,7 +85,7 @@ app.controller('CodeMeasureController' ,['$scope', '$sce', '$http', '$state','$s
     function codeAnalysis(name){
         var name = $scope.name;
 
-        // var ip = "http://10.60.38.173:18080";
+        // var ip = "http://172.16.101.91:8000/proxy";
         // var archivePath = ip + "/" + name + "/-/archive/master/test-master.zip"
         // mock地址 因为内网无法访问的原因
         // var archivePath = "https://github.com/jaki2012/springboot-mybatis/archive/master.zip";

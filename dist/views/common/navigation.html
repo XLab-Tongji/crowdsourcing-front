@@ -1,0 +1,12 @@
+<nav class="navbar-default navbar-static-side" role="navigation"> <div class="sidebar-collapse"> <ul side-navigation class="nav metismenu" id="side-menu"> <li class="nav-header"> <div class="profile-element" uib-dropdown> <img alt="image" class="img-circle" ng-src="{{user.avatar}}"> <div> <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{user.name}}</strong> <!-- </span>
+                        <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </span> --> </span></span></div> <!-- <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                      <li><a ui-sref="app.profile">Profile</a></li>
+                      <li><a ui-sref="app.contacts">Contacts</a></li>
+                      <li><a ui-sref="mailbox.inbox">Mailbox</a></li>
+                      <li class="divider"></li>
+                      <li><a ui-sref="login">Logout</a></li>
+                  </ul> --> </div> <div class="logo-element"> X </div> </li> <li ng-class="{active: $state.includes('app.project')||$state.includes('app.project-detail')}"> <a ui-sref="app.project"><i class="fa fa-folder-o"></i> <span class="nav-label">项目</span> </a> </li> <!--             <li ng-class="{active: $state.includes('app.project_group')}">
+                <a ui-sref="app.project_group"><i class="fa fa-group"></i> <span class="nav-label">项目组
+                </span> </a>
+            </li> --> <li ng-class="{active: $state.includes('app.issue')}"> <a ui-sref="app.issue"><i class="fa fa-tasks"></i> <span class="nav-label">任务 </span> </a> </li> <li ng-class="{active: $state.includes('app.codeAnalysis')}"> <a ui-sref="app.codeAnalysis.sonarqube"><i class="fa fa-code"></i> <span class="nav-label">代码卫士 </span> </a> </li> </ul> </div> </nav>

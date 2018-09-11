@@ -1,6 +1,10 @@
 /node_modules
+<<<<<<< HEAD
 /dist/*
 dist/
+=======
+dist
+>>>>>>> 05f96df2ded865172776d39f778fce40a498c820
 /.tmp
 /.sass-cache
 bower_components

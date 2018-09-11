@@ -42,11 +42,10 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 					$scope.projectName = data.name;
           $scope.projectid  = data.id;
           var path = data.path_with_namespace;
-          if (data.permissions.project_access.access_level != 10)
-            $localStorage.gitUrl = path;
-          $localStorage.access_level = data.permissions.project_access.access_level;
+          var ip = "http://172.16.101.91:8000/proxy/";
+          $scope.gitUrl = ip + path + ".git";
+          $scope.access_level = data.permissions.project_access.access_level;
 
-          console.log($scope.projectid);
 				}
 			})
       .catch(function(error) {
