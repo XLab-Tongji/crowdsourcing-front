@@ -14,6 +14,9 @@ app.controller('ModuleMeasureController', ['$scope', '$http', '$state','$statePa
       // 子级模块
       $scope.isCollapsed1 = true;
 
+      // 加载进度条
+      $scope.loading = true;
+
       $scope.coled = function () {
         // console.log("collapsed");
       }
@@ -36,6 +39,7 @@ app.controller('ModuleMeasureController', ['$scope', '$http', '$state','$statePa
       // // 父节点添加
       // $event.target.parentNode.setAttribute("id", "currentPage");
       // $event.target.parentNode.classList.add("active")
+      $scope.loading = true;
       getModuleMeasures(pageNum)
     }
 
@@ -54,7 +58,8 @@ app.controller('ModuleMeasureController', ['$scope', '$http', '$state','$statePa
           pages.push(i);
         }
         $scope.pages = pages;
-        console.log(results)
+        $scope.loading = false;
+        // console.log(results)
       });
     }
 

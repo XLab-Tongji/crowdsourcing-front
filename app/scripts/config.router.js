@@ -605,7 +605,8 @@ angular.module('crowdsourcing')
                                 'scripts/controller/app/code_analysis/ModuleMeasure.controller.js',
                                 'scripts/factory/Project.factory.js',
                                 'scripts/factory/CodeAnalysis.factory.js',
-                                'styles/rotate.css'
+                                'styles/rotate.css',
+                                'styles/spinner.css'
                             ]);
                         }]
                     }

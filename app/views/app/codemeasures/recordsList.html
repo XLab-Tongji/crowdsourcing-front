@@ -13,11 +13,11 @@
         <!-- Default panel contents -->
         <div class="panel-heading"><h3>项目评测记录汇总</h3></div>
         <div class="panel-body">
-            <p>截至目前，我们已为您成功评测了<span style="color:green">{{detectedProject.length}}</span>个项目，共为您定位出<span style="color:red">78</span>个潜在的安全缺陷模块。尚有<span style="color:blue">0</span>个任务处于分析队列当中。</p>
+            <p>截至目前，我们已为您成功评测了<span style="color:green">{{detectedProject.length}}</span>个项目，共为您定位出<span style="color:red">78</span>个潜在的安全缺陷模块。尚有<span style="color:blue">6</span>个任务处于分析队列当中。</p>
         </div>
         
         <!-- List group -->
-        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="10">
             <thead>
             <tr>
 
@@ -38,15 +38,16 @@
                     <td>
                         <i ng-if="value.taskState==1" class="fa fa-check-circle" style="color:green;float:right">已完成</i>
                         <i ng-if="value.taskState==2" class="fa fa-clock-o" style="color:#87CEFA;float:right">排队中</i>
-                        <i ng-if="value.taskState==3" class="fa fa-spinner" style="color:#87CEFA;float:right">分析中</i>
+                        <span ng-if="value.taskState==3" style="color:#87CEFA;float:right"><i class="rotate_infinite  fa fa-spinner"></i>分析中</span>
                         <i ng-if="value.taskState==4" class="fa fa-times-circle" style="color:red;float:right">已失败</i>
                     </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="7">
-                        <ul class="pagination pull-left"></ul>
+                    <!-- 设置为居中 -->
+                    <td colspan="7" style="text-align:center">
+                        <ul class="pagination" ></ul>
                     </td>
                 </tr>
             </tfoot>
@@ -81,10 +82,9 @@
 </div>
 
 <script>
-        $(document).ready(function() {
-
-            $('.footable').footable();
-            console.log('footable finished');
-            setTimeout(function() {$('.footable').trigger('footable_redraw');}, 500)
-        });
+    $(document).ready(function() {
+        $('.footable').footable();
+        console.log('footable finished');
+        setTimeout(function() {$('.footable').trigger('footable_redraw');}, 500)
+    });
 </script>

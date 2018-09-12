@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>作业编号{{projectId}} - 模块缺陷性预测检测报告</h2>
+        <h2>作业编号{{projectId}} - 模块缺陷性机器学习预测结果报表</h2>
 
     </div>
 
@@ -9,101 +9,177 @@
 
 
 <div class="wrapper wrapper-content animated fadeIn">
-    <li ng-repeat="value in paged_result.data" style="margin-bottom:4px;color:grey;list-style:none;">
-        <!-- <h1>{{value.modules}}</h1> -->
-        <button type="button" style="width: 100%; text-align: left" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">文件：{{value.filename}}
-
-        </button>
-        <div uib-collapse="isCollapsed" collapsed="coled()" collapsing="coling()" expanded="exped()" expanding="exping()">
-            <div class="well well-lg">
-                <ul style="padding-left: 10px;">
-                    <li ng-repeat="module in value.modules">
-                        
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <!-- Todo: 使用bootstrap带列表组的面版 -->
-                                <h3 class="panel-title">{{module.moduleName}} <span ng-if="module.defective!=false"
-                                        style="color:red;float:right">Defective模块</span>
-                                    <span ng-if="module.defective==false" style="color:green;float:right">Non-Defective模块</span></h3>
-                            </div>
-                            <div class="panel-body">
-                                <button type="button" style="width: 100%; text-align: left" class="btn btn-default"
-                                    ng-click="isCollapsed1 = !isCollapsed1">点击以查看更详细的指标
-
-                                </button>
-                                <div uib-collapse="isCollapsed1" collapsed="coled()" collapsing="coling()" expanded="exped()"
-                                    expanding="exping()">
-                                    <div class="well-lg">
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>指标名称</th>
-                                                    <th>指标值</th>
-                                                    <th>指标解释</th>
-                                                    <th>指标评级/备注</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>NUM_UNIQUE_OPERANDS</td>
-                                                    <td>{{value[2].num_UNIQUE_OPERANDS}}</td>
-                                                    <td>不同操作数的个数</td>
-                                                    <td>A+</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>LOC_TOTAL</td>
-                                                    <td>{{value[2].loc_TOTAL}}</td>
-                                                    <td>总代码行数</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>PERCENT_COMMENTS</td>
-                                                    <td>{{value[2].percent_COMMENTS}}</td>
-                                                    <td>注释行占代码的比例</td>
-                                                    <td>B+</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>CYCLOMETIC_COMPLEXITY</td>
-                                                    <td>{{value[2].cyclomatic_COMPLEXITY}}</td>
-                                                    <td>圈复杂度</td>
-                                                    <td>A+</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>...</td>
-                                                    <td>...</td>
-                                                    <td>...</td>
-                                                    <td>...</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-
+    <!-- <div ng-if="loading" style="text-align: center">
+        <iframe src="http://www.rainlf.com:11111/"></iframe>
+        <img src="http://www.rainlf.com:11111/loading.gif"/>
+    </div> -->
+    <div ng-if="loading" >
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
             </div>
         </div>
-    </li>
-    <nav aria-label="Page navigation" style="text-align:center">
-        <ul class="pagination">
-            <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <!-- class="active" -->
-            <li ng-class="{true : 'active',false : '' }[value==currentPage]" ng-click="switchPage($event,value)" ng-repeat="(key,value) in pages" ><a >{{value}}</a></li>
-            <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    </div>
+
+    <div ng-if="!loading">
+        <li ng-repeat="value in paged_result.data" style="margin-bottom:4px;color:grey;list-style:none;">
+            <!-- <h1>{{value.modules}}</h1> -->
+            <button type="button" style="width: 100%; text-align: left" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">文件：{{value.filename}}
+
+            </button>
+            <div uib-collapse="isCollapsed" collapsed="coled()" collapsing="coling()" expanded="exped()" expanding="exping()">
+                <div class="well well-lg">
+                    <ul style="padding-left: 10px;">
+                        <li ng-repeat="module in value.modules">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <!-- Todo: 使用bootstrap带列表组的面版 -->
+                                    <h3 class="panel-title">模块：{{module.moduleName}} 
+                                        <span ng-if="module.defective!=false"
+                                            style="color:red;float:right">Defective模块</span>
+                                    <span ng-if="module.defective==false" style="color:green;float:right">Non-Defective模块</span></h3>
+                                </div>
+                                <div class="panel-body">
+                                    <button type="button" style="width: 100%; text-align: left" class="btn btn-default"
+                                        ng-click="isCollapsed1 = !isCollapsed1">点击以查看更详细的指标
+
+                                    </button>
+                                    <div uib-collapse="isCollapsed1" collapsed="coled()" collapsing="coling()" expanded="exped()"
+                                        expanding="exping()">
+                                        <div class="well-lg">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>指标名称</th>
+                                                        <th>指标值</th>
+                                                        <th>指标解释</th>
+                                                        <th>指标评级 x 备注</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>LOC_BLANK</td>
+                                                        <td>{{module.metrics.loc_BLANK}}</td>
+                                                        <td>代码中空行的数量</td>
+                                                        <td>A+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>LOC_EXECUTABLE</td>
+                                                        <td>{{module.metrics.loc_EXECUTABLE}}</td>
+                                                        <td>可执行代码行数</td>
+                                                        <td>A+</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>LOC_TOTAL</td>
+                                                        <td>{{module.metrics.loc_TOTAL}}</td>
+                                                        <td>总代码行数</td>
+                                                        <td>A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PERCENT_COMMENTS</td>
+                                                        <td>{{module.metrics.percent_COMMENTS}}</td>
+                                                        <td>注释行占代码的比例</td>
+                                                        <td>B+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>NUM_UNIQUE_OPERANDS</td>
+                                                        <td>{{module.metrics.num_UNIQUE_OPERANDS}}</td>
+                                                        <td>不同操作数的个数</td>
+                                                        <td>A+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PARAMETER_COUNT</td>
+                                                        <td>{{module.metrics.parameter_COUNT}}</td>
+                                                        <td>形参的个数</td>
+                                                        <td>A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>HALSTEAD_DIFFICULTY</td>
+                                                        <!-- B-评级 数据库重新设计 -->
+                                                        <td>{{module.metrics.halstead_DIFFICULTY}}</td>
+                                                        <td>Halstead复杂度</td>
+                                                        <td ng-if="module.metrics.halstead_DIFFICULTY > 40">C-</td>
+                                                        <td ng-if="module.metrics.halstead_DIFFICULTY <= 40">B+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>DESIGH_COMPLEXITY</td>
+                                                        <td>{{module.metrics.design_COMPLEXITY}}</td>
+                                                        <td>设计复杂度</td>
+                                                        <td>A-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CYCLOMETIC_COMPLEXITY</td>
+                                                        <td>{{module.metrics.cyclomatic_COMPLEXITY}}</td>
+                                                        <td>圈复杂度</td>
+                                                        <td>A+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CYCLOMETIC_COMPLEXITY</td>
+                                                        <td>{{module.metrics.cyclomatic_COMPLEXITY}}</td>
+                                                        <td>圈复杂度</td>
+                                                        <td>A+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>GLOBAL_DATA_COMPLEXITY</td>
+                                                        <td>{{module.metrics.global_DATA_COMPLEXITY}}</td>
+                                                        <td>全局数据复杂度</td>
+                                                        <td>A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>更多</td>
+                                                        <td>...</td>
+                                                        <td>...</td>
+                                                        <td>...</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </li>
+        <nav aria-label="Page navigation" style="text-align:center">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- class="active" -->
+                <li ng-class="{true : 'active',false : '' }[value==currentPage]" ng-click="switchPage($event,value)"
+                    ng-repeat="(key,value) in pages"><a>{{value}}</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 <!-- CodeMirror -->
