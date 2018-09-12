@@ -54,7 +54,7 @@ app.controller('ModuleMeasureController', ['$scope', '$http', '$state','$statePa
           pages.push(i);
         }
         $scope.pages = pages;
-        // document.getElementById("page-num-" + pageNum).classList.add("active")
+        console.log(results)
       });
     }
 
