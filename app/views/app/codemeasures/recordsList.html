@@ -8,14 +8,53 @@
 
 <!-- Bootstrap面板pannel -->
 <div class="wrapper wrapper-content animated fadeIn" style="margin-left: -15px;margin-right: -15px; padding-left: 0;">
+    
     <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading"><h3>项目评测记录汇总</h3></div>
         <div class="panel-body">
             <p>截至目前，我们已为您成功评测了<span style="color:green">{{detectedProject.length}}</span>个项目，共为您定位出<span style="color:red">78</span>个潜在的安全缺陷模块。尚有<span style="color:blue">0</span>个任务处于分析队列当中。</p>
         </div>
+        
         <!-- List group -->
-        <ul class="list-group" ng-if="detectedProject!=null">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+            <thead>
+            <tr>
+
+                <th>项目 ID</th>
+                <th>项目名称</th>
+                <th class="text-right">完成状态</th>
+
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, value) in detectedProject" foo-repeat-done>
+                    <td>
+                       {{value.taskID}}
+                    </td>
+                    <td>
+                       <a ui-sref="app.codeAnalysis.records({'id':value.taskID, 'name': value.projectName})">{{value.projectName}}</a>
+                    </td>
+                    <td>
+                        <i ng-if="value.taskState==1" class="fa fa-check-circle" style="color:green;float:right">已完成</i>
+                        <i ng-if="value.taskState==2" class="fa fa-clock-o" style="color:#87CEFA;float:right">排队中</i>
+                        <i ng-if="value.taskState==3" class="fa fa-spinner" style="color:#87CEFA;float:right">分析中</i>
+                        <i ng-if="value.taskState==4" class="fa fa-times-circle" style="color:red;float:right">已失败</i>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <ul class="pagination pull-left"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+
+        <!-- <ul class="list-group" ng-if="detectedProject!=null">
             <a><li ui-sref="app.codeAnalysis.records({'id':value.taskID, 'name': value.projectName})" class="list-group-item" ng-repeat="(key, value) in detectedProject" 
                 ng-if="key<=10" style="margin-bottom:4px;color:grey;list-style:none;">
                 <span class="badge" style="float:left; margin-right: 3px">{{value.taskID}}</span>
@@ -25,10 +64,10 @@
                 <i ng-if="value.taskState==3" class="fa fa-spinner" style="color:#87CEFA;float:right">分析中</i>
                 <i ng-if="value.taskState==4" class="fa fa-times-circle" style="color:red;float:right">已失败</i>
             </li></a>
-        </ul>
-        <nav aria-label="..." style="text-align:center">
+        </ul> -->
+        <!-- <nav aria-label="..." style="text-align:center">
             <ul class="pagination" >
-                <!-- <ul class="pager"> -->
+                <ul class="pager"> /////
                   <li class="disabled"><a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
                   <li class="active"><a href="">1 <span class="sr-only">(current)</span></a></li>
                   <li ><a href="">2 <span class="sr-only">(current)</span></a></li>
@@ -37,6 +76,15 @@
                   <li ><a href="">7 <span class="sr-only">(current)</span></a></li>
                   <li class="disabled"><a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </ul>
-        </nav>
+        </nav> -->
     </div>
 </div>
+
+<script>
+        $(document).ready(function() {
+
+            $('.footable').footable();
+            console.log('footable finished');
+            setTimeout(function() {$('.footable').trigger('footable_redraw');}, 500)
+        });
+</script>

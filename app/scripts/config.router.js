@@ -624,7 +624,12 @@ angular.module('crowdsourcing')
                     controller:'CodeMeasureController',
                     templateUrl: "views/app/codemeasures/recordsList.html",
                     resolve: {
-
+                        controller: ['$ocLazyLoad', function ($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'styles/footable/footable.core.css',
+                                'lib/footable/footable.all.min.js'
+                            ]);
+                        }]
                     }
                 })
                 // 机器学习报告汇总页

@@ -159,4 +159,31 @@ angular
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
     .directive('minimalizaSidebar', minimalizaSidebar)
-    .directive('iboxToolsFullScreen', iboxToolsFullScreen);
+    .directive('iboxToolsFullScreen', iboxToolsFullScreen)
+    .directive('fooRepeatDone', function($interpolate) {
+        return function($scope, element) {
+            $('.footable').trigger('footable_redraw');
+            if ($scope.$last) { // all are rendered
+                $('.footable').footable().bind({
+                    'footable_row_collapsed' : function(e) {
+                        //Your code when a row is collapsed
+                        // console.log("footable_row_collapsed");
+                    },
+                    'footable_row_expanded' : function(e) {
+                        //Your code when a row is expanded
+                        // console.log('footable_row_expanded');
+    
+                        angular.forEach(angular.element('.footable-row-detail-name'), function(value, key){
+                            var a = angular.element(value);
+                            var t = a[0].innerText;
+                            if(t.indexOf('{{') > -1 ){
+                                var exp = $interpolate(t);
+                                var res = exp($scope);
+                                a[0].innerText = res;
+                            }
+                        });
+                    },
+                });
+            }
+        }
+    });
