@@ -42,7 +42,7 @@ app.controller('ProjectDetailController', ['$scope', '$state', '$stateParams', '
 					$scope.projectName = data.name;
           $scope.projectid  = data.id;
           var path = data.path_with_namespace;
-          var ip = "http://172.16.101.91:8000/proxy/";
+          var ip = "http://172.16.101.90:8080/";
           $scope.gitUrl = ip + path + ".git";
           $scope.access_level = data.permissions.project_access.access_level;
 
