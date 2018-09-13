@@ -6,7 +6,7 @@ dist/
 bower_components
 /__MACOSX
 .DS_Store
-
+.vscode/
 .idea/
 
 *.md
